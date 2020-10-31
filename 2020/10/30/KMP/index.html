@@ -20,28 +20,55 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="FEZ的博客">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="引言大一下参加学校ACM预备队集训的时候首次接触KMP算法，当时看了很多介绍文章，仍然不是很理解其实质，只是简单地套模板AC题目，待大二数据结构与算法课堂上再听老师介绍一次，才恍然大悟其实KMP也就是那么回事嘛。但当初为啥看那么多文章都没弄明白呢？正巧最近和朋友聊天时他告诉我他对KMP不是很理解，于是打算自己写一篇文章，巩固自己对该算法的认识，也希望能够帮助更多的朋友理解KMP。 在开始之前，需要">
+<meta property="og:type" content="article">
+<meta property="og:title" content="KMP算法原理">
+<meta property="og:url" content="http://example.com/2020/10/30/KMP/index.html">
 <meta property="og:site_name" content="FEZ的博客">
+<meta property="og:description" content="引言大一下参加学校ACM预备队集训的时候首次接触KMP算法，当时看了很多介绍文章，仍然不是很理解其实质，只是简单地套模板AC题目，待大二数据结构与算法课堂上再听老师介绍一次，才恍然大悟其实KMP也就是那么回事嘛。但当初为啥看那么多文章都没弄明白呢？正巧最近和朋友聊天时他告诉我他对KMP不是很理解，于是打算自己写一篇文章，巩固自己对该算法的认识，也希望能够帮助更多的朋友理解KMP。 在开始之前，需要">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2020/10/30/KMP/KMP_1.png">
+<meta property="og:image" content="http://example.com/2020/10/30/KMP/KMP_2.png">
+<meta property="og:image" content="http://example.com/2020/10/30/KMP/KMP_3.png">
+<meta property="og:image" content="http://example.com/2020/10/30/KMP/KMP_4.png">
+<meta property="og:image" content="http://example.com/2020/10/30/KMP/KMP_5.png">
+<meta property="og:image" content="http://example.com/2020/10/30/KMP/KMP_6.png">
+<meta property="og:image" content="http://example.com/2020/10/30/KMP/KMP_7.png">
+<meta property="og:image" content="http://example.com/2020/10/30/KMP/KMP_8.png">
+<meta property="og:image" content="http://example.com/2020/10/30/KMP/KMP_9.png">
+<meta property="og:image" content="http://example.com/2020/10/30/KMP/KMP_10.png">
+<meta property="og:image" content="http://example.com/2020/10/30/KMP/KMP_11.png">
+<meta property="og:image" content="http://example.com/2020/10/30/KMP/KMP_12.png">
+<meta property="og:image" content="http://example.com/2020/10/30/KMP/KMP_13.png">
+<meta property="og:image" content="http://example.com/2020/10/30/KMP/KMP_3.png">
+<meta property="og:image" content="http://example.com/2020/10/30/KMP/KMP_4.png">
+<meta property="og:image" content="http://example.com/2020/10/30/KMP/KMP_14.png">
+<meta property="og:image" content="http://example.com/2020/10/30/KMP/KMP_15.png">
+<meta property="og:image" content="http://example.com/2020/10/30/KMP/KMP_16.png">
+<meta property="og:image" content="http://example.com/2020/10/30/KMP/KMP_17.png">
+<meta property="og:image" content="http://example.com/2020/10/30/KMP/KMP_18.png">
+<meta property="article:published_time" content="2020-10-30T13:53:52.000Z">
+<meta property="article:modified_time" content="2020-10-31T05:14:56.397Z">
 <meta property="article:author" content="FEZ">
+<meta property="article:tag" content="KMP">
+<meta property="article:tag" content="字符串匹配">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2020/10/30/KMP/KMP_1.png">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2020/10/30/KMP/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>FEZ的博客</title>
+  <title>KMP算法原理 | FEZ的博客</title>
   
 
 
@@ -150,9 +177,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -168,10 +196,9 @@
       <meta itemprop="name" content="FEZ的博客">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/30/KMP/" class="post-title-link" itemprop="url">KMP算法原理</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          KMP算法原理
+        </h1>
     
         <div class="post-meta">
             <span class="post-meta-item">
@@ -224,7 +251,7 @@
     <div class="post-body" itemprop="articleBody">
     
       
-          <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>大一下参加学校ACM预备队集训的时候首次接触KMP算法，当时看了很多介绍文章，仍然不是很理解其实质，只是简单地套模板AC题目，待大二数据结构与算法课堂上再听老师介绍一次，才恍然大悟其实KMP也就是那么回事嘛。但当初为啥看那么多文章都没弄明白呢？正巧最近和朋友聊天时他告诉我他对KMP不是很理解，于是打算自己写一篇文章，巩固自己对该算法的认识，也希望能够帮助更多的朋友理解KMP。</p>
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>大一下参加学校ACM预备队集训的时候首次接触KMP算法，当时看了很多介绍文章，仍然不是很理解其实质，只是简单地套模板AC题目，待大二数据结构与算法课堂上再听老师介绍一次，才恍然大悟其实KMP也就是那么回事嘛。但当初为啥看那么多文章都没弄明白呢？正巧最近和朋友聊天时他告诉我他对KMP不是很理解，于是打算自己写一篇文章，巩固自己对该算法的认识，也希望能够帮助更多的朋友理解KMP。</p>
 <p>在开始之前，需要知晓的概念：</p>
 <p>前缀：指的是字符串的子串中从原串最前面开始的子串，如abcdef的前缀有：a,ab,abc,abcd,abcde<br>后缀：指的是字符串的子串中在原串结尾处结尾的子串，如abcdef的后缀有：f,ef,def,cdef,bcdef</p>
 <p>前后缀都不包括该字符串本身</p>
@@ -305,299 +332,45 @@
 <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">void</span> getNext(char * p, <span class="built_in">int</span> * Next)</span><br><span class="line">&#123;</span><br><span class="line">	Next[<span class="number">0</span>] = <span class="number">-1</span>;</span><br><span class="line">	<span class="comment">//i充当文本串T所要匹配字符的下标，不会回溯，j是P串所要匹配字符的下标，会回溯</span></span><br><span class="line">	<span class="built_in">int</span> i = <span class="number">0</span>, j = <span class="number">-1</span>; <span class="comment">//与上面的KMP()函数不同，初始化j为-1，</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (i &lt; strlen(p))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (j == <span class="number">-1</span> || p[i] == p[j])</span><br><span class="line">		&#123;</span><br><span class="line">			++i;</span><br><span class="line">			++j;</span><br><span class="line">			Next[i] = j;</span><br><span class="line">		&#125;	</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			j = Next[j];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-      
     </div>
     
     
     
     
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
+    
+    <div>
       
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/30/%E6%91%98%E6%8A%84%E6%9C%AC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/author.jpg">
-      <meta itemprop="name" content="FEZ">
-      <meta itemprop="description" content="">
-    </span>
+      	<div>
     
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="FEZ的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/30/%E6%91%98%E6%8A%84%E6%9C%AC/" class="post-title-link" itemprop="url">好句摘抄</a>
-        </h2>
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
     
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-    
-              <time title="创建时间：2020-10-30 21:29:11 / 修改时间：21:30:49" itemprop="dateCreated datePublished" datetime="2020-10-30T21:29:11+08:00">2020-10-30</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0/%E7%94%9F%E6%B4%BB/" itemprop="url" rel="index"><span itemprop="name">生活</span></a>
-                </span>
-            </span>
-    
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>311</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-    
-        </div>
-      </header>
-    
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-    
-      
-          <p><em>Computer science should be called computing science,for the same reason why surgery is not called knife science.</em></p>
-<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<em>-E.Dijkstra</em></p>
-
+</div>
       
     </div>
     
     
-    
-    
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/28/%E6%B4%9B%E8%B0%B7P1990%E8%A6%86%E7%9B%96%E5%A2%99%E5%A3%81/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/author.jpg">
-      <meta itemprop="name" content="FEZ">
-      <meta itemprop="description" content="">
-    </span>
+          <div class="post-tags">
+              <a href="/tags/KMP/" rel="tag"># KMP</a>
+              <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" rel="tag"># 字符串匹配</a>
+          </div>
     
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="FEZ的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/28/%E6%B4%9B%E8%B0%B7P1990%E8%A6%86%E7%9B%96%E5%A2%99%E5%A3%81/" class="post-title-link" itemprop="url">洛谷P1990覆盖墙壁</a>
-        </h2>
-    
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-    
-              <time title="创建时间：2020-10-28 23:47:51" itemprop="dateCreated datePublished" datetime="2020-10-28T23:47:51+08:00">2020-10-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-30 14:25:38" itemprop="dateModified" datetime="2020-10-30T14:25:38+08:00">2020-10-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">题解</span></a>
-                </span>
-            </span>
-    
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.6k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-    
-        </div>
-      </header>
-    
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-    
-      
-          <h2 id="这是FEZ第一篇题解"><a href="#这是FEZ第一篇题解" class="headerlink" title="这是FEZ第一篇题解"></a>这是FEZ第一篇题解</h2><p>搭建这个博客费了FEZ不少心思，期间他经历了不少挫折，几度让其想要放弃。不过每每想到要是自己连个小小的个人博客都搭不出来，实在愧对于FEZ作为一枚SCUer的身份。最终还是跌跌撞撞地把博客搭建起来了，实属不易啊~</p>
-<p>言归正传，<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1990">洛谷P1990覆盖墙壁</a>是一道关于递推算法的题目。本题说难不难——无非就是找出题目中蕴含的递推方程，代码实现毫无难度，但若要说它简单吧，反正FEZ当时也没做出来。这篇题解也是参考洛谷上本题题解而写的，写的目的除了分享思路，也为了巩固FEZ的对此类题目的理解。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/10/28/%E6%B4%9B%E8%B0%B7P1990%E8%A6%86%E7%9B%96%E5%A2%99%E5%A3%81/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
-    
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/28/%E4%B8%BB%E9%A1%B5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/author.jpg">
-      <meta itemprop="name" content="FEZ">
-      <meta itemprop="description" content="">
-    </span>
     
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="FEZ的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/28/%E4%B8%BB%E9%A1%B5/" class="post-title-link" itemprop="url">FEZ的博客</a>
-        </h2>
-    
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-    
-              <time title="创建时间：2020-10-28 21:51:51" itemprop="dateCreated datePublished" datetime="2020-10-28T21:51:51+08:00">2020-10-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-30 21:28:28" itemprop="dateModified" datetime="2020-10-30T21:28:28+08:00">2020-10-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
-                </span>
-            </span>
-    
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>115</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-    
-        </div>
-      </header>
-    
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-    
-      
-          <h4 id="欢迎来到FEZ的博客！"><a href="#欢迎来到FEZ的博客！" class="headerlink" title="欢迎来到FEZ的博客！"></a>欢迎来到FEZ的博客！</h4><h5 id="FEZ计划于此分享他的学习经历，例如新学的知识、对某些问题的心得或是解决难题的思路等等。现在这个博客还很简陋，FEZ会持续更新，将它做得更好，如果你想了解关于FEZ的更多欢迎前往FEZ的GitHub个人主页！"><a href="#FEZ计划于此分享他的学习经历，例如新学的知识、对某些问题的心得或是解决难题的思路等等。现在这个博客还很简陋，FEZ会持续更新，将它做得更好，如果你想了解关于FEZ的更多欢迎前往FEZ的GitHub个人主页！" class="headerlink" title="FEZ计划于此分享他的学习经历，例如新学的知识、对某些问题的心得或是解决难题的思路等等。现在这个博客还很简陋，FEZ会持续更新，将它做得更好，如果你想了解关于FEZ的更多欢迎前往FEZ的GitHub个人主页！"></a>FEZ计划于此分享他的学习经历，例如新学的知识、对某些问题的心得或是解决难题的思路等等。现在这个博客还很简陋，FEZ会持续更新，将它做得更好，如果你想了解关于FEZ的更多欢迎前往<a target="_blank" rel="noopener" href="https://github.com/Toby-Fish">FEZ的GitHub个人主页</a>！</h5>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/10/28/%E4%B8%BB%E9%A1%B5/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/10/30/%E6%91%98%E6%8A%84%E6%9C%AC/" rel="prev" title="好句摘抄">
+      <i class="fa fa-chevron-left"></i> 好句摘抄
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-    
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-
   
 
 
@@ -650,6 +423,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%BC%95%E5%85%A5"><span class="nav-number">2.</span> <span class="nav-text">问题引入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Next%E6%95%B0%E7%BB%84"><span class="nav-number">4.</span> <span class="nav-text">Next数组</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
