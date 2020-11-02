@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="引言大一下参加学校ACM预备队集训的时候首次接触KMP算法，当时看了很多介绍文章，仍然不是很理解其实质，只是简单地套模板AC题目，待大二数据结构与算法课堂上再听老师介绍一次，才恍然大悟其实KMP也就是那么回事嘛。但当初为啥看那么多文章都没弄明白呢？正巧最近和朋友聊天时他告诉我他对KMP不是很理解，于是打算自己写一篇文章，巩固自己对该算法的认识，也希望能够帮助更多的朋友理解KMP。">
+  <meta name="description" content="引言大一下参加学校ACM预备队集训的时候首次接触KMP算法，当时看了很多介绍文章，仍然不是很理解其实质，只是简单地套模板AC题目，待大二数据结构与算法课堂上再听老师介绍一次，才恍然大悟其实KMP也就是那么回事嘛。但当初为啥看那么多文章都没弄明白呢？正巧最近和朋友聊天时他告诉我他对KMP不是很理解，于是打算自己写一篇文章，巩固自己对KMP的认识，也希望能够帮助更多朋友理解KMP。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="KMP算法原理">
 <meta property="og:url" content="http://example.com/2020/10/30/KMP/index.html">
 <meta property="og:site_name" content="FEZ的博客">
-<meta property="og:description" content="引言大一下参加学校ACM预备队集训的时候首次接触KMP算法，当时看了很多介绍文章，仍然不是很理解其实质，只是简单地套模板AC题目，待大二数据结构与算法课堂上再听老师介绍一次，才恍然大悟其实KMP也就是那么回事嘛。但当初为啥看那么多文章都没弄明白呢？正巧最近和朋友聊天时他告诉我他对KMP不是很理解，于是打算自己写一篇文章，巩固自己对该算法的认识，也希望能够帮助更多的朋友理解KMP。">
+<meta property="og:description" content="引言大一下参加学校ACM预备队集训的时候首次接触KMP算法，当时看了很多介绍文章，仍然不是很理解其实质，只是简单地套模板AC题目，待大二数据结构与算法课堂上再听老师介绍一次，才恍然大悟其实KMP也就是那么回事嘛。但当初为啥看那么多文章都没弄明白呢？正巧最近和朋友聊天时他告诉我他对KMP不是很理解，于是打算自己写一篇文章，巩固自己对KMP的认识，也希望能够帮助更多朋友理解KMP。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2020/10/30/KMP/KMP_1.png">
 <meta property="og:image" content="http://example.com/2020/10/30/KMP/KMP_2.png">
@@ -48,7 +48,7 @@
 <meta property="og:image" content="http://example.com/2020/10/30/KMP/KMP_17.png">
 <meta property="og:image" content="http://example.com/2020/10/30/KMP/KMP_18.png">
 <meta property="article:published_time" content="2020-10-30T13:53:52.000Z">
-<meta property="article:modified_time" content="2020-10-31T06:14:26.890Z">
+<meta property="article:modified_time" content="2020-11-02T10:05:01.144Z">
 <meta property="article:author" content="FEZ">
 <meta property="article:tag" content="KMP">
 <meta property="article:tag" content="字符串匹配">
@@ -214,7 +214,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-31 14:14:26" itemprop="dateModified" datetime="2020-10-31T14:14:26+08:00">2020-10-31</time>
+                <time title="修改时间：2020-11-02 18:05:01" itemprop="dateModified" datetime="2020-11-02T18:05:01+08:00">2020-11-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -232,14 +232,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.7k</span>
+              <span>3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>3 分钟</span>
             </span>
     
         </div>
@@ -251,13 +251,13 @@
     <div class="post-body" itemprop="articleBody">
     
       
-        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>大一下参加学校ACM预备队集训的时候首次接触KMP算法，当时看了很多介绍文章，仍然不是很理解其实质，只是简单地套模板AC题目，待大二数据结构与算法课堂上再听老师介绍一次，才恍然大悟其实KMP也就是那么回事嘛。但当初为啥看那么多文章都没弄明白呢？正巧最近和朋友聊天时他告诉我他对KMP不是很理解，于是打算自己写一篇文章，巩固自己对该算法的认识，也希望能够帮助更多的朋友理解KMP。</p>
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>大一下参加学校ACM预备队集训的时候首次接触KMP算法，当时看了很多介绍文章，仍然不是很理解其实质，只是简单地套模板AC题目，待大二数据结构与算法课堂上再听老师介绍一次，才恍然大悟其实KMP也就是那么回事嘛。但当初为啥看那么多文章都没弄明白呢？正巧最近和朋友聊天时他告诉我他对KMP不是很理解，于是打算自己写一篇文章，巩固自己对KMP的认识，也希望能够帮助更多朋友理解KMP。</p>
 <a id="more"></a>
 
 <p>在开始之前，需要知晓的概念：</p>
-<p>前缀：指的是字符串的子串中从原串最前面开始的子串，如abcdef的前缀有：a,ab,abc,abcd,abcde<br>后缀：指的是字符串的子串中在原串最后面开始的子串，如abcdef的后缀有：f,ef,def,cdef,bcdef</p>
-<p>前后缀都不包括该字符串本身</p>
-<h2 id="问题引入"><a href="#问题引入" class="headerlink" title="问题引入"></a>问题引入</h2><p>给你文本串T(Text String)</p>
+<p>前缀：以原串串头为自身串头的子串，如abcdef的前缀有：a,ab,abc,abcd,abcde<br>后缀：以原串串尾为自身串尾的子串，如abcdef的后缀有：f,ef,def,cdef,bcdef</p>
+<p><strong>注意：字符串前后缀都不包括该串本身</strong></p>
+<h2 id="问题引入"><a href="#问题引入" class="headerlink" title="问题引入"></a>问题引入</h2><p>给你一个文本串T(Text String)</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">abcOabcXabcOabcYabcOabcZ</span><br></pre></td></tr></table></figure>
 
 <p>再给你一个模式串P(Pattern String)</p>
@@ -271,66 +271,71 @@
 <img src="/2020/10/30/KMP/KMP_2.png" class>
 
 <p>如此反复</p>
-<p>如果一直这么顺利，两串对应位置的字符总相同，待P串中最后一个字符也匹配完毕，说明该模式串在文本串中存在，耶( •̀ ω •́ )y超开心，查找结束。但，大多数情况下不会如此顺利，在该例中，当匹配至</p>
+<p>如果一直这么顺利，两串对应位置的字符总相同，待P串中最后一个字符也匹配完毕，说明该模式串在文本串中存在，耶( •̀ ω •́ )y超开心，查找结束。但，大多数匹配过程不会如此顺利，在该例中，当匹配至</p>
 <img src="/2020/10/30/KMP/KMP_3.png" class>
 
-<p>很明显，失配了，现在怎么办？按朴素思想，将P串整体右移一位，重新开始匹配，即</p>
+<p>很明显，失配了。现在怎么办？按朴素思想，将P串相对T串整体右移一位，重新开始匹配，即</p>
 <img src="/2020/10/30/KMP/KMP_4.png" class>
 
-<p>但这种算法效率无疑是十分低下的。设T串长度N，P串长度M，则暴力算法时间复杂度为O(MN)</p>
+<p>但这种算法效率无疑是十分低下的。设T串长度N，P串长度M，则朴素算法时间复杂度为O(MN)</p>
+<hr>
 <p>已知的重要信息并没有被使用——已匹配的字符串前缀</p>
-<p>在上例中，当T串与P串失配时，两串有7个字符已匹配</p>
+<p>在上例中，当P串最后一个字符匹配失败时，其已有包含七个字符的<strong>前缀子串S</strong>匹配成功</p>
 <img src="/2020/10/30/KMP/KMP_5.png" class>
 
-<p>完全可以利用匹配成功的字符串前缀做点什么。观察到在前缀字符串（以下简称S串）</p>
+<p>完全可以利用前缀子串S做点什么。观察到在S串</p>
 <img src="/2020/10/30/KMP/KMP_6.png" class>
 
-<p>中，有前后缀相同，即下图蓝色部分</p>
+<p>中，有相同前后缀，即下图蓝色部分</p>
 <img src="/2020/10/30/KMP/KMP_7.png" class>
 
-<p>而T串与P串这部分是完全相同的，即有</p>
+<p>而S串各字符又与T串中对应字符相同，即有</p>
 <img src="/2020/10/30/KMP/KMP_8.png" class>
 
-<p>当失配出现后，直接将P串右移如下</p>
+<p>当失配发生后，直接将P串右移四位使S串蓝色后缀部分对齐T串中蓝色前缀部分</p>
 <img src="/2020/10/30/KMP/KMP_9.png" class>
 
-<p>继续图中红框部分的匹配，发现再次失配。这次，已匹配成功的前缀串S为<img src="/2020/10/30/KMP/KMP_10.png" class>，而在该串中没有相同的前后缀，只能将P串串头移至失配处进行比较</p>
+<p>从图中红框部分继续尝试匹配，发现再次失配。这次，已匹配成功的前缀串S为<img src="/2020/10/30/KMP/KMP_10.png" class>，而在该串中没有相同的前后缀，只能将P串串头移至失配处进行比较</p>
 <img src="/2020/10/30/KMP/KMP_11.png" class>
 
-<p>再次失配，而此时没有匹配成功的前缀，只好如朴素算法般将P串整体右移一位，重新开始比较</p>
+<p>再次失配。此时前缀串S为空串，只好如朴素算法般将P串整体右移一位，重新开始比较</p>
 <img src="/2020/10/30/KMP/KMP_12.png" class>
 
-<p>终于匹配成功了，于是又按照之前的步骤往下匹配，直至再次失配或匹配成功</p>
+<p>匹配成功。于是又按照之前的步骤往下匹配，直至再次失配或匹配成功</p>
 <img src="/2020/10/30/KMP/KMP_13.png" class>
 
 <p>后续步骤同上，不再赘述</p>
 <hr>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>如上例所示，KMP的精髓在于对已匹配成功的字符串前缀的利用</p>
-<p>在朴素算法中，匹配失败了，T串会回溯</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>上述示例已展现，KMP算法的精髓在于对已匹配成功的前缀串S的利用</p>
+<p>在朴素算法中，匹配失败了，T串待匹配字符会回溯</p>
 <img src="/2020/10/30/KMP/KMP_3.png" class>
 
-<p>T串原本已匹配到第八个字符X，但是因为失配，需倒退到第二个字符b重新开始匹配</p>
+<p>T串原本已匹配到第八个字符X，但是因为失配，需回溯到第二个字符b重新开始匹配</p>
 <img src="/2020/10/30/KMP/KMP_4.png" class>
 
-<p>而在KMP算法中，T串匹配到第八个字符失配了，它是不会倒退的。它会就在这个失配位置不动，说“既然我是在这个位置失配的，P串你自己看情况觉得右移多少位再来和我这一位匹配吧”。<strong>记住，在KMP算法中总是只关心已匹配成功的前缀，如果P串匹配至第K位失配了，我们不关心第K位的字符是什么，只在乎前K-1位匹配成功的字符。</strong>为了便于理解，我们把失配的两个字符抹掉，不关心它们是什么</p>
+<p>而在KMP算法中，若P串第M个字符与T串第K个字符匹配失败，K不会回溯。T串说“既然我是在位置K失配的，说明在K之前M-1个字符都匹配成功了。既然如此，就不必再次去匹配那些之前就匹配过的字符了。P串你自己根据实际情况右移合适位数再来和我的第K位进行匹配吧”。P串听后很紧张“T串啊，我的第M个字符与你的第K个字符匹配失败，这是大家都不愿看到的。既然现在情况已经发生，我只好从我的第M位之前挑一位来和你的第K位进行匹配。但我向你承诺绝非随意挑选，<strong>如果我挑选第N位（N&lt;M）来与你的第K位进行匹配，我保证我的N-1，N-2，N-3…位与你的K-1，K-2，K-3…位一定匹配！</strong>至于这第N位能否匹配得上，我也无法保证了。“</p>
+<p><strong>在KMP算法中总是只关心已匹配成功的前缀，如果P串匹配至第N位失配了，我们不关心第N位的字符是什么，只在乎前N-1位匹配成功的字符。</strong>为了便于理解，我们把失配的T串第K位和P串第N位抹掉，不关心它们是什么</p>
 <img src="/2020/10/30/KMP/KMP_14.png" class>
 
-<p>现在失配确实发生了，P串只好右移，有几种移法，最少移一位，最多可移七位。但若是移动一位、两位、三位，有意义吗？两个失配的黑方格里是什么字符，我们不关心，我们全部的已知只有已匹配成功的前缀字符串S。所以P串往右移动，使P串中前缀串S的最长相同后缀与T串中前缀串S的最长相同前缀匹配，即</p>
+<p>现在失配确实发生了，P串只好右移利用黑框之前的某一位与T串的黑方块进行匹配。两个黑框里是什么字符，我们不关心。我们全部的已知只有已匹配成功的前缀字符串S。将P串往右移动，使前缀子串S的<strong>最长相同前缀</strong>与T串中对应部分的<strong>最长相同后缀</strong>匹配，即</p>
 <img src="/2020/10/30/KMP/KMP_15.png" class>
 
-<p>直接右移四位，让P串用字符O去与T串中黑方块进行匹配，而字符O之前的每一个字符都与T串中对应字符匹配上了——我们利用前缀串S的已知条件，直接省去了右移一位、两位、三位之后的无效对比。为什么可以这样？<strong>因为若S串中有相同前后缀，能保证P串右移后能用S串中的前缀与T串中S串的后缀对齐。</strong>这就是KMP的最终奥秘：当失配发生时，利用已匹配成功的前缀串S能够快速知晓P串应该右移几位能够保证在P中第K位与T串对应位匹配时，P的第1个字符至K-1个字符与T中对应的字符完全匹配。观察发现，当P串某一字符匹配失败时，P串应向右移动多少位是与T串无关的，只与其自身该位之前的前缀串相关。对应一个具体的P串，在它的某一失配后右移多少位也是固定的，所以引入Next数组便于我们更高效的进行匹配。</p>
-<h2 id="Next数组"><a href="#Next数组" class="headerlink" title="Next数组"></a>Next数组</h2><p>定义Next[i] = j表示当P串中第i位失配后，将P串的第j位移动至此再来匹配，还是以之前的P串为例，它的Next数组求出来应为</p>
+<p>直接右移四位，用P串中字符O去与T串中黑框所对应的字符进行匹配。至于O能不能与T串黑框中的字符匹配成功另说。但能够确定的是P串中字符O之前的每个字符与T串中对应位置的字符是一定匹配上的。我们利用S串直接省去了右移一位、两位、三位之后的无效对比。为什么可以这样？<strong>因为若S串中有相同前后缀，称T串中和S串相同部分为S’串，则能保证P串右移后能用S串中的前缀与S‘的后缀对齐。</strong>这就是KMP的终极奥秘：当失配发生时，利用已匹配成功的前缀子串S能够快速知晓P串应该右移几位，在保证在P串第N位与T串第K位进行匹配时，P的第1个字符至N-1个字符与T的第K-N+1至第K-1个字符完全匹配。继续深入思考发现，当P串匹配至第N位失配发生，P串向右移动位数为定值，只与P串本身相关，与文本串T无关。对于一个具体的P串，当其内容确定时，在具体某一位失配后右移多少位便也确定，因此我们可以引入一个数组，记录当前位匹配失败后应直接跳转至哪一位进行再尝试匹配，称该数组为Next数组。</p>
+<h2 id="Next数组"><a href="#Next数组" class="headerlink" title="Next数组"></a>Next数组</h2><p>定义Next[i] = j表示当P串中第i位失配后，跳转至P串第j位再次尝试匹配</p>
+<p>还是以之前的P串为例，它的Next数组求出来应为</p>
 <img src="/2020/10/30/KMP/KMP_16.png" class>
 
-<p>规定Next[0] = -1，作为一个特殊的判断标志。而对应除下标0外的任意下标N，Next[N]的含义是<strong>前N-1个已匹配成功的字符构成的字符串中，最长相同前后缀长度。</strong>所以若在下标为0以外的N处匹配失败了，则应前往Next[N]所对应的下标处匹配。具体地，以下标6为例，当匹配到下标6时失配，而Next[6] = 2，应将P串右移使下标为2的字符对齐T串中失配字符，如下图所示</p>
+<p>特别地，规定Next[0] = -1。而对于除下标0外的任意下标N，Next[N]的含义是<strong>前N-1个已匹配成功的字符构成的前缀串S中，最长相同前后缀长度。</strong>所以若在下标为N处匹配失败了，则应前往Next[N]所对应的下标处匹配。</p>
+<p>具体地，以下图所示为例，P[6]与T[6]失配</p>
 <img src="/2020/10/30/KMP/KMP_17.png" class>
 
+<p>而Next[6] = 2，所以使用P[2]再次尝试与T[6]进行匹配</p>
 <img src="/2020/10/30/KMP/KMP_18.png" class>
 
 <p>当求出P串Next数组后，便可快速进行与T串的匹配</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">KMP</span><span class="params">(<span class="keyword">char</span> * t, <span class="keyword">char</span> * p)</span> <span class="comment">//T为待匹配文本串，P为模式串</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">0</span>; <span class="comment">//用i记录当前T串所要匹配字符的下标</span></span><br><span class="line">	<span class="keyword">int</span> j = <span class="number">0</span>; <span class="comment">//用j记录当前P串所要匹配字符的下标</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (i &lt; <span class="built_in">strlen</span>(t) &amp;&amp; j &lt; <span class="built_in">strlen</span>(p))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (j == <span class="number">-1</span> || t[i] == p[j]) <span class="comment">//j为-1意味着不存在前缀，同时P[0]与T[i]匹配失败，只能将P串右移一位从头开始匹配</span></span><br><span class="line">		&#123;</span><br><span class="line">			i++;</span><br><span class="line">           	j++;</span><br><span class="line">		&#125;</span><br><span class="line">	 	<span class="keyword">else</span> </span><br><span class="line">           	j = Next[j]; <span class="comment">//j不为-1，意味着有前缀串，j = Next[j]前往下一个匹配点</span></span><br><span class="line">    	&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (j == <span class="built_in">strlen</span>(p))<span class="comment">//匹配成功，返回P串在T串中首次出现的下标</span></span><br><span class="line">       <span class="keyword">return</span> i - j;</span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">       <span class="keyword">return</span> <span class="number">-1</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">KMP</span><span class="params">(<span class="keyword">char</span> * t, <span class="keyword">char</span> * p)</span> <span class="comment">//T为待匹配文本串，P为模式串</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">0</span>; <span class="comment">//用i记录当前T串所要匹配字符的下标</span></span><br><span class="line">	<span class="keyword">int</span> j = <span class="number">0</span>; <span class="comment">//用j记录当前P串所要匹配字符的下标</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (i &lt; <span class="built_in">strlen</span>(t) &amp;&amp; j &lt; <span class="built_in">strlen</span>(p))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (j == <span class="number">-1</span> || t[i] == p[j]) <span class="comment">//j为-1意味着前缀串为空串，同时P[0]与T[i]匹配失败，只能将P串右移一位从头开始匹配</span></span><br><span class="line">		&#123;</span><br><span class="line">			i++;</span><br><span class="line">           	j++;</span><br><span class="line">		&#125;</span><br><span class="line">	 	<span class="keyword">else</span> </span><br><span class="line">           	j = Next[j]; <span class="comment">//j不为-1，意味着有前缀串，j = Next[j]前往下一个匹配点</span></span><br><span class="line">    	&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (j == <span class="built_in">strlen</span>(p))<span class="comment">//匹配成功，返回P串在T串中首次出现的下标</span></span><br><span class="line">       <span class="keyword">return</span> i - j;</span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">       <span class="keyword">return</span> <span class="number">-1</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>现在问题只剩下如何求Next数组，注意到Next数组既然只与P串本身相关，与文本串T无关，故令P串与自身匹配，即可求得</p>
+<p>现在问题只剩下如何求Next数组，注意到Next数组既然只与P串本身相关，与文本串T无关，故令P串与自身匹配即可求得</p>
 <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">void</span> getNext(char * p, <span class="built_in">int</span> * Next)</span><br><span class="line">&#123;</span><br><span class="line">	Next[<span class="number">0</span>] = <span class="number">-1</span>;</span><br><span class="line">	<span class="comment">//i充当文本串T所要匹配字符的下标，不会回溯，j是P串所要匹配字符的下标，会回溯</span></span><br><span class="line">	<span class="built_in">int</span> i = <span class="number">0</span>, j = <span class="number">-1</span>; <span class="comment">//与上面的KMP()函数不同，初始化j为-1，</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (i &lt; strlen(p))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (j == <span class="number">-1</span> || p[i] == p[j])</span><br><span class="line">		&#123;</span><br><span class="line">			++i;</span><br><span class="line">			++j;</span><br><span class="line">			Next[i] = j;</span><br><span class="line">		&#125;	</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			j = Next[j];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
