@@ -24,16 +24,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.0.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="FEZ的博客">
-<meta property="og:url" content="http://example.com/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/index.html">
+  <meta name="description" content="介绍桌上有n个苹果，游戏双方轮流取苹果 1.先手不能第一次把所有苹果取完 2.之后每一轮，你所能拿的苹果个数至少1个,至多上一轮的两倍 轮到谁将桌上苹果全部拿完,谁获得本轮游戏胜利!">
+<meta property="og:type" content="article">
+<meta property="og:title" content="博弈论-Fibonacci博弈">
+<meta property="og:url" content="http://example.com/2020/12/01/%E5%8D%9A%E5%BC%88%E8%AE%BA-Fibonacci%E5%8D%9A%E5%BC%88/index.html">
 <meta property="og:site_name" content="FEZ的博客">
+<meta property="og:description" content="介绍桌上有n个苹果，游戏双方轮流取苹果 1.先手不能第一次把所有苹果取完 2.之后每一轮，你所能拿的苹果个数至少1个,至多上一轮的两倍 轮到谁将桌上苹果全部拿完,谁获得本轮游戏胜利!">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-12-01T12:05:04.000Z">
+<meta property="article:modified_time" content="2020-12-01T12:27:56.848Z">
 <meta property="article:author" content="FEZ">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/">
+<link rel="canonical" href="http://example.com/2020/12/01/%E5%8D%9A%E5%BC%88%E8%AE%BA-Fibonacci%E5%8D%9A%E5%BC%88/">
 
 
 <script class="page-configurations">
@@ -41,12 +45,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: 博弈论 | FEZ的博客</title>
+  <title>博弈论-Fibonacci博弈 | FEZ的博客</title>
   
 
 
@@ -165,7 +169,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -178,6 +182,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%90"><span class="nav-number">3.</span> <span class="nav-text">分析</span></a></li></ol></div>
         </section>
         <!--/noindex-->
 
@@ -232,74 +237,124 @@
 </noscript>
 
 
-    <div class="main-inner tag posts-collapse">
+    <div class="main-inner post posts-expand">
       
 
       
 
   
+
+
+<div class="post-block">
   
   
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <h2 class="collection-header">博弈论
-          <small>标签</small>
-        </h2>
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/01/%E5%8D%9A%E5%BC%88%E8%AE%BA-Fibonacci%E5%8D%9A%E5%BC%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="FEZ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FEZ的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          博弈论-Fibonacci博弈
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2020-12-01 20:05:04 / 修改时间：20:27:56" itemprop="dateCreated datePublished" datetime="2020-12-01T20:05:04+08:00">2020-12-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
+        </span>
+    </span>
+
+  
       </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>337</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
 
-      
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>桌上有n个苹果，游戏双方轮流取苹果</p>
+<p>1.先手不能第一次把所有苹果取完</p>
+<p>2.之后每一轮，你所能拿的苹果个数至少1个,至多上一轮的两倍</p>
+<p>轮到谁将桌上苹果全部拿完,谁获得本轮游戏胜利! </p>
+<a id="more"></a>
+
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>起始时，桌上有10个苹果</p>
+<p>第一轮,Mike拿走1个苹果,桌上还剩下9个苹果</p>
+<p>第二轮,Nancy拿走2个苹果,桌上还剩7个苹果</p>
+<p>第三轮,Mike拿走3个苹果,桌上还剩4个苹果</p>
+<p>第四轮,Nancy拿走剩下全部4个苹果,桌上还剩0个苹果</p>
+<p>Nancy胜利!</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>这个博弈叫做Fibonacci博弈，肯定和Fibonacci数列F[n]：1,2,3,5,8,13,21,34,55,89,… 有密切的关系。如果试验一番之后，可以猜测：先手胜当且仅当n不是Fibonacci数，换句话说，必败态构成Fibonacci数列</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2020-11-07T10:18:45+08:00"
-              content="2020-11-07">
-          11-07
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/11/07/%E5%8D%9A%E5%BC%88%E8%AE%BA-%E5%A8%81%E4%BD%90%E5%A4%AB%E5%8D%9A%E5%BC%88/" itemprop="url">
-            <span itemprop="name">博弈论-威佐夫博弈</span>
-          </a>
-      </div>
+    <footer class="post-footer">
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/12/01/%E7%9C%9F%E6%AD%A3%E7%9A%84%E4%B8%BB%E9%A1%B5/" rel="prev" title="主页">
+                  <i class="fa fa-chevron-left"></i> 主页
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/12/01/%E6%95%B0%E5%AD%A6-%E9%BD%90%E8%82%AF%E5%A4%9A%E5%A4%AB%E5%AE%9A%E7%90%86/" rel="next" title="数学-齐肯多夫定理">
+                  数学-齐肯多夫定理 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
   </article>
+</div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2020-11-07T00:01:00+08:00"
-              content="2020-11-07">
-          11-07
-        </time>
-      </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/11/07/%E5%8D%9A%E5%BC%88%E8%AE%BA-%E5%B7%B4%E4%BB%80%E5%8D%9A%E5%BC%88/" itemprop="url">
-            <span itemprop="name">博弈论-巴什博弈</span>
-          </a>
-      </div>
 
-      
-    </header>
-  </article>
-
-    </div>
-  </div>
-  
-  
-  
-
-  
 
 
 
