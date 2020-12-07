@@ -32,7 +32,7 @@
 <meta property="og:description" content="介绍桌上有三堆苹果，两人轮流从中拿取苹果 每一轮，只能选择从期中某一堆拿取至少一个苹果 将桌上苹果全部拿完者获胜">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-12-07T10:57:17.000Z">
-<meta property="article:modified_time" content="2020-12-07T11:52:12.505Z">
+<meta property="article:modified_time" content="2020-12-07T12:21:42.765Z">
 <meta property="article:author" content="FEZ">
 <meta name="twitter:card" content="summary">
 
@@ -275,7 +275,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2020-12-07 18:57:17 / 修改时间：19:52:12" itemprop="dateCreated datePublished" datetime="2020-12-07T18:57:17+08:00">2020-12-07</time>
+      <time title="创建时间：2020-12-07 18:57:17 / 修改时间：20:21:42" itemprop="dateCreated datePublished" datetime="2020-12-07T18:57:17+08:00">2020-12-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -295,7 +295,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.1k</span>
+      <span>1.2k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -332,23 +332,15 @@
 <h3 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h3><p>$1$任何$（a，b，c）=0$的局面出发的任意局面$（a，b，c’）$一定有$a$^$b$^$c’ \neq 0$，否则可以得到$c=c’$</p>
 <p>$2$任何$（a，b，c）(a$^$b$^$c = 0)$的局面都可以走向$（a，b，c’）(a$^$b$^$c’ \neq 0)$的局面</p>
 <p>以具体的例子$（4，9，13）$为例，容易验证此种局势为奇异局势</p>
-<p>$$\begin{pmatrix} </p>
-<p>4\\</p>
-<p>9\\</p>
-<p>13\\</p>
-<p>\end{matrix}$$</p>
+<p>$$\begin{pmatrix}<br>4\\<br>9\\<br>13\\<br>\end{pmatrix}$$</p>
 <p>可以拆分为</p>
-<p>$$\begin{pmatrix} </p>
-<p>0+4+0+0\\</p>
-<p>8+0+0+1\\</p>
-<p>8+4+0+1\\</p>
-<p>\end{matrix}$$</p>
+<p>$$\begin{pmatrix}<br>0&amp;4&amp;0&amp;0\\<br>8&amp;0&amp;0&amp;1\\<br>8&amp;4&amp;0&amp;1\\<br>\end{pmatrix}$$</p>
 <p>其中有两个$8$，两个$4$，两个$1$，非零项成对出现，这就是尼姆和为零的本质</p>
 <p>对手若拿掉$13$里的$8$或$1$，那我们便拿掉对应的$9$ 中的$8$或$1$</p>
 <p>对手若拿掉$13$里的$4$，那我们便拿掉对应的$4$ 中的$8$</p>
 <p>对手若拿掉$13$里的$3$，则将剩余的$10$分解后想办法满足非零项成对即可</p>
 <h3 id="推广"><a href="#推广" class="headerlink" title="推广"></a>推广</h3><p>推广一：如果我们面对的是一个非奇异局势$（a，b，c）$，要如何变为奇异局势呢？</p>
-<p>假设 $a &lt; b&lt; c$,我们只要将 $c $变为 $a$^$b$,即可,因为有如下的运算结果: $a$^$b$^$(a$^$b)=(a$^$a)$^$(b$^$b)=0$^$0=0$。要将$c$ 变为$a$^$b$，只从$ c$中减去 $c-（a$^$b）$</p>
+<p>假设 $a &lt; b&lt; c$,我们只要将 $c $变为 $a$^$b$,即可,因为有如下的运算结果: $a$^$b$^$(a$^$b)=(a$^$a)$^$(b$^$b)=0$^$0=0$。要将$c$ 变为$a$^$b$，只从$ c$中减去 $(c-(a$^$b))$</p>
 <p>推广二：当石子堆数为$n$堆时，则推广为当对每堆的数目进行异或之后值为零是必败态</p>
 
     </div>
