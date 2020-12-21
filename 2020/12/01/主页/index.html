@@ -24,20 +24,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.0.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
 
-  <meta name="description" content="介绍桌上有三堆苹果，两人轮流从中拿取苹果 每一轮，只能选择从期中某一堆拿取至少一个苹果 将桌上苹果全部拿完者获胜">
+  <meta name="description" content="欢迎来到FEZ的博客！FEZ计划于此分享他的学习经历，例如新学的知识、对某些问题的心得或是解决难题的思路等等。现在这个博客还很简陋，FEZ会持续更新，将它做得更好，如果你想了解关于FEZ的更多欢迎前往FEZ的GitHub个人主页！">
 <meta property="og:type" content="article">
-<meta property="og:title" content="博弈论-NimGame">
-<meta property="og:url" content="http://example.com/2020/12/07/%E5%8D%9A%E5%BC%88%E8%AE%BA-NimGame/index.html">
+<meta property="og:title" content="主页">
+<meta property="og:url" content="http://example.com/2020/12/01/%E4%B8%BB%E9%A1%B5/index.html">
 <meta property="og:site_name" content="FEZ的博客">
-<meta property="og:description" content="介绍桌上有三堆苹果，两人轮流从中拿取苹果 每一轮，只能选择从期中某一堆拿取至少一个苹果 将桌上苹果全部拿完者获胜">
+<meta property="og:description" content="欢迎来到FEZ的博客！FEZ计划于此分享他的学习经历，例如新学的知识、对某些问题的心得或是解决难题的思路等等。现在这个博客还很简陋，FEZ会持续更新，将它做得更好，如果你想了解关于FEZ的更多欢迎前往FEZ的GitHub个人主页！">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-12-07T10:57:17.000Z">
-<meta property="article:modified_time" content="2020-12-07T14:14:53.677Z">
+<meta property="article:published_time" content="2020-12-01T09:21:23.000Z">
+<meta property="article:modified_time" content="2020-12-08T09:17:33.623Z">
 <meta property="article:author" content="FEZ">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2020/12/07/%E5%8D%9A%E5%BC%88%E8%AE%BA-NimGame/">
+<link rel="canonical" href="http://example.com/2020/12/01/%E4%B8%BB%E9%A1%B5/">
 
 
 <script class="page-configurations">
@@ -50,7 +50,7 @@
   };
 </script>
 
-  <title>博弈论-NimGame | FEZ的博客</title>
+  <title>主页 | FEZ的博客</title>
   
 
 
@@ -182,7 +182,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <section class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%90"><span class="nav-number">3.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%81%E6%98%8E"><span class="nav-number">4.</span> <span class="nav-text">证明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A8%E5%B9%BF"><span class="nav-number">5.</span> <span class="nav-text">推广</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0FEZ%E7%9A%84%E5%8D%9A%E5%AE%A2%EF%BC%81"><span class="nav-number">1.</span> <span class="nav-text">欢迎来到FEZ的博客！</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#FEZ%E8%AE%A1%E5%88%92%E4%BA%8E%E6%AD%A4%E5%88%86%E4%BA%AB%E4%BB%96%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%BB%8F%E5%8E%86%EF%BC%8C%E4%BE%8B%E5%A6%82%E6%96%B0%E5%AD%A6%E7%9A%84%E7%9F%A5%E8%AF%86%E3%80%81%E5%AF%B9%E6%9F%90%E4%BA%9B%E9%97%AE%E9%A2%98%E7%9A%84%E5%BF%83%E5%BE%97%E6%88%96%E6%98%AF%E8%A7%A3%E5%86%B3%E9%9A%BE%E9%A2%98%E7%9A%84%E6%80%9D%E8%B7%AF%E7%AD%89%E7%AD%89%E3%80%82%E7%8E%B0%E5%9C%A8%E8%BF%99%E4%B8%AA%E5%8D%9A%E5%AE%A2%E8%BF%98%E5%BE%88%E7%AE%80%E9%99%8B%EF%BC%8CFEZ%E4%BC%9A%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%8C%E5%B0%86%E5%AE%83%E5%81%9A%E5%BE%97%E6%9B%B4%E5%A5%BD%EF%BC%8C%E5%A6%82%E6%9E%9C%E4%BD%A0%E6%83%B3%E4%BA%86%E8%A7%A3%E5%85%B3%E4%BA%8EFEZ%E7%9A%84%E6%9B%B4%E5%A4%9A%E6%AC%A2%E8%BF%8E%E5%89%8D%E5%BE%80FEZ%E7%9A%84GitHub%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5%EF%BC%81"><span class="nav-number">1.1.</span> <span class="nav-text">FEZ计划于此分享他的学习经历，例如新学的知识、对某些问题的心得或是解决难题的思路等等。现在这个博客还很简陋，FEZ会持续更新，将它做得更好，如果你想了解关于FEZ的更多欢迎前往FEZ的GitHub个人主页！</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0"><span class="nav-number"></span> <span class="nav-text">学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">知识</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.0.1.</span> <span class="nav-text">数据结构</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%AE%97%E6%B3%95"><span class="nav-number">1.0.2.</span> <span class="nav-text">算法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%8D%9A%E5%BC%88%E8%AE%BA"><span class="nav-number">1.0.3.</span> <span class="nav-text">博弈论</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-number">1.0.4.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%9D%82%E8%B4%A7"><span class="nav-number">1.0.5.</span> <span class="nav-text">杂货</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%B4%BB"><span class="nav-number"></span> <span class="nav-text">生活</span></a></div>
         </section>
         <!--/noindex-->
 
@@ -250,7 +250,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/07/%E5%8D%9A%E5%BC%88%E8%AE%BA-NimGame/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/01/%E4%B8%BB%E9%A1%B5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -263,7 +263,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          博弈论-NimGame
+          主页
         </h1>
 
         <div class="post-meta-container">
@@ -273,17 +273,23 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2020-12-07 18:57:17 / 修改时间：22:14:53" itemprop="dateCreated datePublished" datetime="2020-12-07T18:57:17+08:00">2020-12-07</time>
+      <time title="创建时间：2020-12-01 17:21:23" itemprop="dateCreated datePublished" datetime="2020-12-01T17:21:23+08:00">2020-12-01</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-12-08 17:17:33" itemprop="dateModified" datetime="2020-12-08T17:17:33+08:00">2020-12-08</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
+          <a href="/categories/%E4%B8%BB%E9%A1%B5/" itemprop="url" rel="index"><span itemprop="name">主页</span></a>
         </span>
     </span>
 
@@ -295,7 +301,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.2k</span>
+      <span>322</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -313,36 +319,36 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>桌上有三堆苹果，两人轮流从中拿取苹果</p>
-<p>每一轮，只能选择从期中某一堆拿取至少一个苹果</p>
-<p>将桌上苹果全部拿完者获胜</p>
-<a id="more"></a>
+        <h4 id="欢迎来到FEZ的博客！"><a href="#欢迎来到FEZ的博客！" class="headerlink" title="欢迎来到FEZ的博客！"></a>欢迎来到FEZ的博客！</h4><h5 id="FEZ计划于此分享他的学习经历，例如新学的知识、对某些问题的心得或是解决难题的思路等等。现在这个博客还很简陋，FEZ会持续更新，将它做得更好，如果你想了解关于FEZ的更多欢迎前往FEZ的GitHub个人主页！"><a href="#FEZ计划于此分享他的学习经历，例如新学的知识、对某些问题的心得或是解决难题的思路等等。现在这个博客还很简陋，FEZ会持续更新，将它做得更好，如果你想了解关于FEZ的更多欢迎前往FEZ的GitHub个人主页！" class="headerlink" title="FEZ计划于此分享他的学习经历，例如新学的知识、对某些问题的心得或是解决难题的思路等等。现在这个博客还很简陋，FEZ会持续更新，将它做得更好，如果你想了解关于FEZ的更多欢迎前往FEZ的GitHub个人主页！"></a>FEZ计划于此分享他的学习经历，例如新学的知识、对某些问题的心得或是解决难题的思路等等。现在这个博客还很简陋，FEZ会持续更新，将它做得更好，如果你想了解关于FEZ的更多欢迎前往<a target="_blank" rel="noopener" href="https://github.com/Toby-Fish">FEZ的GitHub个人主页</a>！</h5><a id="more"></a>
 
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>起始时，三堆苹果数量分别为$3$个,$5$个,$2$个$(3,5,2)$</p>
-<p>第一轮,Mike从第一堆拿走$3$个苹果,桌上剩余苹果状态$(3,2,2)$</p>
-<p>第二轮,Nancy从第一堆拿走$2$个苹果,桌上剩余苹果状态$(1,2,2)$</p>
-<p>第三轮,Mike从第三堆拿走$2$个苹果,桌上剩余苹果状态$(1,2,0)$</p>
-<p>第四轮,Nancy从第二堆拿走$1$个苹果,桌上剩余苹果状态$(1,1,0)$</p>
-<p>第五轮,Mike从第一堆拿走$1$个苹果,桌上剩余苹果状态$(0,1,0)$</p>
-<p>第六轮,Nancy从第二堆拿走$1$个苹果,桌上剩余苹果状态$(0,0,0)$</p>
-<p>桌上没有苹果剩余,Nancy胜利!</p>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>用$（a，b，c）$表示某种局势，显然$（0，0，0）$是第一种奇异局势，无论谁面对奇异局势，必败</p>
-<p>第二种奇异局势是$（0，n，n）$，先手从一堆拿取任意数量苹果，后手只需从另一堆中拿取相同数量苹果，最后都将导致先手面对$（0，0，0）$</p>
-<p>搞定这个问题需要把必败态的规律找出：$（a，b，c）$是必败态等价于$a$^$b$^$c=0($^$表示异或运算)$</p>
-<h3 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h3><p>$1$任何$（a，b，c）=0$的局面出发的任意局面$（a，b，c’）$一定有$a$^$b$^$c’ \neq 0$，否则可以得到$c=c’$</p>
-<p>$2$任何$（a，b，c）(a$^$b$^$c = 0)$的局面都可以走向$（a，b，c’）(a$^$b$^$c’ \neq 0)$的局面</p>
-<p>以具体的例子$（4，9，13）$为例，容易验证此种局势为奇异局势</p>
-<p>$$\begin{pmatrix}<br>4\\<br>9\\<br>13\\<br>\end{pmatrix}$$</p>
-<p>可以拆分为</p>
-<p>$$\begin{pmatrix}<br>0&amp;4&amp;0&amp;0\\<br>8&amp;0&amp;0&amp;1\\<br>8&amp;4&amp;0&amp;1\\<br>\end{pmatrix}$$</p>
-<p>其中有两个$8$，两个$4$，两个$1$，非零项成对出现，这就是尼姆和为零的本质</p>
-<p>对手若拿掉$13$里的$8$或$1$，那我们便拿掉对应的$9$ 中的$8$或$1$</p>
-<p>对手若拿掉$13$里的$4$，那我们便拿掉对应的$4$ 中的$8$</p>
-<p>对手若拿掉$13$里的$3$，则将剩余的$10$分解后想办法满足非零项成对即可</p>
-<h3 id="推广"><a href="#推广" class="headerlink" title="推广"></a>推广</h3><p>推广一：如果我们面对的是一个非奇异局势$（a，b，c）$，要如何变为奇异局势呢？</p>
-<p>假设 $a &lt; b&lt; c$,我们只要将 $c $变为 $a$^$b$,即可,因为有如下的运算结果: $a$^$b$^$(a$^$b)=(a$^$a)$^$(b$^$b)=0$^$0=0$。要将$c$ 变为$a$^$b$，只从$ c$中减去 $(c-(a$^$b))$</p>
-<p>推广二：当石子堆数为$n$堆时，则推广为当对每堆的数目进行异或之后值为零是必败态</p>
+<p>由于复杂原因，FEZ决定用自己打造的主页来对所写的文章进行分类。</p>
+<h2 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h2><h4 id="知识"><a href="#知识" class="headerlink" title="知识"></a>知识</h4><h6 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h6><a href="/2020/12/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/" title="数据结构-二叉树的遍历">数据结构-二叉树的遍历</a><br>
 
+<a href="/2020/12/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%B9%B6%E6%9F%A5%E9%9B%86/" title="数据结构-并查集">数据结构-并查集</a><br>
+
+<h6 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h6><a href="/2020/10/30/%E7%AE%97%E6%B3%95-KMP/" title="算法-KMP">算法-KMP</a><br>
+
+<a href="/2020/11/12/%E7%AE%97%E6%B3%95-Warshall/" title="算法-Warshall">算法-Warshall</a><br>
+
+<h6 id="博弈论"><a href="#博弈论" class="headerlink" title="博弈论"></a>博弈论</h6><a href="/2020/11/07/%E5%8D%9A%E5%BC%88%E8%AE%BA-BashGame/" title="博弈论-BashGame">博弈论-BashGame</a><br>
+
+<a href="/2020/11/07/%E5%8D%9A%E5%BC%88%E8%AE%BA-Wythoff'sGame/" title="博弈论-Wythoff&#39;sGame">博弈论-Wythoff&#39;sGame</a><br>
+
+<a href="/2020/12/01/%E5%8D%9A%E5%BC%88%E8%AE%BA-FibonacciGame/" title="博弈论-FibonacciGame">博弈论-FibonacciGame</a><br>
+
+<a href="/2020/12/07/%E5%8D%9A%E5%BC%88%E8%AE%BA-NimGame/" title="博弈论-NimGame">博弈论-NimGame</a><br>
+
+<h6 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h6><a href="/2020/11/06/%E9%A2%98%E8%A7%A3-%E6%B4%9B%E8%B0%B7P1469%E6%89%BE%E7%AD%B7%E5%AD%90/" title="题解-洛谷P1469找筷子">题解-洛谷P1469找筷子</a><br>
+
+<a href="/2020/10/28/%E9%A2%98%E8%A7%A3-%E6%B4%9B%E8%B0%B7P1990%E8%A6%86%E7%9B%96%E5%A2%99%E5%A3%81/" title="题解-洛谷P1990覆盖墙壁">题解-洛谷P1990覆盖墙壁</a><br>
+
+<h6 id="杂货"><a href="#杂货" class="headerlink" title="杂货"></a>杂货</h6><a href="/2020/11/07/%E6%95%B0%E5%AD%A6-%E8%B4%9D%E8%92%82%E5%AE%9A%E7%90%86/" title="数学-贝蒂定理">数学-贝蒂定理</a><br>
+
+<a href="/2020/12/01/%E6%95%B0%E5%AD%A6-%E9%BD%90%E8%82%AF%E5%A4%9A%E5%A4%AB%E5%AE%9A%E7%90%86/" title="数学-齐肯多夫定理">数学-齐肯多夫定理</a><br>
+
+<a href="/2020/11/09/%E7%9F%A5%E8%AF%86%E7%82%B9-%E5%89%8D%E3%80%81%E4%B8%AD%E3%80%81%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="知识点-前、中、后缀表达式">知识点-前、中、后缀表达式</a><br>
+
+<h2 id="生活"><a href="#生活" class="headerlink" title="生活"></a>生活</h2><a href="/2020/10/30/%E7%94%9F%E6%B4%BB-%E6%91%98%E6%8A%84%E6%9C%AC/" title="摘抄本">摘抄本</a><br>
     </div>
 
     
@@ -355,13 +361,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2020/12/01/%E6%95%B0%E5%AD%A6-%E9%BD%90%E8%82%AF%E5%A4%9A%E5%A4%AB%E5%AE%9A%E7%90%86/" rel="prev" title="数学-齐肯多夫定理">
-                  <i class="fa fa-chevron-left"></i> 数学-齐肯多夫定理
+                <a href="/2020/12/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="prev" title="数据结构-并查集">
+                  <i class="fa fa-chevron-left"></i> 数据结构-并查集
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2020/12/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/" rel="next" title="数据结构-二叉树的遍历">
-                  数据结构-二叉树的遍历 <i class="fa fa-chevron-right"></i>
+                <a href="/2020/12/01/%E5%8D%9A%E5%BC%88%E8%AE%BA-FibonacciGame/" rel="next" title="博弈论-FibonacciGame">
+                  博弈论-FibonacciGame <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
