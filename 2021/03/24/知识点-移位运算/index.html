@@ -24,16 +24,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.0.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="FEZ的博客">
-<meta property="og:url" content="http://example.com/tags/%E6%B4%9B%E8%B0%B7/index.html">
+  <meta name="description" content="位移运算相关问题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="知识点-移位运算">
+<meta property="og:url" content="http://example.com/2021/03/24/%E7%9F%A5%E8%AF%86%E7%82%B9-%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97/index.html">
 <meta property="og:site_name" content="FEZ的博客">
+<meta property="og:description" content="位移运算相关问题">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-24T13:26:03.000Z">
+<meta property="article:modified_time" content="2021-03-24T14:04:06.036Z">
 <meta property="article:author" content="FEZ">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/tags/%E6%B4%9B%E8%B0%B7/">
+<link rel="canonical" href="http://example.com/2021/03/24/%E7%9F%A5%E8%AF%86%E7%82%B9-%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97/">
 
 
 <script class="page-configurations">
@@ -41,12 +45,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: 洛谷 | FEZ的博客</title>
+  <title>知识点-移位运算 | FEZ的博客</title>
   
 
 
@@ -165,7 +169,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -178,6 +182,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%8F%B3%E7%A7%BB"><span class="nav-number">1.</span> <span class="nav-text">一、右移</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%A7%BB%E5%8A%A8k%E4%BD%8D-k%E5%BE%88%E5%A4%A7"><span class="nav-number">2.</span> <span class="nav-text">二、移动k位(k很大)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E7%90%86%E8%A7%A3"><span class="nav-number">2.1.</span> <span class="nav-text">我的理解</span></a></li></ol></li></ol></div>
         </section>
         <!--/noindex-->
 
@@ -232,54 +237,120 @@
 </noscript>
 
 
-    <div class="main-inner tag posts-collapse">
+    <div class="main-inner post posts-expand">
       
 
       
 
   
+
+
+<div class="post-block">
   
   
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <h2 class="collection-header">洛谷
-          <small>标签</small>
-        </h2>
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/24/%E7%9F%A5%E8%AF%86%E7%82%B9-%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="FEZ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FEZ的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          知识点-移位运算
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-03-24 21:26:03 / 修改时间：22:04:06" itemprop="dateCreated datePublished" datetime="2021-03-24T21:26:03+08:00">2021-03-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
+        </span>
+    </span>
+
+  
       </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>756</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
 
-      
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>位移运算相关问题</p>
+<a id="more"></a>
+
+<h3 id="一、右移"><a href="#一、右移" class="headerlink" title="一、右移"></a>一、右移</h3><p>C语言标准并没有明确定义对于有符号数应该使用哪种类型的右移——算术右移或者逻辑右移都可以。不幸地，这就意味着任何假设一种或者另一种右移形式的代码都可能会遇到可移植性问题。<strong>然而，实际上，几乎所有的编译器/机器组合都对有符号数使用算术右移</strong>，且许多程序员也假设机器会使用这种右移。<strong>另一方面，对于无符号数，右移必须是逻辑的。</strong></p>
+<p>与C相比，Java对于如何进行右移有明确的定义。表达式$x&gt;&gt;k$会将$x$算术右移$k$个位置，而$x&gt;&gt;&gt;k$会对$x$做逻辑右移</p>
+<h3 id="二、移动k位-k很大"><a href="#二、移动k位-k很大" class="headerlink" title="二、移动k位(k很大)"></a>二、移动k位(k很大)</h3><p>对于一个由$w$位组成的数据类型，如果要移动$k \ge w$位会得到什么结果呢？例如，思考下面的表达式会得到什么结果：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> lval = <span class="number">0x12345678</span> &lt;&lt; <span class="number">32</span>;</span><br><span class="line"><span class="keyword">int</span> aval = <span class="number">0xFEDCBA98</span> &gt;&gt; <span class="number">36</span>;</span><br><span class="line"><span class="keyword">unsigned</span> uval = <span class="number">0xFEDCBA98</span>u &gt;&gt; <span class="number">40</span>;</span><br></pre></td></tr></table></figure>
+
+<p>在许多机器上，当移动一个$w$位的值时，移位指令只考虑位移量的低$\log_2w$位，因此实际上位移量就是通过计算$k$ mod $w$得到的，例如，当$w=32$时，上面三个位移运算分别是移动0、4、8位，得到结果：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">lval</span>	<span class="number">0</span>x<span class="number">12345678</span>;</span><br><span class="line"><span class="attribute">aval</span>	<span class="number">0</span>xFFEDCBA<span class="number">9</span>;</span><br><span class="line"><span class="attribute">uval</span>	<span class="number">0</span>x<span class="number">00</span>FEDCBA;</span><br></pre></td></tr></table></figure>
+
+<h4 id="我的理解"><a href="#我的理解" class="headerlink" title="我的理解"></a>我的理解</h4><p>假设数据类型是32位的，绝大多数情况下左移（或右移）的$k$值都在0至31之间，所以系统只“安排”了5个bit来负责记录移位时的$k$值，因此当试图移位32位（甚至更多位）时，由于只有5个bit负责此事，相当于令$k$对32取模，取模结果为实际移动位数。同理数据类型为64位时，系统（应该会）“安排”6个bit负责记录移位的$k$值，相当于令$k$对64取模。</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2020-10-28T23:47:51+08:00"
-              content="2020-10-28">
-          10-28
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/10/28/%E9%A2%98%E8%A7%A3-%E6%B4%9B%E8%B0%B7P1990%E8%A6%86%E7%9B%96%E5%A2%99%E5%A3%81/" itemprop="url">
-            <span itemprop="name">题解-洛谷P1990覆盖墙壁</span>
-          </a>
-      </div>
+    <footer class="post-footer">
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/03/19/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-%E5%A5%BD%E8%AF%BE%E5%A5%BD%E4%B9%A6/" rel="prev" title="学习记录—-好课好书">
+                  <i class="fa fa-chevron-left"></i> 学习记录—-好课好书
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
+</div>
 
-    </div>
-  </div>
-  
-  
-  
 
-  
+
 
 
 
