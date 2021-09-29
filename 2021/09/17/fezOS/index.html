@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.0.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+
+  <meta name="description" content="fezOS搭建">
+<meta property="og:type" content="article">
+<meta property="og:title" content="fezOS">
+<meta property="og:url" content="http://example.com/2021/09/17/fezOS/index.html">
+<meta property="og:site_name" content="FEZ的博客">
+<meta property="og:description" content="fezOS搭建">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2021/09/17/fezOS/01-output.png">
+<meta property="og:image" content="http://example.com/2021/09/17/fezOS/02-output.png">
+<meta property="og:image" content="http://example.com/2021/09/17/fezOS/03-memorylayout.png">
+<meta property="og:image" content="http://example.com/2021/09/17/fezOS/05-1.png">
+<meta property="og:image" content="http://example.com/2021/09/17/fezOS/05-2.png">
+<meta property="og:image" content="http://example.com/2021/09/17/fezOS/06-output.png">
+<meta property="og:image" content="http://example.com/2021/09/17/fezOS/07-output.png">
+<meta property="og:image" content="http://example.com/2021/09/17/fezOS/09-SD.png">
+<meta property="og:image" content="http://example.com/2021/09/17/fezOS/10-enter.png">
+<meta property="og:image" content="http://example.com/2021/09/17/fezOS/n01-output.png">
+<meta property="og:image" content="http://example.com/2021/09/17/fezOS/n02-output.png">
+<meta property="article:published_time" content="2021-09-17T13:57:57.000Z">
+<meta property="article:modified_time" content="2021-09-27T15:50:58.850Z">
+<meta property="article:author" content="FEZ">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/09/17/fezOS/01-output.png">
+
+
+<link rel="canonical" href="http://example.com/2021/09/17/fezOS/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>fezOS | FEZ的博客</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?7035c3f4ba1040e0d1972d11a3943ebb";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">FEZ的博客</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8E%9F%E9%A1%B9%E7%9B%AE"><span class="nav-number">2.</span> <span class="nav-text">原项目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#00-environment"><span class="nav-number">2.1.</span> <span class="nav-text">00-environment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#01-bootsector-barebones"><span class="nav-number">2.2.</span> <span class="nav-text">01-bootsector-barebones</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#02-bootsector-print"><span class="nav-number">2.3.</span> <span class="nav-text">02-bootsector-print</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#03-bootsector-memory"><span class="nav-number">2.4.</span> <span class="nav-text">03-bootsector-memory</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#04-bootsector-stack"><span class="nav-number">2.5.</span> <span class="nav-text">04-bootsector-stack</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#05-bootsector-functions-strings"><span class="nav-number">2.6.</span> <span class="nav-text">05-bootsector-functions-strings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#06-bootsector-segmentation"><span class="nav-number">2.7.</span> <span class="nav-text">06-bootsector-segmentation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#07-bootsector-disk"><span class="nav-number">2.8.</span> <span class="nav-text">07-bootsector-disk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#08-32bit-print"><span class="nav-number">2.9.</span> <span class="nav-text">08-32bit-print</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#09-32bit-gdt"><span class="nav-number">2.10.</span> <span class="nav-text">09-32bit-gdt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-32bit-enter"><span class="nav-number">2.11.</span> <span class="nav-text">10-32bit-enter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-kernel-crosscompiler"><span class="nav-number">2.12.</span> <span class="nav-text">11-kernel-crosscompiler</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-kernel-c"><span class="nav-number">2.13.</span> <span class="nav-text">12-kernel-c</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-kernel-barebones"><span class="nav-number">2.14.</span> <span class="nav-text">13-kernel-barebones</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9C%9F%E7%9B%B8%E8%BF%98%E5%8E%9F"><span class="nav-number">3.</span> <span class="nav-text">操作系统真相还原</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#01-MBR"><span class="nav-number">3.1.</span> <span class="nav-text">01-MBR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#02-%E5%AE%9E%E6%A8%A1%E5%BC%8F%E5%88%B0%E4%BF%9D%E6%8A%A4%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.2.</span> <span class="nav-text">02-实模式到保护模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%9E%84%E5%BB%BAgdt%E8%A1%A8"><span class="nav-number">3.2.1.</span> <span class="nav-text">1.构建gdt表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%89%93%E5%BC%80A20"><span class="nav-number">3.2.2.</span> <span class="nav-text">2.打开A20</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%8A%A0%E8%BD%BDgdt"><span class="nav-number">3.2.3.</span> <span class="nav-text">3.加载gdt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-cr0%E7%AC%AC0%E4%BD%8D%E7%BD%AE1"><span class="nav-number">3.2.4.</span> <span class="nav-text">4.cr0第0位置1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E5%88%B7%E6%96%B0%E6%B5%81%E6%B0%B4%E7%BA%BF"><span class="nav-number">3.2.5.</span> <span class="nav-text">5.刷新流水线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E6%9B%B2"><span class="nav-number">3.2.6.</span> <span class="nav-text">插曲</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E4%BB%A3%E7%A0%81%E5%8F%8A%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C"><span class="nav-number">3.2.7.</span> <span class="nav-text">6.代码及实验结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E4%B8%80%E7%82%B9%E7%82%B9%E4%B8%8D%E4%B8%80%E6%A0%B7"><span class="nav-number">3.2.8.</span> <span class="nav-text">7.一点点不一样</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#03-%E4%BF%9D%E6%8A%A4%E6%A8%A1%E5%BC%8F%E8%BF%9B%E9%98%B6"><span class="nav-number">3.3.</span> <span class="nav-text">03-保护模式进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80%E5%AE%B9%E9%87%8F"><span class="nav-number">3.3.1.</span> <span class="nav-text">1.物理地址容量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%88%86%E9%A1%B5"><span class="nav-number">3.3.2.</span> <span class="nav-text">2.分页</span></a></li></ol></li></ol></li></ol></div>
+        </section>
+        <!--/noindex-->
+
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="FEZ"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">FEZ</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </section>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/17/fezOS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="FEZ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FEZ的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          fezOS
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-09-17 21:57:57" itemprop="dateCreated datePublished" datetime="2021-09-17T21:57:57+08:00">2021-09-17</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-09-27 23:50:58" itemprop="dateModified" datetime="2021-09-27T23:50:58+08:00">2021-09-27</time>
+      </span>
+
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>14k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>13 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>fezOS搭建</p>
+<a id="more"></a>
+
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>2021年9月初</p>
+<p>一直很好奇操作系统究竟是如何搭建起来的，现跟随<a target="_blank" rel="noopener" href="https://github.com/cfenollosa/os-tutorial">这个项目</a>尝试写一个自己的操作系统（暂命名为fezOS）。我将从引导扇区的编写开始，逐步将其搭建，本博客记录搭建过程中的点点滴滴</p>
+<p>2021-9-25</p>
+<p>计划有变，原项目进行至将内核装载如内存时，不知道为啥，我的电脑上一直无法成功运行。尝试了很多方法仍不能解决此问题。加之最关键的<a target="_blank" rel="noopener" href="http://www.cs.bham.ac.uk/~exr/lectures/opsys/10_11/lectures/os-dev.pdf">这本书</a>没有写完，于是放弃原项目跟随学习，现在跟着《操作系统真相还原》这本书学习。之前的学习笔记保留，新项目的学习笔记接着旧的继续写</p>
+<h1 id="原项目"><a href="#原项目" class="headerlink" title="原项目"></a>原项目</h1><h2 id="00-environment"><a href="#00-environment" class="headerlink" title="00-environment"></a>00-environment</h2><p>本项目搭建于WSL的<code>Ubuntu 20.04 LTS</code>，按照作者文档提示，下载了<code>qemu</code>和<code>nasm</code></p>
+<p>下载<code>qemu</code>的过程有些曲折，我直接使用命令</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="builtin-name">get</span> install qemu</span><br></pre></td></tr></table></figure>
+
+<p>下载该软件，但在<code>01-bootsector-barebones</code>小节中使用</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">qemu</span> <span class="selector-tag">boot_sect_simple</span><span class="selector-class">.bin</span></span><br></pre></td></tr></table></figure>
+
+<p>命令时，系统却报错找不到<code>qemu</code>命令。后找到解决方案为</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> install qemu-<span class="keyword">system</span>-i386</span><br></pre></td></tr></table></figure>
+
+<p>命令下载<code>qemu-system-i386</code>，再使用</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">qemu</span>-system-i<span class="number">386</span> boot_sect_simple.bin</span><br></pre></td></tr></table></figure>
+
+<p>即可正常使用，若嫌名字太长，可以通过建立一个软链接</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s <span class="regexp">/usr/</span>bin<span class="regexp">/qemu-system-i386 /u</span>sr<span class="regexp">/bin/</span>qemu</span><br></pre></td></tr></table></figure>
+
+<p>之后便可直接使用</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">qemu</span> <span class="selector-tag">boot_sect_simple</span><span class="selector-class">.bin</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="01-bootsector-barebones"><a href="#01-bootsector-barebones" class="headerlink" title="01-bootsector-barebones"></a>01-bootsector-barebones</h2><p>这一节主要介绍了计算机在通电启动时究竟发生了些什么，关于这方面的知识请参见<a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2013/02/booting.html">这篇文章</a></p>
+<p>按文档中介绍，既可以蛮力地把这512个字节全列出来，也可以参考采用作者给出的汇编代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">; Infinite loop (e9 fd ff)</span><br><span class="line">loop:</span><br><span class="line">    jmp loop </span><br><span class="line"></span><br><span class="line">; Fill with 510 zeros minus the size of the previous code</span><br><span class="line">times 510-($-$$) db 0</span><br><span class="line">; Magic number</span><br><span class="line">dw 0xaa55 </span><br></pre></td></tr></table></figure>
+
+<p>其中<code>($-$$)</code>虽然结合上下文能理解什么意思，但从没见过这种用法，查阅<code>nasm</code>官方文档</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">NASM supports <span class="literal">two</span> special tokens <span class="keyword">in</span> expressions, allowing calculations <span class="built_in">to</span> involve </span><br><span class="line"><span class="keyword">the</span> current assembly position: <span class="keyword">the</span> $ <span class="keyword">and</span> $$ tokens. $ evaluates <span class="built_in">to</span> <span class="keyword">the</span> assembly </span><br><span class="line">position <span class="keyword">at</span> <span class="keyword">the</span> beginning <span class="keyword">of</span> <span class="keyword">the</span> <span class="built_in">line</span> containing <span class="keyword">the</span> expression; so you can code </span><br><span class="line"><span class="keyword">an</span> infinite loop <span class="keyword">using</span> JMP $. $$ evaluates <span class="built_in">to</span> <span class="keyword">the</span> beginning <span class="keyword">of</span> <span class="keyword">the</span> current </span><br><span class="line">section; so you can tell how far <span class="keyword">into</span> <span class="keyword">the</span> section you are <span class="keyword">by</span> <span class="keyword">using</span> ($-$$).</span><br></pre></td></tr></table></figure>
+
+<p>才得以解惑，仅仅几行代码就让我觉得作者的水平那是相当的高啊~</p>
+<p>接着开开心心</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">qemu</span> <span class="selector-tag">boot_sect_simple</span><span class="selector-class">.bin</span></span><br></pre></td></tr></table></figure>
+
+<p>得目标结果</p>
+<img src="/2021/09/17/fezOS/01-output.png" class>
+
+<h2 id="02-bootsector-print"><a href="#02-bootsector-print" class="headerlink" title="02-bootsector-print"></a>02-bootsector-print</h2><p>这一节的内容不多，就是测试下用中断在终端输出字符</p>
+<p>结合上一小节的内容猜测，BIOS通过检测扇区最后两字节是否为<code>aa55</code>来判断该扇区是否为其所寻找的引导扇区。当找到后，从该扇区头部开始执行指令</p>
+<p>至于文档中提到的<code>tty mode</code>， 我简单了解了一下，但仍然不太理解。但不影响打印字符功能的实现，这里我简单修改了打印内容</p>
+<img src="/2021/09/17/fezOS/02-output.png" class>
+
+<h2 id="03-bootsector-memory"><a href="#03-bootsector-memory" class="headerlink" title="03-bootsector-memory"></a>03-bootsector-memory</h2><p>本节介绍系统启动后BOOT SECTOR进程内存分布布局情况，参考<a target="_blank" rel="noopener" href="http://www.cs.bham.ac.uk/~exr/lectures/opsys/10_11/lectures/os-dev.pdf">这本书</a>3.4.2节了解更多细节</p>
+<img src="/2021/09/17/fezOS/03-memorylayout.png" class>
+
+<h2 id="04-bootsector-stack"><a href="#04-bootsector-stack" class="headerlink" title="04-bootsector-stack"></a>04-bootsector-stack</h2><p>这一节要求自行学习理解栈的概念，文档中提到<code>sp</code>指向栈顶，<code>bp</code>指向栈底，但就我自己学习王爽老师的汇编语言经历来看，<code>bp</code>是完全不需要指向栈底的。只需初始化<code>sp</code>即可，可以通过<code>bp</code>指针查看栈中任意位置内容</p>
+<p>经测验，栈中（至少本实验的栈中）采用的是小端存法。即若<code>ax = 0x3938</code>，执行<code>push ax</code>，<code>0x39</code>存于高地址，<code>0x38</code>存于低地址</p>
+<h2 id="05-bootsector-functions-strings"><a href="#05-bootsector-functions-strings" class="headerlink" title="05-bootsector-functions-strings"></a>05-bootsector-functions-strings</h2><p>这一节介绍字符串和函数调用，都是很基础的东西，不必多说。</p>
+<p>需要知道，汇编语言中一个程序要使用另一个文件的内容只需</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%include &quot;file.asm&quot;</span><br></pre></td></tr></table></figure>
+
+<p>文档中还提到了被调用的函数应使用<code>pusha</code>和<code>popa</code>指令确保消除函数调用的副作用。关于这两个函数我上网查了下，这样的函数实际上有两对，分别是<code>pusha/popa</code>和<code>pushd/popd</code>，两者的区别如下</p>
+<blockquote>
+<p>The PUSHA (push all) and PUSHAD (push all double) mnemonics reference the same opcode. The PUSHA instruction is intended for use when the operand-size attribute is 16 and the PUSHAD instruction for when the operand-size attribute is 32. Some assemblers may force the operand size to 16 when PUSHA is used and to 32 when PUSHAD is used. Others may treat these mnemonics as synonyms (PUSHA/PUSHAD) and use the current setting of the operand-size attribute to determine the size of values to be pushed from the stack, regardless of the<br>mnemonic used.</p>
+</blockquote>
+<blockquote>
+<p>The POPA (pop all) and POPAD (pop all double) mnemonics reference the same opcode. The POPA instruction is intended for use when the operand-size attribute is 16 and the POPAD instruction for when the operand-size attribute is 32. Some assemblers may force the operand size to 16 when POPA is used and to 32 when POPAD is used (using the operand-size override prefix [66H] if necessary). Others may treat these mnemonics as synonyms (POPA/POPAD) and use the current setting of the operand-size attribute to determine the size of values to be popped from the stack, regardless of the mnemonic used. (The D flag in the current code segment’s segment descriptor determines the operand-size attribute.)</p>
+</blockquote>
+<p><code>pusha/popa</code>用于操作数为16位的情况，<code>pushd/popd</code>用于32位情形</p>
+<p>测试结果如下</p>
+<img src="/2021/09/17/fezOS/05-1.png" class>
+
+<p>只换行不回车</p>
+<img src="/2021/09/17/fezOS/05-2.png" class>
+
+<h2 id="06-bootsector-segmentation"><a href="#06-bootsector-segmentation" class="headerlink" title="06-bootsector-segmentation"></a>06-bootsector-segmentation</h2><p>介绍分段相关的问题，没什么新东西。不过倒是启发了我该如何讲清<code>03</code>节问题。当我们使用如<code>mov al,[the_secret]</code>这样的语句时，实际上是使用了<code>mov al,[ds:the_secret]</code>，在<code>03</code>小节中我们没初始化<code>ds</code>寄存器，则其值默认为<code>0</code>，然而<code>Loaded Boot Sector</code>首地址实为<code>0x7c00</code>，故而应设置<code>ds = 0x 7c0</code>，采用<code>org 0x7c00</code>等价于此</p>
+<p>本节代码运行结果</p>
+<img src="/2021/09/17/fezOS/06-output.png" class>
+
+<h2 id="07-bootsector-disk"><a href="#07-bootsector-disk" class="headerlink" title="07-bootsector-disk"></a>07-bootsector-disk</h2><p>介绍了如何从别的扇区读取数据。由文档里的<a target="_blank" rel="noopener" href="http://stanislavs.org/helppc/int_13-2.html">这篇文章</a>可知，设置好几个通用寄存器的值，通过<code>int 0x13</code>中断调用就可以从磁盘指定扇区读取数据到<code>es:bx</code>所指定的位置处</p>
+<p>两个程序的代码阅读起来没什么难度。<code>boot_sect_disk.asm</code>这程序写得挺好的，把异常处理机制完善了，挺有参考价值的一个模板程序。</p>
+<p>本节代码运行结果</p>
+<img src="/2021/09/17/fezOS/07-output.png" class>
+
+<h2 id="08-32bit-print"><a href="#08-32bit-print" class="headerlink" title="08-32bit-print"></a>08-32bit-print</h2><p>这节让了解32位保护模式，VGA以及<code>video memory</code>。当从16位系统变为32位系统时则不能再使用BIOS提供的中断在屏幕上输出字符，而采用在VGA memory从首地址为<code>0xb8000</code>处开始打印，而这不正是王爽老师的《汇编语言》教材上所采用的字符串输出方式吗？</p>
+<p>这一节所涉及32位模式屏幕输出相关知识参见王老师的汇编教材即可</p>
+<h2 id="09-32bit-gdt"><a href="#09-32bit-gdt" class="headerlink" title="09-32bit-gdt"></a>09-32bit-gdt</h2><p>没啥好说的，参考<a target="_blank" rel="noopener" href="http://www.cs.bham.ac.uk/~exr/lectures/opsys/10_11/lectures/os-dev.pdf">这本书</a>第4.2节了解关于GDT相关内容</p>
+<img src="/2021/09/17/fezOS/09-SD.png" class>
+
+<h2 id="10-32bit-enter"><a href="#10-32bit-enter" class="headerlink" title="10-32bit-enter"></a>10-32bit-enter</h2><p>1.按需求定义好GDT表</p>
+<p>2.使用<code>cli</code>关闭中断</p>
+<p>3.使用<code>lgbt [gdt_descriptor]</code>加载GDT表</p>
+<p>4.设置<code>cr0</code>寄存器最低为1，至此正式从16位实模式进入32位保护模式</p>
+<p>5.通过一个<code>far jump</code>清空流水线中可能存在的尚未执行完的16位实模式下的指令</p>
+<p>6.记得更新各段寄存器及堆栈</p>
+<img src="/2021/09/17/fezOS/10-enter.png" class>
+
+<h2 id="11-kernel-crosscompiler"><a href="#11-kernel-crosscompiler" class="headerlink" title="11-kernel-crosscompiler"></a>11-kernel-crosscompiler</h2><p>略</p>
+<h2 id="12-kernel-c"><a href="#12-kernel-c" class="headerlink" title="12-kernel-c"></a>12-kernel-c</h2><p>假设我们有一个文件<code>hello.c</code></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">Compile</span>: </span><br><span class="line">	<span class="selector-tag">gcc</span> <span class="selector-tag">-ffreestanding</span> <span class="selector-tag">-c</span> <span class="selector-tag">hello</span><span class="selector-class">.c</span> <span class="selector-tag">-o</span> <span class="selector-tag">hello</span><span class="selector-class">.o</span></span><br><span class="line"></span><br><span class="line"><span class="selector-tag">Display</span> <span class="selector-tag">info</span> <span class="selector-tag">from</span> <span class="selector-tag">object</span> <span class="selector-tag">file</span>: </span><br><span class="line">	<span class="selector-tag">objdump</span> <span class="selector-tag">-d</span> <span class="selector-tag">hello</span><span class="selector-class">.o</span></span><br><span class="line"></span><br><span class="line"><span class="selector-tag">Link</span>:</span><br><span class="line">	<span class="selector-tag">ld</span> <span class="selector-tag">-o</span> <span class="selector-tag">hello</span><span class="selector-class">.bin</span> <span class="selector-tag">-Ttext</span> <span class="selector-attr">[offset]</span> <span class="selector-tag">--oformat</span> <span class="selector-tag">binary</span> <span class="selector-tag">hello</span><span class="selector-class">.o</span></span><br><span class="line">	</span><br><span class="line"><span class="selector-tag">Decompile</span>:</span><br><span class="line">	<span class="selector-tag">ndisasm</span> <span class="selector-tag">-b</span> 32 <span class="selector-tag">hello</span><span class="selector-class">.bin</span> &gt; <span class="selector-tag">hello</span><span class="selector-class">.dis</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="13-kernel-barebones"><a href="#13-kernel-barebones" class="headerlink" title="13-kernel-barebones"></a>13-kernel-barebones</h2><p>就是在这里，我的实验环境始终无法运行书上例程，从此放弃原项目，转向《操作系统真相还原》的学习</p>
+<h1 id="操作系统真相还原"><a href="#操作系统真相还原" class="headerlink" title="操作系统真相还原"></a>操作系统真相还原</h1><p>24号书一到手就迫不及待开始从头阅读，不得不吐槽口水话好多好多。哪怕预先知道这书比较啰嗦，但看下来真的有点打脑壳…明明几句话就能说清楚的东西却花几页的篇幅来介绍，看着看着人都给套进去了，知识屏蔽不如王爽老师的《汇编语言》（感觉知识屏蔽做得最好的是旧项目里那本教程，可惜没写完，不然绝对惊艳）</p>
+<h2 id="01-MBR"><a href="#01-MBR" class="headerlink" title="01-MBR"></a>01-MBR</h2><p>又从引导扇区开始学起，本书实验环境作者选择了<code>bochs</code>，我尝试使用这个，但是遇到了好多麻烦，花了我很多时间与精力也一直没法解决这些问题，又用回了<code>qemu</code>，不得不说<code>qemu</code>对比起来是真的方便易用。但<code>bochs</code>的尝试并非一无所获，<code>bochs</code>带有的一个创建虚拟硬盘的工具<code>bximage</code>，能非常方便的创造实验需要的一个虚拟硬盘</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linux&gt; bximage -hd <span class="attribute">-mode</span>=<span class="string">&quot;flat&quot;</span> <span class="attribute">-size</span>=60 -q hd60M.img</span><br></pre></td></tr></table></figure>
+
+<p>以上是书上给出的示例命令，我在我的电视使用上述命令时报错不知道<code>-hd</code>参数是啥。。。我也难得去找纠结到底是啥问题，而是直接</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">linux&gt;</span><span class="bash"> bximage</span></span><br></pre></td></tr></table></figure>
+
+<p>进入交互界面创造了自己需要的硬盘，然后就把<code>bochs</code>扔到一边，回到<code>qemu</code>的怀抱</p>
+<p>在前几章的学习中写了几个<code>/os/boot/mbr.asm</code>文件，这里就只贴最后一个版本的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br></pre></td><td class="code"><pre><span class="line">;main boot record03</span><br><span class="line">;reads from disk and loads the loader</span><br><span class="line">%include &quot;boot.inc&quot;</span><br><span class="line">SECTION MBR vstart&#x3D;0x7c00</span><br><span class="line">    mov ax, cs</span><br><span class="line">    mov ds, ax</span><br><span class="line">    mov es, ax</span><br><span class="line">    mov ss, ax</span><br><span class="line">    mov fs, ax</span><br><span class="line">    mov sp, 0x7c00</span><br><span class="line">    mov ax, 0xb800</span><br><span class="line">    mov gs, ax</span><br><span class="line"></span><br><span class="line">;clear screen</span><br><span class="line">;int 0x10 function code: 0x06 </span><br><span class="line">;description: roll up the screen</span><br><span class="line">;input</span><br><span class="line">;ah function code &#x3D; 0x06</span><br><span class="line">;al &#x3D; number of rows roll up (0 for all)</span><br><span class="line">;bh &#x3D; attributes of rows</span><br><span class="line">;(cl, ch) &#x3D; top left corner (x, y) of the window</span><br><span class="line">;(dl, dh) &#x3D; botton right corner (x, y) of the window</span><br><span class="line">;no return value</span><br><span class="line">    mov ax, 0x600</span><br><span class="line">    mov bx, 0x700</span><br><span class="line">    mov cx, 0               ;top left corner: (0, 0)</span><br><span class="line">    mov dx, 0x184f          ;bottom right corner: (24, 79)</span><br><span class="line">    int 0x10</span><br><span class="line"></span><br><span class="line">;print on screen</span><br><span class="line">    mov byte [gs: 0x00], &#39;1&#39;</span><br><span class="line">    mov byte [gs: 0x01], 0b10000011;</span><br><span class="line"></span><br><span class="line">    mov byte [gs: 0x02], &#39; &#39;</span><br><span class="line">    mov byte [gs: 0x03], 0b10000011;</span><br><span class="line"></span><br><span class="line">    mov byte [gs: 0x04], &#39;M&#39;</span><br><span class="line">    mov byte [gs: 0x05], 0b10000011;</span><br><span class="line">  </span><br><span class="line">    mov byte [gs: 0x06], &#39;B&#39;</span><br><span class="line">    mov byte [gs: 0x07], 0b10000011;</span><br><span class="line"></span><br><span class="line">    mov byte [gs: 0x08], &#39;R&#39;</span><br><span class="line">    mov byte [gs: 0x09], 0b10000011;</span><br><span class="line"></span><br><span class="line">    mov eax, LOADER_START_SECTOR;	;起始扇区LBA地址</span><br><span class="line">    mov bx, LOADER_BASE_ADDR; 		;写入的地址</span><br><span class="line">    mov cx, 1			    		;待读入的扇区数</span><br><span class="line">    call rd_disk_m_16				;调用硬盘读取程序</span><br><span class="line">    </span><br><span class="line">    jmp LOADER_BASE_ADDR</span><br><span class="line">    </span><br><span class="line">rd_disk_m_16:</span><br><span class="line">;功能：读取硬盘n个扇区</span><br><span class="line">;eax &#x3D; LBA扇区号</span><br><span class="line">;bx &#x3D; 数据写入内存的地址</span><br><span class="line">;cx &#x3D; 读入的扇区数</span><br><span class="line">    mov esi, eax			        	;备份eax</span><br><span class="line">    mov di, cx					;备份cx</span><br><span class="line"></span><br><span class="line">;读写磁盘</span><br><span class="line">;第一步：设置要读取的扇区数</span><br><span class="line">    mov dx, 0x1f2</span><br><span class="line">    mov al, cl</span><br><span class="line">    out dx, al					;读取的扇区数</span><br><span class="line">	</span><br><span class="line">    mov eax, esi			        	;恢复ax</span><br><span class="line">	</span><br><span class="line">;第二步：将LBA地址存入0x1f3 ~ 0x1f6</span><br><span class="line"></span><br><span class="line">    ;LBA地址7 ~ 0位写入端口0x1f3</span><br><span class="line">    mov dx, 0x1f3</span><br><span class="line">    out dx, al</span><br><span class="line">    </span><br><span class="line">    ;LBA地址15 ~ 8位写入端口0x1f4</span><br><span class="line">    mov cl, 8</span><br><span class="line">    shr eax, cl</span><br><span class="line">    mov dx, 0x1f4</span><br><span class="line">    out dx, al</span><br><span class="line">    </span><br><span class="line">    ;LBA地址23 ~ 16位写入端口0x1f5</span><br><span class="line">    shr eax, cl</span><br><span class="line">    mov dx, 0x1f5</span><br><span class="line">    out dx, al</span><br><span class="line">    </span><br><span class="line">    shr eax, cl</span><br><span class="line">    and al, 0xf				;LBA第27 ~ 24位</span><br><span class="line">    or  al, 0xe0				;设置7 ~ 4为1110，表示LBA模式</span><br><span class="line">    mov dx, 0x1f6</span><br><span class="line">    out dx, al</span><br><span class="line">	</span><br><span class="line">;第三步：向0x1f7端口写入读命令，0x20</span><br><span class="line">    mov dx, 0x1f7</span><br><span class="line">    mov al, 0x20</span><br><span class="line">    out dx, al</span><br><span class="line">	</span><br><span class="line">;第四步：检测硬件状态</span><br><span class="line">.not_ready:             ;同一端口，写入时表示写入命令字，读时表示读入硬件状态</span><br><span class="line">    nop</span><br><span class="line">    in al, dx</span><br><span class="line">    and al, 0x88        ;第3位为1表示硬件控制器已准备好数据传输</span><br><span class="line">                        ;第7位为1表示硬件忙</span><br><span class="line">    cmp al, 0x08</span><br><span class="line">    jnz .not_ready</span><br><span class="line"></span><br><span class="line">;第5步：从0x1f0端口读数据</span><br><span class="line">    mov ax, di</span><br><span class="line">    mov dx, 256</span><br><span class="line">    mul dx</span><br><span class="line">    mov cx, ax</span><br><span class="line">;di为要读取的扇区数，一个扇区512字节，一次读取读一个字，因此一个扇区读256次</span><br><span class="line"></span><br><span class="line">    mov dx, 0x1f0</span><br><span class="line">.go_on_read:</span><br><span class="line">    in ax, dx</span><br><span class="line">    mov [bx], ax</span><br><span class="line">    add bx, 2</span><br><span class="line">    loop .go_on_read</span><br><span class="line"></span><br><span class="line">    ret</span><br><span class="line">	</span><br><span class="line">times 510 - ($ - $$) db 0</span><br><span class="line">dw 0xaa55</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>MBR将位于磁盘第二个扇区的<code>loader</code>加载到内存地址<code>LOADER_BASE_ADDR</code>起始处的位置，然后跳转至此处执行<code>loader</code>的代码。本书所采用的硬盘读取方法是通过硬盘控制器的几个端口寄存器一个字一个字读入内存实现的，涉及8个寄存器的使用，只是理论就够让人头疼了，我实在是把各个寄存器相应功能及参数等等一一贴出来了，感兴趣的话请参阅此书3.5.3节</p>
+<p><code>/os/boot/include/boot.inc</code>文件内容</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">LOADER_BASE_ADDR</span> equ <span class="number">0</span>x<span class="number">900</span></span><br><span class="line"><span class="attribute">LOADER_START_SECTOR</span> equ <span class="number">0</span>x<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p><code>/os/boot/loader.asm</code>文件内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">%include &quot;boot.inc&quot;</span><br><span class="line">section loader vstart&#x3D;LOADER_BASE_ADDR</span><br><span class="line"></span><br><span class="line">;输出背景色绿色，前景色红色，并跳动的字符串&quot;2 LOADER&quot;</span><br><span class="line">    mov byte [gs: 0x00], &#39;2&#39;</span><br><span class="line">    mov byte [gs: 0x01], 0xa4</span><br><span class="line">    </span><br><span class="line">    mov byte [gs: 0x02], &#39; &#39;</span><br><span class="line">    mov byte [gs: 0x03], 0xa4</span><br><span class="line">    </span><br><span class="line">    mov byte [gs: 0x04], &#39;L&#39;</span><br><span class="line">    mov byte [gs: 0x05], 0xa4</span><br><span class="line">    </span><br><span class="line">    mov byte [gs: 0x06], &#39;O&#39;</span><br><span class="line">    mov byte [gs: 0x07], 0xa4</span><br><span class="line">    </span><br><span class="line">    mov byte [gs: 0x08], &#39;A&#39;</span><br><span class="line">    mov byte [gs: 0x09], 0xa4</span><br><span class="line">    </span><br><span class="line">    mov byte [gs: 0x0a], &#39;D&#39;</span><br><span class="line">    mov byte [gs: 0x0b], 0xa4</span><br><span class="line">    </span><br><span class="line">    mov byte [gs: 0x0c], &#39;E&#39;</span><br><span class="line">    mov byte [gs: 0x0d], 0xa4</span><br><span class="line">    </span><br><span class="line">    mov byte [gs: 0x0e], &#39;R&#39;</span><br><span class="line">    mov byte [gs: 0x0f], 0xa4</span><br><span class="line">   </span><br><span class="line">    jmp $</span><br></pre></td></tr></table></figure>
+
+<p><code>/os/boot/mbr.asm</code>与<code>/os/boot/loader.asm</code>都使用了位于<code>/include</code>目录下的<code>/os/boot/include/boot.inc</code>，因此需按如下格式编译</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">linux&gt; nasm -I <span class="keyword">include</span>/ -o mbr.bin mbr.<span class="keyword">asm</span></span><br><span class="line">linxu&gt; nasm -I <span class="keyword">include</span>/ -o loader.bin loader.<span class="keyword">asm</span></span><br></pre></td></tr></table></figure>
+
+<p>再将两个文件分别写入我们虚拟磁盘的第一和第二个扇区</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">linux&gt; dd <span class="attribute">if</span>=./mbr.bin <span class="attribute">of</span>=../hd60M.img <span class="attribute">bs</span>=512 <span class="attribute">count</span>=1 <span class="attribute">conv</span>=notrunc</span><br><span class="line">linxu&gt; dd <span class="attribute">if</span>=./loader.bin <span class="attribute">of</span>=../hd60M.img <span class="attribute">bs</span>=512 <span class="attribute">count</span>=1 <span class="attribute">seek</span>=2 <span class="attribute">conv</span>=notrunc</span><br></pre></td></tr></table></figure>
+
+<p>就可以运行查看结果啦~</p>
+<img src="/2021/09/17/fezOS/n01-output.png" class>
+
+<h2 id="02-实模式到保护模式"><a href="#02-实模式到保护模式" class="headerlink" title="02-实模式到保护模式"></a>02-实模式到保护模式</h2><h3 id="1-构建gdt表"><a href="#1-构建gdt表" class="headerlink" title="1.构建gdt表"></a>1.构建gdt表</h3><h3 id="2-打开A20"><a href="#2-打开A20" class="headerlink" title="2.打开A20"></a>2.打开A20</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">in al, 0x92</span><br><span class="line">or al, 0b00000010</span><br><span class="line">out 0x92, al</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-加载gdt"><a href="#3-加载gdt" class="headerlink" title="3.加载gdt"></a>3.加载gdt</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lgdt [gdt_ptr]</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-cr0第0位置1"><a href="#4-cr0第0位置1" class="headerlink" title="4.cr0第0位置1"></a>4.cr0第0位置1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mov eax, cr0</span><br><span class="line">or eax, 0x1</span><br><span class="line">mov cr0, eax</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-刷新流水线"><a href="#5-刷新流水线" class="headerlink" title="5.刷新流水线"></a>5.刷新流水线</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jmp dword SELECTOR_CODE: p_mode_start</span><br></pre></td></tr></table></figure>
+
+<h3 id="插曲"><a href="#插曲" class="headerlink" title="插曲"></a>插曲</h3><p>我已经要疯了，使用<code>qemu</code>来进行第四章实验时又是出问题，一开始我在自己代码里找问题，但对比书上代码和别人的代码一直看不出问题，于是直接使用别人的能够得到正确显示的代码运行，但仍然没能得到预期的输出。于是我怀疑是<code>qemu</code>自己的问题，于是又只好用回<code>bochs</code>，接着，可预料到的，无穷无尽的报错，我的心里真的有点扛不住了，直到几分钟前（Sun Sep 26 16:20:34 CST 2021），终于，一切正常了！！！！！！！我找到了错误！！！！！！！！</p>
+<p>写在这里：</p>
+<p>下载<code>bochs</code>，去官网，按照书上所言，下载<code>bochs-2.6.2.tar.gz</code>，然后跟着书上步骤做，期间会遇见各种各样的问题，但在现在我看来都是小问题，网上各种论坛博客能找到解决方案，我就不细说了，唯一想提的，也就是我一直没解决掉的问题，在配置文件的<code>romimage</code>和<code>vgaromiamge</code>两者的路径需要写成这样</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">romimage: <span class="attribute">file</span>=你的路径/BIOS-bochs-latest</span><br><span class="line">vgaromiamge： <span class="attribute">file</span>=你的路径/BIOS-bochs-latest</span><br></pre></td></tr></table></figure>
+
+<p>在下载的<code>bochs-2.6.2.tar.gz</code>解压出来的<code>bochs-2.6.2</code>文件夹的<code>bios/</code>子文件夹里正好这两个文件，于是我就把配置文件里的路径设置为这两个的路径，即</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">romimage: <span class="keyword">file</span>=<span class="regexp">/home/</span>fez<span class="regexp">/Download/</span>bios-<span class="number">2.6</span>.<span class="number">2</span><span class="regexp">/bios/</span>BIOS-bochs-latest</span><br><span class="line">vgaromiamge： <span class="keyword">file</span>=<span class="regexp">/home/</span>fez<span class="regexp">/Download/</span>bios-<span class="number">2.6</span>.<span class="number">2</span><span class="regexp">/bios/</span>BIOS-bochs-latest</span><br></pre></td></tr></table></figure>
+
+<p>于是乎，疯狂报错</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ROM: couldn<span class="string">&#x27;t open ROM image file &#x27;</span><span class="regexp">/home/</span>fez<span class="regexp">/Download/</span>bios-<span class="number">2.6</span>.<span class="number">2</span><span class="regexp">/bios/</span>BIOS-bochs-latest<span class="string">&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>我就纳闷了，这不就是这个文件吗，为什么就是通过不了，看别人的这两个文件都在<code>/usr</code>目录下，我猜是不是<code>/usr</code>目录下也会有同名的这两个文件，于是搜索</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fez@papyruszzz:$ <span class="keyword">find</span> /usr -name <span class="string">&#x27;BIOS-bochs-latest&#x27;</span></span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/share/</span>bochs/BIOS-bochs-latest</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/bin/</span>bochs<span class="regexp">/share/</span>bochs/BIOS-bochs-latest</span><br></pre></td></tr></table></figure>
+
+<p>果然！！！使用<code>/usr/local/share/bochs/BIOS-bochs-latest</code>这个，同理把<code>vgaromiamge</code>的目录也换成<code>/usr</code>目录下对应那个，完美解决</p>
+<p>我靠。。。。还记得刚弹出正确运行界面时，压抑不住的怒吼。。。。。。。</p>
+<p>至此，又换回<code>bochs</code>来进行实验</p>
+<h3 id="6-代码及实验结果"><a href="#6-代码及实验结果" class="headerlink" title="6.代码及实验结果"></a>6.代码及实验结果</h3><p><code>/os/boot/mbr.asm</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br></pre></td><td class="code"><pre><span class="line">;main boot record03</span><br><span class="line">;reads from disk and loads the loader</span><br><span class="line">%include &quot;boot.inc&quot;</span><br><span class="line">SECTION MBR vstart&#x3D;0x7c00</span><br><span class="line">    mov ax, cs</span><br><span class="line">    mov ds, ax</span><br><span class="line">    mov es, ax</span><br><span class="line">    mov ss, ax</span><br><span class="line">    mov fs, ax</span><br><span class="line">    mov sp, 0x7c00</span><br><span class="line">    mov ax, 0xb800</span><br><span class="line">    mov gs, ax</span><br><span class="line"></span><br><span class="line">;clear screen</span><br><span class="line">;int 0x10 function code: 0x06 </span><br><span class="line">;description: roll up the screen</span><br><span class="line">;input</span><br><span class="line">;ah function code &#x3D; 0x06</span><br><span class="line">;al &#x3D; number of rows roll up (0 for all)</span><br><span class="line">;bh &#x3D; attributes of rows</span><br><span class="line">;(cl, ch) &#x3D; top left corner (x, y) of the window</span><br><span class="line">;(dl, dh) &#x3D; botton right corner (x, y) of the window</span><br><span class="line">;no return value</span><br><span class="line">    mov ax, 0x600</span><br><span class="line">    mov bx, 0x700</span><br><span class="line">    mov cx, 0               ;top left corner: (0, 0)</span><br><span class="line">    mov dx, 0x184f          ;bottom right corner: (24, 79)</span><br><span class="line">    int 0x10</span><br><span class="line"></span><br><span class="line">;print on screen</span><br><span class="line">    mov byte [gs: 0x00], &#39;1&#39;</span><br><span class="line">    mov byte [gs: 0x01], 0b10000011;</span><br><span class="line"></span><br><span class="line">    mov byte [gs: 0x02], &#39; &#39;</span><br><span class="line">    mov byte [gs: 0x03], 0b10000011;</span><br><span class="line"></span><br><span class="line">    mov byte [gs: 0x04], &#39;M&#39;</span><br><span class="line">    mov byte [gs: 0x05], 0b10000011;</span><br><span class="line">  </span><br><span class="line">    mov byte [gs: 0x06], &#39;B&#39;</span><br><span class="line">    mov byte [gs: 0x07], 0b10000011;</span><br><span class="line"></span><br><span class="line">    mov byte [gs: 0x08], &#39;R&#39;</span><br><span class="line">    mov byte [gs: 0x09], 0b10000011;</span><br><span class="line"></span><br><span class="line">    mov eax, LOADER_START_SECTOR;	;起始扇区LBA地址</span><br><span class="line">    mov bx, LOADER_BASE_ADDR; 		;写入的地址</span><br><span class="line">    mov cx, 4			    		;待读入的扇区数</span><br><span class="line">    call rd_disk_m_16				;调用硬盘读取程序</span><br><span class="line">    </span><br><span class="line">    jmp LOADER_BASE_ADDR</span><br><span class="line">    </span><br><span class="line">rd_disk_m_16:</span><br><span class="line">;功能：读取硬盘n个扇区</span><br><span class="line">;eax &#x3D; LBA扇区号</span><br><span class="line">;bx &#x3D; 数据写入内存的地址</span><br><span class="line">;cx &#x3D; 读入的扇区数</span><br><span class="line">    mov esi, eax			        	;备份eax</span><br><span class="line">    mov di, cx				        	;备份cx</span><br><span class="line"></span><br><span class="line">;读写磁盘</span><br><span class="line">;第一步：设置要读取的扇区数</span><br><span class="line">    mov dx, 0x1f2</span><br><span class="line">    mov al, cl</span><br><span class="line">    out dx, al				        	;读取的扇区数</span><br><span class="line">	</span><br><span class="line">    mov eax, esi			        	;恢复ax</span><br><span class="line">	</span><br><span class="line">;第二步：将LBA地址存入0x1f3 ~ 0x1f6</span><br><span class="line"></span><br><span class="line">    ;LBA地址7 ~ 0位写入端口0x1f3</span><br><span class="line">    mov dx, 0x1f3</span><br><span class="line">    out dx, al</span><br><span class="line">    </span><br><span class="line">    ;LBA地址15 ~ 8位写入端口0x1f4</span><br><span class="line">    mov cl, 8</span><br><span class="line">    shr eax, cl</span><br><span class="line">    mov dx, 0x1f4</span><br><span class="line">    out dx, al</span><br><span class="line">    </span><br><span class="line">    ;LBA地址23 ~ 16位写入端口0x1f5</span><br><span class="line">    shr eax, cl</span><br><span class="line">    mov dx, 0x1f5</span><br><span class="line">    out dx, al</span><br><span class="line">    </span><br><span class="line">    shr eax, cl</span><br><span class="line">    and al, 0xf			    	;LBA第27 ~ 24位</span><br><span class="line">    or  al, 0xe0				;设置7 ~ 4为1110，表示LBA模式</span><br><span class="line">    mov dx, 0x1f6</span><br><span class="line">    out dx, al</span><br><span class="line">	</span><br><span class="line">;第三步：向0x1f7端口写入读命令，0x20</span><br><span class="line">    mov dx, 0x1f7</span><br><span class="line">    mov al, 0x20</span><br><span class="line">    out dx, al</span><br><span class="line">	</span><br><span class="line">;第四步：检测硬件状态</span><br><span class="line">.not_ready:             ;同一端口，写入时表示写入命令字，读时表示读入硬件状态</span><br><span class="line">    nop</span><br><span class="line">    in al, dx</span><br><span class="line">    and al, 0x88        ;第3位为1表示硬件控制器已准备好数据传输</span><br><span class="line">                        ;第7位为1表示硬件忙</span><br><span class="line">    cmp al, 0x08</span><br><span class="line">    jnz .not_ready</span><br><span class="line"></span><br><span class="line">;第5步：从0x1f0端口读数据</span><br><span class="line">    mov ax, di</span><br><span class="line">    mov dx, 256</span><br><span class="line">    mul dx</span><br><span class="line">    mov cx, ax</span><br><span class="line">;di为要读取的扇区数，一个扇区512字节，一次读取读一个字，因此一个扇区读256次</span><br><span class="line"></span><br><span class="line">    mov dx, 0x1f0</span><br><span class="line">.go_on_read:</span><br><span class="line">    in ax, dx</span><br><span class="line">    mov [bx], ax</span><br><span class="line">    add bx, 2</span><br><span class="line">    loop .go_on_read</span><br><span class="line"></span><br><span class="line">    ret</span><br><span class="line">	</span><br><span class="line">times 510 - ($ - $$) db 0</span><br><span class="line">dw 0xaa55</span><br></pre></td></tr></table></figure>
+
+<p><code>/os/boot/loader.asm</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">%include &quot;boot.inc&quot;</span><br><span class="line">section loader vstart&#x3D;LOADER_BASE_ADDR</span><br><span class="line">LOADER_STACK_TOP equ LOADER_BASE_ADDR</span><br><span class="line">    jmp loader_start</span><br><span class="line">    </span><br><span class="line">;构建gdt</span><br><span class="line">GDT_BASE:  </span><br><span class="line">    dd 0x00000000</span><br><span class="line">    dd 0x00000000</span><br><span class="line">CODE_DESC: </span><br><span class="line">    dd 0x0000ffff</span><br><span class="line">    dd DESC_CODE_HIGH4</span><br><span class="line">DATA_STACK_DESC:</span><br><span class="line">    dd 0x0000ffff</span><br><span class="line">    dd DESC_DATA_HIGH4</span><br><span class="line">VIDEO_DESC:</span><br><span class="line">    dd 0x80000007          ;limit &#x3D; (0xbffff - 0xb8000) &#x2F; 4k &#x3D; 7</span><br><span class="line">    dd DESC_VIDEO_HIGH4    ;此时DPL为0</span><br><span class="line">GDT_SIZE equ $ - GDT_BASE</span><br><span class="line">GDT_LIMIT equ GDT_SIZE - 1</span><br><span class="line">times 60 dq 0               ;此处预留60个描述符空位</span><br><span class="line">SELECTOR_CODE  equ (0x1 &lt;&lt; 3) + TI_GDT + RPL0</span><br><span class="line">SELECTOR_DATA  equ (0x2 &lt;&lt; 3) + TI_GDT + RPL0</span><br><span class="line">SELECTOR_VIDEO equ (0x3 &lt;&lt; 3) + TI_GDT + RPL0</span><br><span class="line"></span><br><span class="line">;以下是gdt指针，前两字节是gdt界限，后4字节是gdt起始地址</span><br><span class="line">gdt_ptr dw GDT_LIMIT</span><br><span class="line">        dd GDT_BASE</span><br><span class="line">        </span><br><span class="line">LOADERMSG db &#39;2 loader in real.&#39;</span><br><span class="line"></span><br><span class="line">loader_start:</span><br><span class="line">;int 0x10 功能号：0x13 功能：打印字符串</span><br><span class="line">    mov sp, LOADER_BASE_ADDR</span><br><span class="line">    mov bp, LOADERMSG                ;es:bp &#x3D; 字符串首地址</span><br><span class="line">    mov cx, 17                       ;cx &#x3D; 字符串长度</span><br><span class="line">    mov ax, 0x1301                   </span><br><span class="line">    mov bx, 0x001f                   ;bh &#x3D; 页号，bl &#x3D; 属性（蓝底粉红字）</span><br><span class="line">    mov dx, 0x1800</span><br><span class="line">    int 0x10</span><br><span class="line"></span><br><span class="line">;准备进入保护模式</span><br><span class="line">;1. 打开A20</span><br><span class="line">    in al, 0x92</span><br><span class="line">    or al, 0x2</span><br><span class="line">    out 0x92, al</span><br><span class="line">    </span><br><span class="line">;2. 加载GDT</span><br><span class="line">    lgdt [gdt_ptr]</span><br><span class="line"></span><br><span class="line">;3. cr0第0位置1</span><br><span class="line">    mov eax, cr0</span><br><span class="line">    or eax, 0x1</span><br><span class="line">    mov cr0, eax</span><br><span class="line">    </span><br><span class="line">;4. 刷新流水线</span><br><span class="line">    jmp dword SELECTOR_CODE: p_mode_start</span><br><span class="line">    </span><br><span class="line">[bits 32]</span><br><span class="line">p_mode_start:</span><br><span class="line">    mov ax, SELECTOR_DATA</span><br><span class="line">    mov ds, ax</span><br><span class="line">    mov es, ax</span><br><span class="line">    mov ss, ax</span><br><span class="line">    mov esp, LOADER_STACK_TOP</span><br><span class="line">    mov ax, SELECTOR_VIDEO</span><br><span class="line">    mov gs, ax</span><br><span class="line">    </span><br><span class="line">    mov byte [gs: 160], &#39;P&#39;</span><br><span class="line">    mov byte [gs: 161], 0x1f</span><br><span class="line">    </span><br><span class="line">    jmp $</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><code>/os/boot/include/boot.inc</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">;loader and kernel</span><br><span class="line">LOADER_BASE_ADDR     equ 0x900</span><br><span class="line">LOADER_START_SECTOR  equ 0x2</span><br><span class="line"></span><br><span class="line">;gdt描述符属性</span><br><span class="line">DESC_G_4K         equ 0x800000</span><br><span class="line">DESC_D_32         equ 0x400000</span><br><span class="line">DESC_L            equ 0x0</span><br><span class="line">DESC_AVL          equ 0x0</span><br><span class="line">DESC_LIMIT_CODE2  equ 0xf0000</span><br><span class="line">DESC_LIMIT_DATA2  equ DESC_LIMIT_CODE2</span><br><span class="line">DESC_LIMIT_VIDEO2 equ 0xb			  ;书上这里有误，我的是正确的</span><br><span class="line">DESC_P            equ 0x8000</span><br><span class="line">DESC_DPL_0        equ 0x0</span><br><span class="line">DESC_DPL_1        equ 0x2000</span><br><span class="line">DESC_DPL_2        equ 0x4000</span><br><span class="line">DESC_DPL_3        equ 0x6000</span><br><span class="line">DESC_S_CODE       equ 0x1000</span><br><span class="line">DESC_S_DATA       equ DESC_S_CODE</span><br><span class="line">DESC_S_sys        equ 0x0</span><br><span class="line">DESC_TYPE_CODE    equ 0x800            ;x&#x3D;1, c&#x3D;0, r&#x3D;0, a&#x3D;0 代码段可执行，非一致，不可读，已访问位清零</span><br><span class="line">DESC_TYPE_DATA    equ 0x200            ;x&#x3D;0, e&#x3D;0, w&#x3D;1, a&#x3D;0 数据段不可执行，向上扩展，可写，已访问位清零</span><br><span class="line">DESC_CODE_HIGH4   equ (0x00 &lt;&lt; 24) + DESC_G_4K + DESC_D_32 + \</span><br><span class="line">                      DESC_L + DESC_AVL +DESC_LIMIT_CODE2 + \</span><br><span class="line">                      DESC_P +DESC_DPL_0 +DESC_S_CODE + \</span><br><span class="line">                      DESC_TYPE_CODE + 0X00</span><br><span class="line">DESC_DATA_HIGH4   equ (0x00 &lt;&lt; 24) + DESC_G_4K + DESC_D_32 + \</span><br><span class="line">                      DESC_L + DESC_AVL +DESC_LIMIT_DATA2 + \</span><br><span class="line">                      DESC_P +DESC_DPL_0 +DESC_S_DATA + \</span><br><span class="line">                      DESC_TYPE_DATA + 0X00</span><br><span class="line">DESC_VIDEO_HIGH4  equ (0x00 &lt;&lt; 24) + DESC_G_4K + DESC_D_32 + \</span><br><span class="line">                      DESC_L + DESC_AVL +DESC_LIMIT_VIDEO2 + \</span><br><span class="line">                      DESC_P +DESC_DPL_0 +DESC_S_DATA + \</span><br><span class="line">                      DESC_TYPE_DATA + 0X00</span><br><span class="line">;选择子属性</span><br><span class="line">RPL0 equ 00b</span><br><span class="line">RPL1 equ 01b</span><br><span class="line">RPL2 equ 10b</span><br><span class="line">RPL3 equ 11b</span><br><span class="line">TI_GDT equ 000b</span><br><span class="line">TI_LDT equ 100b</span><br></pre></td></tr></table></figure>
+
+<p>有个小坑，<code>loader.bin</code>文件大小已经超过512字节了，一个扇区不够，应该用两个，指令为</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linux&gt; dd <span class="attribute">if</span>=./loader.bin <span class="attribute">of</span>=../hd60M.img <span class="attribute">bs</span>=512 <span class="attribute">count</span>=2 <span class="attribute">seek</span>=2 <span class="attribute">conv</span>=notrunc</span><br></pre></td></tr></table></figure>
+
+<p>运行结果</p>
+<img src="/2021/09/17/fezOS/n02-output.png" class>
+
+<h3 id="7-一点点不一样"><a href="#7-一点点不一样" class="headerlink" title="7.一点点不一样"></a>7.一点点不一样</h3><p>相比原项目的从实模式进入保护模式程序，《操作系统真相还原》这本书里没提关中断的事情。不知道是暂时没讲到中断所以暂时不管还是单纯忘了或者觉得不需要？</p>
+<p>反正就模拟实验而言确实不关中断也无伤大雅</p>
+<h2 id="03-保护模式进阶"><a href="#03-保护模式进阶" class="headerlink" title="03-保护模式进阶"></a>03-保护模式进阶</h2><h3 id="1-物理地址容量"><a href="#1-物理地址容量" class="headerlink" title="1.物理地址容量"></a>1.物理地址容量</h3><p>书上介绍了三种获取地址容量的方法，都是通过调用BIOS中断实现，个人认为这个知识点过于琐碎，对我的学习目标——认识操作系统——帮助有限，不想多说。具体细节见<a target="_blank" rel="noopener" href="https://blog.csdn.net/BakerTheGreat/article/details/111568267">此参考文章</a></p>
+<h3 id="2-分页"><a href="#2-分页" class="headerlink" title="2.分页"></a>2.分页</h3><p>介绍了分页机制原理及实现（采用二级页表）。代码和分析书上都很详细，我这里也懒得贴了。<a target="_blank" rel="noopener" href="https://www.cnblogs.com/thougr/p/12158456.html">参考文章</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/07/25/CSAPP-Homework/" rel="prev" title="CSAPP-Homework">
+                  <i class="fa fa-chevron-left"></i> CSAPP-Homework
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FEZ</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">379k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">5:44</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+      <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
