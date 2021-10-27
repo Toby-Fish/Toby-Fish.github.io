@@ -24,20 +24,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.0.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
 
-  <meta name="description" content="介绍桌上有$n$个苹果，游戏双方轮流取苹果 1.先手不能第一次把所有苹果取完 2.之后每一轮，你所能拿的苹果个数至少$1$个,至多上一轮的两倍 轮到谁将桌上苹果全部拿完,谁获得本轮游戏胜利!">
+  <meta name="description" content="Computer science should be called computing science,for the same reason why surgery is not called knife science. &amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;em">
 <meta property="og:type" content="article">
-<meta property="og:title" content="博弈论-FibonacciGame">
-<meta property="og:url" content="http://example.com/2020/12/01/%E5%8D%9A%E5%BC%88%E8%AE%BA-FibonacciGame/index.html">
+<meta property="og:title" content="摘抄本">
+<meta property="og:url" content="http://example.com/2020/10/30/%E6%91%98%E6%8A%84%E6%9C%AC/index.html">
 <meta property="og:site_name" content="FEZ的博客">
-<meta property="og:description" content="介绍桌上有$n$个苹果，游戏双方轮流取苹果 1.先手不能第一次把所有苹果取完 2.之后每一轮，你所能拿的苹果个数至少$1$个,至多上一轮的两倍 轮到谁将桌上苹果全部拿完,谁获得本轮游戏胜利!">
+<meta property="og:description" content="Computer science should be called computing science,for the same reason why surgery is not called knife science. &amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;em">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-12-01T12:05:04.000Z">
-<meta property="article:modified_time" content="2020-12-07T11:12:53.645Z">
+<meta property="article:published_time" content="2020-10-30T13:29:11.000Z">
+<meta property="article:modified_time" content="2021-10-27T15:28:04.010Z">
 <meta property="article:author" content="FEZ">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2020/12/01/%E5%8D%9A%E5%BC%88%E8%AE%BA-FibonacciGame/">
+<link rel="canonical" href="http://example.com/2020/10/30/%E6%91%98%E6%8A%84%E6%9C%AC/">
 
 
 <script class="page-configurations">
@@ -50,7 +50,7 @@
   };
 </script>
 
-  <title>博弈论-FibonacciGame | FEZ的博客</title>
+  <title>摘抄本 | FEZ的博客</title>
   
 
 
@@ -169,7 +169,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -182,7 +182,6 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <section class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%90"><span class="nav-number">3.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%81%E6%98%8E"><span class="nav-number">4.</span> <span class="nav-text">证明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%81%87%E8%AE%BE-n-%E4%B8%BA%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%EF%BC%8C%E8%AE%B0%E5%85%B6%E4%B8%BA-F-i"><span class="nav-number">4.1.</span> <span class="nav-text">假设$n$为斐波那契数，记其为$F[i]$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%82%A3%E4%B9%88%EF%BC%8C%E5%BD%93n%E4%B8%8D%E6%98%AFFibonacci%E6%95%B0%E7%9A%84%E6%97%B6%E5%80%99%EF%BC%8C%E6%83%85%E5%86%B5%E5%8F%88%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84%E5%91%A2%EF%BC%9F"><span class="nav-number">4.2.</span> <span class="nav-text">那么，当n不是Fibonacci数的时候，情况又是怎样的呢？</span></a></li></ol></li></ol></div>
         </section>
         <!--/noindex-->
 
@@ -197,19 +196,19 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -250,7 +249,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/01/%E5%8D%9A%E5%BC%88%E8%AE%BA-FibonacciGame/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/30/%E6%91%98%E6%8A%84%E6%9C%AC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -263,7 +262,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          博弈论-FibonacciGame
+          摘抄本
         </h1>
 
         <div class="post-meta-container">
@@ -274,24 +273,15 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2020-12-01 20:05:04" itemprop="dateCreated datePublished" datetime="2020-12-01T20:05:04+08:00">2020-12-01</time>
+      <time title="创建时间：2020-10-30 21:29:11" itemprop="dateCreated datePublished" datetime="2020-10-30T21:29:11+08:00">2020-10-30</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-12-07 19:12:53" itemprop="dateModified" datetime="2020-12-07T19:12:53+08:00">2020-12-07</time>
+        <time title="修改时间：2021-10-27 23:28:04" itemprop="dateModified" datetime="2021-10-27T23:28:04+08:00">2021-10-27</time>
       </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
-        </span>
-    </span>
 
   
       </div>
@@ -301,7 +291,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.5k</span>
+      <span>348</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -319,44 +309,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>桌上有$n$个苹果，游戏双方轮流取苹果</p>
-<p>1.先手不能第一次把所有苹果取完</p>
-<p>2.之后每一轮，你所能拿的苹果个数至少$1$个,至多上一轮的两倍</p>
-<p>轮到谁将桌上苹果全部拿完,谁获得本轮游戏胜利! </p>
-<a id="more"></a>
-
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>起始时，桌上有$10$个苹果</p>
-<p>第一轮,Mike拿走$1$个苹果,桌上还剩下$9$个苹果</p>
-<p>第二轮,Nancy拿走$2$个苹果,桌上还剩$7$个苹果</p>
-<p>第三轮,Mike拿走$3$个苹果,桌上还剩$4$个苹果</p>
-<p>第四轮,Nancy拿走剩下全部$4$个苹果,桌上还剩$0$个苹果</p>
-<p>Nancy胜利!</p>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>这个博弈叫做Fibonacci博弈，肯定和Fibonacci数列$1,2,3,5,8,13,21,34,55,89,… $有密切的关系</p>
-<p>如果试验一番之后，可以猜测：<strong>先手胜当且仅当$n$不是Fibonacci数，换句话说，当$n$为Fibonacci数时，先手必败</strong></p>
-<h3 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h3><h4 id="假设-n-为斐波那契数，记其为-F-i"><a href="#假设-n-为斐波那契数，记其为-F-i" class="headerlink" title="假设$n$为斐波那契数，记其为$F[i]$"></a>假设$n$为斐波那契数，记其为$F[i]$</h4><p>1.当$i=2$时，先手只能取$1$个苹果，显然必败</p>
-<p>2.假设当$i\leq k$时，结论成立</p>
-<p>则当$i=k+1$时，$F[i]=F[k+1]=F[k]+F[k-1]$，可以把总苹果看为两堆，分别称其为$k$堆和$k-1$堆</p>
-<p>(一定可以看成两堆，设先手第一次取的苹果数为$x$，若$x\geq F[k-1]$，则后手可以直接取完$F[k]$，因为$F[k]  = F[k-1] + F[k-2] &lt; 2 * F[k-1]$)</p>
-<p>而对于$k-1$堆，由假设知，先手必败，后手总能取到最后一个苹果</p>
-<p>下面分析如何取$k-1$堆</p>
-<p>如果先手第一次取苹果数为$y$，$y \geq \frac{F[k-1]}{3}$，则该堆所剩苹果数小于$2y$，即后手可以直接取完</p>
-<p>此时$x=F[k-1]-y$，则$x \leq \frac{2F[k-1]}{3}$</p>
-<p>比较$\frac{2F[k-1]}{3}与\frac{F[k]}{2}$的大小</p>
-<p>$\frac{F[k]}{2}-\frac{2F[k-1]}{3}=\frac{F[k-1]}{2}+\frac{F[k -2]}{2}-\frac{2F[k-1]}{3}$</p>
-<p>$=\frac{F[k -2]}{2}-\frac{F[k-1]}{6}=\frac{F[k -2]}{2}-\frac{F[k-2]}{6}-\frac{F[k-3]}{6}$</p>
-<p>$=\frac{F[k -2]}{3}-\frac{F[k-3]}{6}=\frac{F[k -3]}{6}+\frac{F[k -4]}{3}&gt;0$</p>
-<p>即$x&lt;\frac{F[k]}{2}$，所以后手取完$k-1$堆后，先手不能一下取完$k$堆，结局没有改变</p>
-<p>桌上现剩余苹果数量为$F[k]=F[k-1]+F[k-2]$，又可将其分为两堆，后手可继续上述策略，必胜</p>
-<h4 id="那么，当n不是Fibonacci数的时候，情况又是怎样的呢？"><a href="#那么，当n不是Fibonacci数的时候，情况又是怎样的呢？" class="headerlink" title="那么，当n不是Fibonacci数的时候，情况又是怎样的呢？"></a>那么，当n不是Fibonacci数的时候，情况又是怎样的呢？</h4><p>由<a href="/2020/12/01/%E6%95%B0%E5%AD%A6-%E9%BD%90%E8%82%AF%E5%A4%9A%E5%A4%AB%E5%AE%9A%E7%90%86/" title="数学-齐肯多夫定理">数学-齐肯多夫定理</a>结论：<strong>任何正整数$n$可以表示为若干个不连续的Fibonacci数之和</strong></p>
-<p>即$n=F[x_1]+F[x_2]+F[x_3]+…+F[x_t]$且$x_1&gt;x_2&gt;x_3&gt;…&gt;x_t$是不连续的正整数</p>
-<p>以85为例，将其分解得$85=55+21+8+1$</p>
-<p>令先手取完$F[x_t]$，即最小斐波那契堆，由于各$x$不连续，则有$x_{t-1}&gt;x_t + 1$，得$F[x_{t-1}]&gt;2*F[x_t] $</p>
-<p>后手只能取$F[x_{t-1}]$这堆，且不能一次取完</p>
-<p>此时后手面临这个子游戏：只有$F[x_{t-1}]$这堆苹果，且后手先取，后手必败</p>
-<p>同理知对以后的每一堆苹果，后手总是必败</p>
-<p>综上，<strong>当n不是斐波那契数时，后手必败</strong></p>
-<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入桌上苹果数<span class="built_in">n</span></span><br><span class="line">	<span class="built_in">if</span> (<span class="built_in">n</span>是斐波那契数) 后手胜</span><br><span class="line">	else 先手胜</span><br></pre></td></tr></table></figure>
-
+        <p><em>Computer science should be called computing science,for the same reason why surgery is not called knife science.</em></p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<em>-E.Dijkstra</em></p>
+<p><em>类和对象之间的关系类似于苹果派配方和苹果派之间的关系</em></p>
+<p><em>数学是保证，数据是验证</em></p>
 
     </div>
 
@@ -370,13 +326,10 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2020/12/01/%E4%B8%BB%E9%A1%B5/" rel="prev" title="主页">
-                  <i class="fa fa-chevron-left"></i> 主页
-                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2020/12/01/%E6%95%B0%E5%AD%A6-%E9%BD%90%E8%82%AF%E5%A4%9A%E5%A4%AB%E5%AE%9A%E7%90%86/" rel="next" title="数学-齐肯多夫定理">
-                  数学-齐肯多夫定理 <i class="fa fa-chevron-right"></i>
+                <a href="/2020/10/30/%E7%AE%97%E6%B3%95-KMP/" rel="next" title="算法-KMP">
+                  算法-KMP <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>

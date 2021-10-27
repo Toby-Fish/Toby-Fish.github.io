@@ -24,24 +24,23 @@
     var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.0.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
 
-  <meta name="description" content="介绍桌上有两堆苹果，两人轮流从中拿取苹果 每一轮，你有两种拿取策略可以选择 第一种策略：你可以选择其中一堆，从中拿取至少一个苹果，至多拿完该堆苹果 第二章策略：你可以从两堆中拿取相同数目的苹果 将桌上苹果全部取完者获胜">
+  <meta name="description" content="几个博弈论相关的游戏，挺有趣的，随手记录了">
 <meta property="og:type" content="article">
-<meta property="og:title" content="博弈论-Wythoff&#39;sGame">
-<meta property="og:url" content="http://example.com/2020/11/07/%E5%8D%9A%E5%BC%88%E8%AE%BA-Wythoff'sGame/index.html">
+<meta property="og:title" content="GameTheory">
+<meta property="og:url" content="http://example.com/2021/10/27/GameTheory/index.html">
 <meta property="og:site_name" content="FEZ的博客">
-<meta property="og:description" content="介绍桌上有两堆苹果，两人轮流从中拿取苹果 每一轮，你有两种拿取策略可以选择 第一种策略：你可以选择其中一堆，从中拿取至少一个苹果，至多拿完该堆苹果 第二章策略：你可以从两堆中拿取相同数目的苹果 将桌上苹果全部取完者获胜">
+<meta property="og:description" content="几个博弈论相关的游戏，挺有趣的，随手记录了">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2020/11/07/%E5%8D%9A%E5%BC%88%E8%AE%BA-Wythoff">
-<meta property="og:image" content="http://example.com/2020/11/07/%E5%8D%9A%E5%BC%88%E8%AE%BA-Wythoff">
-<meta property="article:published_time" content="2020-11-07T02:18:45.000Z">
-<meta property="article:modified_time" content="2020-12-07T11:13:16.503Z">
+<meta property="og:image" content="http://example.com/2021/10/27/GameTheory/%E5%8D%9A%E5%BC%88%E8%AE%BA-%E5%A8%81%E4%BD%90%E5%A4%AB%E5%8D%9A%E5%BC%88_1.png">
+<meta property="og:image" content="http://example.com/2021/10/27/GameTheory/%E5%8D%9A%E5%BC%88%E8%AE%BA-%E5%A8%81%E4%BD%90%E5%A4%AB%E5%8D%9A%E5%BC%88_2.png">
+<meta property="article:published_time" content="2021-10-27T15:37:34.000Z">
+<meta property="article:modified_time" content="2021-10-27T15:48:58.213Z">
 <meta property="article:author" content="FEZ">
-<meta property="article:tag" content="博弈论">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2020/11/07/%E5%8D%9A%E5%BC%88%E8%AE%BA-Wythoff">
+<meta name="twitter:image" content="http://example.com/2021/10/27/GameTheory/%E5%8D%9A%E5%BC%88%E8%AE%BA-%E5%A8%81%E4%BD%90%E5%A4%AB%E5%8D%9A%E5%BC%88_1.png">
 
 
-<link rel="canonical" href="http://example.com/2020/11/07/%E5%8D%9A%E5%BC%88%E8%AE%BA-Wythoff'sGame/">
+<link rel="canonical" href="http://example.com/2021/10/27/GameTheory/">
 
 
 <script class="page-configurations">
@@ -54,7 +53,7 @@
   };
 </script>
 
-  <title>博弈论-Wythoff'sGame | FEZ的博客</title>
+  <title>GameTheory | FEZ的博客</title>
   
 
 
@@ -186,7 +185,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <section class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.1.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%9E%90"><span class="nav-number">1.2.</span> <span class="nav-text">分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A5%87%E5%BC%82%E5%B1%80%E5%8A%BF%E6%80%A7%E8%B4%A8"><span class="nav-number">2.</span> <span class="nav-text">奇异局势性质</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%BB%BB%E4%BD%95%E8%87%AA%E7%84%B6%E6%95%B0%E9%83%BD%E5%8C%85%E5%90%AB%E5%9C%A8%E4%B8%80%E4%B8%AA%E4%B8%94%E4%BB%85%E6%9C%89%E4%B8%80%E4%B8%AA%E5%A5%87%E5%BC%82%E5%B1%80%E5%8A%BF%E4%B8%AD"><span class="nav-number">2.1.</span> <span class="nav-text">1.任何自然数都包含在一个且仅有一个奇异局势中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E4%BB%BB%E6%84%8F%E6%93%8D%E4%BD%9C%E9%83%BD%E5%8F%AF%E5%B0%86%E5%A5%87%E5%BC%82%E5%B1%80%E5%8A%BF%E5%8F%98%E4%B8%BA%E9%9D%9E%E5%A5%87%E5%BC%82%E5%B1%80%E5%8A%BF"><span class="nav-number">2.2.</span> <span class="nav-text">2.任意操作都可将奇异局势变为非奇异局势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E9%87%87%E7%94%A8%E9%80%82%E5%BD%93%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%8C%E5%8F%AF%E4%BB%A5%E5%B0%86%E9%9D%9E%E5%A5%87%E5%BC%82%E5%B1%80%E5%8A%BF%E5%8F%98%E4%B8%BA%E5%A5%87%E5%BC%82%E5%B1%80%E5%8A%BF"><span class="nav-number">2.3.</span> <span class="nav-text">3.采用适当的方法，可以将非奇异局势变为奇异局势</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%81%E6%98%8E"><span class="nav-number">3.</span> <span class="nav-text">证明</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Bash-Game"><span class="nav-number">1.</span> <span class="nav-text">Bash Game</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%9E%90"><span class="nav-number">1.1.</span> <span class="nav-text">分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Wythoff%E2%80%99s-Game"><span class="nav-number">2.</span> <span class="nav-text">Wythoff’s Game</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.1.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%9E%90-1"><span class="nav-number">2.2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A5%87%E5%BC%82%E5%B1%80%E5%8A%BF%E6%80%A7%E8%B4%A8"><span class="nav-number">2.3.</span> <span class="nav-text">奇异局势性质</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BB%BB%E4%BD%95%E8%87%AA%E7%84%B6%E6%95%B0%E9%83%BD%E5%8C%85%E5%90%AB%E5%9C%A8%E4%B8%80%E4%B8%AA%E4%B8%94%E4%BB%85%E6%9C%89%E4%B8%80%E4%B8%AA%E5%A5%87%E5%BC%82%E5%B1%80%E5%8A%BF%E4%B8%AD"><span class="nav-number">2.3.1.</span> <span class="nav-text">1.任何自然数都包含在一个且仅有一个奇异局势中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%BB%BB%E6%84%8F%E6%93%8D%E4%BD%9C%E9%83%BD%E5%8F%AF%E5%B0%86%E5%A5%87%E5%BC%82%E5%B1%80%E5%8A%BF%E5%8F%98%E4%B8%BA%E9%9D%9E%E5%A5%87%E5%BC%82%E5%B1%80%E5%8A%BF"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.任意操作都可将奇异局势变为非奇异局势</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E9%87%87%E7%94%A8%E9%80%82%E5%BD%93%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%8C%E5%8F%AF%E4%BB%A5%E5%B0%86%E9%9D%9E%E5%A5%87%E5%BC%82%E5%B1%80%E5%8A%BF%E5%8F%98%E4%B8%BA%E5%A5%87%E5%BC%82%E5%B1%80%E5%8A%BF"><span class="nav-number">2.3.3.</span> <span class="nav-text">3.采用适当的方法，可以将非奇异局势变为奇异局势</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%81%E6%98%8E"><span class="nav-number">2.4.</span> <span class="nav-text">证明</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Nim-Game"><span class="nav-number">3.</span> <span class="nav-text">Nim Game</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-1"><span class="nav-number">3.1.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%9E%90-2"><span class="nav-number">3.2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%81%E6%98%8E-1"><span class="nav-number">3.3.</span> <span class="nav-text">证明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A8%E5%B9%BF"><span class="nav-number">3.4.</span> <span class="nav-text">推广</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Fibonacci-Game"><span class="nav-number">4.</span> <span class="nav-text">Fibonacci Game</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-2"><span class="nav-number">4.1.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%9E%90-3"><span class="nav-number">4.2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%81%E6%98%8E-2"><span class="nav-number">4.3.</span> <span class="nav-text">证明</span></a></li></ol></li></ol></div>
         </section>
         <!--/noindex-->
 
@@ -201,19 +200,19 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -254,7 +253,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/07/%E5%8D%9A%E5%BC%88%E8%AE%BA-Wythoff'sGame/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/27/GameTheory/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -267,7 +266,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          博弈论-Wythoff'sGame
+          GameTheory
         </h1>
 
         <div class="post-meta-container">
@@ -277,24 +276,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2020-11-07 10:18:45" itemprop="dateCreated datePublished" datetime="2020-11-07T10:18:45+08:00">2020-11-07</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-12-07 19:13:16" itemprop="dateModified" datetime="2020-12-07T19:13:16+08:00">2020-12-07</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
-        </span>
+      <time title="创建时间：2021-10-27 23:37:34 / 修改时间：23:48:58" itemprop="dateCreated datePublished" datetime="2021-10-27T23:37:34+08:00">2021-10-27</time>
     </span>
 
   
@@ -305,14 +289,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>2.7k</span>
+      <span>6k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
+      <span>5 分钟</span>
     </span>
 </div>
 
@@ -323,13 +307,19 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>桌上有两堆苹果，两人轮流从中拿取苹果</p>
+        <p>几个博弈论相关的游戏，挺有趣的，随手记录了</p>
+<a id="more"></a>
+
+<h1 id="Bash-Game"><a href="#Bash-Game" class="headerlink" title="Bash Game"></a>Bash Game</h1><p>桌上有n个苹果，两人轮流从苹果堆中取苹果，规定每次最少取一个，最多取m个。最后取光者获胜</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>显然，如果n=m+1，那么由于一次最多只能取m个，所以，无论先取者拿走多少个，后取者都能够一次拿走剩余苹果，后者必胜</p>
+<p>发现取胜法则：如果n=(m+1)*r+s(r为任意自然数，1≤s≤m)，则先取者拿走s个苹果，如果后取者拿走k（1≤k≤m)个，那么先取者再拿走<strong>m+1-k</strong>个，结果剩下(m+1)*(r-1)个，以后保持这样的取法，那么先取者肯定获胜。总之，保持给对手留下苹果数为(m+1)的倍数，就能最后获胜</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//n为桌上苹果数，m为一次最多拿取苹果数</span></span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	<span class="keyword">if</span> (n % (m + <span class="number">1</span>) == <span class="number">0</span>)</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;后手胜！&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;先手胜！&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Wythoff’s-Game"><a href="#Wythoff’s-Game" class="headerlink" title="Wythoff’s Game"></a>Wythoff’s Game</h1><p>桌上有两堆苹果，两人轮流从中拿取苹果</p>
 <p>每一轮，你有两种拿取策略可以选择</p>
 <p>第一种策略：你可以选择其中一堆，从中拿取至少一个苹果，至多拿完该堆苹果</p>
 <p>第二章策略：你可以从两堆中拿取相同数目的苹果</p>
 <p>将桌上苹果全部取完者获胜</p>
-<a id="more"></a>
-
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>起始时，桌上有两堆苹果,第一堆有5个苹果,第二堆有7个苹果(5,7)</p>
 <p>第一轮,Mike从第二堆拿走4个苹果,现在桌上苹果为(5,3)</p>
 <p>第二轮,Nancy从两堆各拿走2个苹果,现在桌上苹果为(3,1)</p>
@@ -337,21 +327,21 @@
 <p>第四轮,Nancy从第一堆拿走1个苹果,现在桌上苹果为(1,1)</p>
 <p>第五轮,Mike从两堆各拿走1个苹果,现在桌上苹果为(0,0)</p>
 <p>Mike胜利!</p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>设（a<sub>i</sub>,b<sub>i</sub>）（a<sub>i</sub>≤b<sub>i</sub> ,i=0，1，2，…)表示两堆物品的数量并称其为局势，如果甲面对（0，0），那么甲已经输了，这种局势我们称为奇异局势。前几个奇异局势是：（0，0）、（1，2）、（3，5）、（4，7）、（6，10）、（8，13）、（9，15）、（11，18）、（12，20）</p>
+<h2 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h2><p>设（a<sub>i</sub>,b<sub>i</sub>）（a<sub>i</sub>≤b<sub>i</sub> ,i=0，1，2，…)表示两堆物品的数量并称其为局势，如果甲面对（0，0），那么甲已经输了，这种局势我们称为奇异局势。前几个奇异局势是：（0，0）、（1，2）、（3，5）、（4，7）、（6，10）、（8，13）、（9，15）、（11，18）、（12，20）</p>
 <p>任给一个局势（a，b），如下公式判断它是不是奇异局势： a<sub>k</sub> =[k（1+√5）/2]，b<sub>k</sub>= a<sub>k</sub> + k （k=0，1，2，…,方括号表示向下取整）</p>
-<h1 id="奇异局势性质"><a href="#奇异局势性质" class="headerlink" title="奇异局势性质"></a>奇异局势性质</h1><h2 id="1-任何自然数都包含在一个且仅有一个奇异局势中"><a href="#1-任何自然数都包含在一个且仅有一个奇异局势中" class="headerlink" title="1.任何自然数都包含在一个且仅有一个奇异局势中"></a>1.任何自然数都包含在一个且仅有一个奇异局势中</h2><p>由于a[k]是未在前面出现过的最小自然数，所以有a<sub>k</sub>&gt;a<sub>k-1</sub><br>而b<sub>k</sub>=a<sub>k</sub>+k&gt;a<sub>k-1</sub>+k&gt;a<sub>k-1</sub>+k−1=b<sub>k-1</sub>&gt;a<sub>k-1</sub></p>
-<h2 id="2-任意操作都可将奇异局势变为非奇异局势"><a href="#2-任意操作都可将奇异局势变为非奇异局势" class="headerlink" title="2.任意操作都可将奇异局势变为非奇异局势"></a>2.任意操作都可将奇异局势变为非奇异局势</h2><p>这个性质可以简单的理解为：<strong>必败态的后继一定都是必胜态</strong></p>
+<h2 id="奇异局势性质"><a href="#奇异局势性质" class="headerlink" title="奇异局势性质"></a>奇异局势性质</h2><h3 id="1-任何自然数都包含在一个且仅有一个奇异局势中"><a href="#1-任何自然数都包含在一个且仅有一个奇异局势中" class="headerlink" title="1.任何自然数都包含在一个且仅有一个奇异局势中"></a>1.任何自然数都包含在一个且仅有一个奇异局势中</h3><p>由于a[k]是未在前面出现过的最小自然数，所以有a<sub>k</sub>&gt;a<sub>k-1</sub><br>而b<sub>k</sub>=a<sub>k</sub>+k&gt;a<sub>k-1</sub>+k&gt;a<sub>k-1</sub>+k−1=b<sub>k-1</sub>&gt;a<sub>k-1</sub></p>
+<h3 id="2-任意操作都可将奇异局势变为非奇异局势"><a href="#2-任意操作都可将奇异局势变为非奇异局势" class="headerlink" title="2.任意操作都可将奇异局势变为非奇异局势"></a>2.任意操作都可将奇异局势变为非奇异局势</h3><p>这个性质可以简单的理解为：<strong>必败态的后继一定都是必胜态</strong></p>
 <p>事实上，若只改变奇异局势（a<sub>k</sub>，b<sub>k</sub>）的某一个分量，那么另一个分量不可能在其他奇异局势中，所以必然是非奇异局势。如果使（a<sub>k</sub>，b<sub>k</sub>）的两个分量同时减少，则由于其差不变，且不可能是其他奇异局势的差，因此也是非奇异局势</p>
-<h2 id="3-采用适当的方法，可以将非奇异局势变为奇异局势"><a href="#3-采用适当的方法，可以将非奇异局势变为奇异局势" class="headerlink" title="3.采用适当的方法，可以将非奇异局势变为奇异局势"></a>3.采用适当的方法，可以将非奇异局势变为奇异局势</h2><p>假设面对的局势是(a,b)，若b=a，则同时从两堆中取走 a 个物体，就变为了奇异局势（0，0）<br>如果a=a<sub>k</sub>，b&gt;b<sub>k</sub>，那么，取走b−b<sub>k</sub>个物体，即变为奇异局势<br>如果a=a<sub>k</sub>，b&lt;b<sub>k</sub>，则同时从两堆中拿走a−a<sub>b-a</sub>个物体变为奇异局势（ a<sub>b-a</sub>, b-a+a<sub>b-a</sub>）<br>如果a&gt;a<sub>k</sub>，b=a<sub>k</sub>+k，则从第一堆中拿走多余的数量a-a<sub>k</sub>即可<br>如果a&lt;a<sub>k</sub>，b=a<sub>k</sub>+k，分两种情况<br>第一种，a=a<sub>j</sub>（j&lt;k），从第二堆里面拿走b−b<sub>j</sub>即可<br>第二种，a=b<sub>j</sub>（j&lt;k），从第二堆里面拿走b−a<sub>j</sub>即可</p>
-<h1 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h1><p>由<a href="/2020/11/07/%E6%95%B0%E5%AD%A6-%E8%B4%9D%E8%92%82%E5%AE%9A%E7%90%86/" title="数学-贝蒂定理">数学-贝蒂定理</a>结论，考虑</p>
+<h3 id="3-采用适当的方法，可以将非奇异局势变为奇异局势"><a href="#3-采用适当的方法，可以将非奇异局势变为奇异局势" class="headerlink" title="3.采用适当的方法，可以将非奇异局势变为奇异局势"></a>3.采用适当的方法，可以将非奇异局势变为奇异局势</h3><p>假设面对的局势是(a,b)，若b=a，则同时从两堆中取走 a 个物体，就变为了奇异局势（0，0）<br>如果a=a<sub>k</sub>，b&gt;b<sub>k</sub>，那么，取走b−b<sub>k</sub>个物体，即变为奇异局势<br>如果a=a<sub>k</sub>，b&lt;b<sub>k</sub>，则同时从两堆中拿走a−a<sub>b-a</sub>个物体变为奇异局势（ a<sub>b-a</sub>, b-a+a<sub>b-a</sub>）<br>如果a&gt;a<sub>k</sub>，b=a<sub>k</sub>+k，则从第一堆中拿走多余的数量a-a<sub>k</sub>即可<br>如果a&lt;a<sub>k</sub>，b=a<sub>k</sub>+k，分两种情况<br>第一种，a=a<sub>j</sub>（j&lt;k），从第二堆里面拿走b−b<sub>j</sub>即可<br>第二种，a=b<sub>j</sub>（j&lt;k），从第二堆里面拿走b−a<sub>j</sub>即可</p>
+<h2 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h2><p>由<a href="/2020/11/07/%E6%95%B0%E5%AD%A6-%E8%B4%9D%E8%92%82%E5%AE%9A%E7%90%86/" title="数学-贝蒂定理">数学-贝蒂定理</a>结论，考虑</p>
 <p>a<sub>n</sub>=[αn],b<sub>n</sub>=[βn]</p>
 <p>a<sub>n</sub>+n =[(α+1)n]=[βn]</p>
 <p>取β=α+1</p>
 <p>解方程</p>
-<img src="/2020/11/07/%E5%8D%9A%E5%BC%88%E8%AE%BA-Wythoff'sGame/%E5%8D%9A%E5%BC%88%E8%AE%BA-%E5%A8%81%E4%BD%90%E5%A4%AB%E5%8D%9A%E5%BC%88_1.png" class>
+<img src="/2021/10/27/GameTheory/%E5%8D%9A%E5%BC%88%E8%AE%BA-%E5%A8%81%E4%BD%90%E5%A4%AB%E5%8D%9A%E5%BC%88_1.png" class>
 
 <p>得</p>
-<img src="/2020/11/07/%E5%8D%9A%E5%BC%88%E8%AE%BA-Wythoff'sGame/%E5%8D%9A%E5%BC%88%E8%AE%BA-%E5%A8%81%E4%BD%90%E5%A4%AB%E5%8D%9A%E5%BC%88_2.png" class>
+<img src="/2021/10/27/GameTheory/%E5%8D%9A%E5%BC%88%E8%AE%BA-%E5%A8%81%E4%BD%90%E5%A4%AB%E5%8D%9A%E5%BC%88_2.png" class>
 
 <hr>
 <p>用有序数对（即两堆含石子的个数，规定第一个数不大于第二个数）表示某个状态，显然(0,0)是一个必败态。下面证明，根据下面的方法，可以构造出所有的必败态：</p>
@@ -372,6 +362,71 @@
 <p>证毕</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> r = (<span class="built_in">sqrt</span>(<span class="number">5</span>) + <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> iNumOfFirst = <span class="number">0</span>, iNumOfSecond = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;请输入第一堆苹果个数:&quot;</span>;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; iNumOfFirst;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;请输入第二堆苹果个数:&quot;</span>;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; iNumOfSecond;</span><br><span class="line">	<span class="keyword">int</span> tempMax = max(iNumOfFirst, iNumOfSecond);</span><br><span class="line">	<span class="keyword">int</span> tempMin = min(iNumOfFirst, iNumOfSecond);</span><br><span class="line">	<span class="keyword">bool</span> ans = ((<span class="keyword">int</span>)(::r * ((<span class="keyword">double</span>)(tempMax - tempMin))) == tempMin);</span><br><span class="line">	<span class="keyword">if</span> (ans)</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;先手胜！&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;后手胜！&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h1 id="Nim-Game"><a href="#Nim-Game" class="headerlink" title="Nim Game"></a>Nim Game</h1><p>桌上有三堆苹果，两人轮流从中拿取苹果</p>
+<p>每一轮，只能选择从期中某一堆拿取至少一个苹果</p>
+<p>将桌上苹果全部拿完者获胜</p>
+<h2 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h2><p>起始时，三堆苹果数量分别为$3$个,$5$个,$2$个$(3,5,2)$</p>
+<p>第一轮,Mike从第一堆拿走$3$个苹果,桌上剩余苹果状态$(3,2,2)$</p>
+<p>第二轮,Nancy从第一堆拿走$2$个苹果,桌上剩余苹果状态$(1,2,2)$</p>
+<p>第三轮,Mike从第三堆拿走$2$个苹果,桌上剩余苹果状态$(1,2,0)$</p>
+<p>第四轮,Nancy从第二堆拿走$1$个苹果,桌上剩余苹果状态$(1,1,0)$</p>
+<p>第五轮,Mike从第一堆拿走$1$个苹果,桌上剩余苹果状态$(0,1,0)$</p>
+<p>第六轮,Nancy从第二堆拿走$1$个苹果,桌上剩余苹果状态$(0,0,0)$</p>
+<p>桌上没有苹果剩余,Nancy胜利!</p>
+<h2 id="分析-2"><a href="#分析-2" class="headerlink" title="分析"></a>分析</h2><p>用$（a，b，c）$表示某种局势，显然$（0，0，0）$是第一种奇异局势，无论谁面对奇异局势，必败</p>
+<p>第二种奇异局势是$（0，n，n）$，先手从一堆拿取任意数量苹果，后手只需从另一堆中拿取相同数量苹果，最后都将导致先手面对$（0，0，0）$</p>
+<p>搞定这个问题需要把必败态的规律找出：$（a，b，c）$是必败态等价于$a$^$b$^$c=0($^$表示异或运算)$</p>
+<h2 id="证明-1"><a href="#证明-1" class="headerlink" title="证明"></a>证明</h2><p>$1$任何$（a，b，c）=0$的局面出发的任意局面$（a，b，c’）$一定有$a$^$b$^$c’ \neq 0$，否则可以得到$c=c’$</p>
+<p>$2$任何$（a，b，c）(a$^$b$^$c = 0)$的局面都可以走向$（a，b，c’）(a$^$b$^$c’ \neq 0)$的局面</p>
+<p>以具体的例子$（4，9，13）$为例，容易验证此种局势为奇异局势</p>
+<p>$$\begin{pmatrix}<br>4\\<br>9\\<br>13\\<br>\end{pmatrix}$$</p>
+<p>可以拆分为</p>
+<p>$$\begin{pmatrix}<br>0&amp;4&amp;0&amp;0\\<br>8&amp;0&amp;0&amp;1\\<br>8&amp;4&amp;0&amp;1\\<br>\end{pmatrix}$$</p>
+<p>其中有两个$8$，两个$4$，两个$1$，非零项成对出现，这就是尼姆和为零的本质</p>
+<p>对手若拿掉$13$里的$8$或$1$，那我们便拿掉对应的$9$ 中的$8$或$1$</p>
+<p>对手若拿掉$13$里的$4$，那我们便拿掉对应的$4$ 中的$8$</p>
+<p>对手若拿掉$13$里的$3$，则将剩余的$10$分解后想办法满足非零项成对即可</p>
+<h2 id="推广"><a href="#推广" class="headerlink" title="推广"></a>推广</h2><p>推广一：如果我们面对的是一个非奇异局势$（a，b，c）$，要如何变为奇异局势呢？</p>
+<p>假设 $a &lt; b&lt; c$,我们只要将 $c $变为 $a$^$b$,即可,因为有如下的运算结果: $a$^$b$^$(a$^$b)=(a$^$a)$^$(b$^$b)=0$^$0=0$。要将$c$ 变为$a$^$b$，只从$ c$中减去 $(c-(a$^$b))$</p>
+<p>推广二：当石子堆数为$n$堆时，则推广为当对每堆的数目进行异或之后值为零是必败态2</p>
+<h1 id="Fibonacci-Game"><a href="#Fibonacci-Game" class="headerlink" title="Fibonacci Game"></a>Fibonacci Game</h1><p>桌上有$n$个苹果，游戏双方轮流取苹果</p>
+<p>1.先手不能第一次把所有苹果取完</p>
+<p>2.之后每一轮，你所能拿的苹果个数至少$1$个,至多上一轮的两倍</p>
+<p>轮到谁将桌上苹果全部拿完,谁获得本轮游戏胜利! </p>
+<h2 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h2><p>起始时，桌上有$10$个苹果</p>
+<p>第一轮,Mike拿走$1$个苹果,桌上还剩下$9$个苹果</p>
+<p>第二轮,Nancy拿走$2$个苹果,桌上还剩$7$个苹果</p>
+<p>第三轮,Mike拿走$3$个苹果,桌上还剩$4$个苹果</p>
+<p>第四轮,Nancy拿走剩下全部$4$个苹果,桌上还剩$0$个苹果</p>
+<p>Nancy胜利!</p>
+<h2 id="分析-3"><a href="#分析-3" class="headerlink" title="分析"></a>分析</h2><p>这个博弈叫做Fibonacci博弈，肯定和Fibonacci数列$1,2,3,5,8,13,21,34,55,89,… $有密切的关系</p>
+<p>如果试验一番之后，可以猜测：<strong>先手胜当且仅当$n$不是Fibonacci数，换句话说，当$n$为Fibonacci数时，先手必败</strong></p>
+<h2 id="证明-2"><a href="#证明-2" class="headerlink" title="证明"></a>证明</h2><p>假设$n$为斐波那契数，记其为$F[i]$</p>
+<p>1.当$i=2$时，先手只能取$1$个苹果，显然必败</p>
+<p>2.假设当$i\leq k$时，结论成立</p>
+<p>则当$i=k+1$时，$F[i]=F[k+1]=F[k]+F[k-1]$，可以把总苹果看为两堆，分别称其为$k$堆和$k-1$堆</p>
+<p>(一定可以看成两堆，设先手第一次取的苹果数为$x$，若$x\geq F[k-1]$，则后手可以直接取完$F[k]$，因为$F[k]  = F[k-1] + F[k-2] &lt; 2 * F[k-1]$)</p>
+<p>而对于$k-1$堆，由假设知，先手必败，后手总能取到最后一个苹果</p>
+<p>下面分析如何取$k-1$堆</p>
+<p>如果先手第一次取苹果数为$y$，$y \geq \frac{F[k-1]}{3}$，则该堆所剩苹果数小于$2y$，即后手可以直接取完</p>
+<p>此时$x=F[k-1]-y$，则$x \leq \frac{2F[k-1]}{3}$</p>
+<p>比较$\frac{2F[k-1]}{3}与\frac{F[k]}{2}$的大小</p>
+<p>$\frac{F[k]}{2}-\frac{2F[k-1]}{3}=\frac{F[k-1]}{2}+\frac{F[k -2]}{2}-\frac{2F[k-1]}{3}$</p>
+<p>$=\frac{F[k -2]}{2}-\frac{F[k-1]}{6}=\frac{F[k -2]}{2}-\frac{F[k-2]}{6}-\frac{F[k-3]}{6}$</p>
+<p>$=\frac{F[k -2]}{3}-\frac{F[k-3]}{6}=\frac{F[k -3]}{6}+\frac{F[k -4]}{3}&gt;0$</p>
+<p>即$x&lt;\frac{F[k]}{2}$，所以后手取完$k-1$堆后，先手不能一下取完$k$堆，结局没有改变</p>
+<p>桌上现剩余苹果数量为$F[k]=F[k-1]+F[k-2]$，又可将其分为两堆，后手可继续上述策略，必胜</p>
+<p>那么，当n不是Fibonacci数的时候，情况又是怎样的呢？</p>
+<p>由<a href="/2020/12/01/%E6%95%B0%E5%AD%A6-%E9%BD%90%E8%82%AF%E5%A4%9A%E5%A4%AB%E5%AE%9A%E7%90%86/" title="数学-齐肯多夫定理">数学-齐肯多夫定理</a>结论：<strong>任何正整数$n$可以表示为若干个不连续的Fibonacci数之和</strong></p>
+<p>即$n=F[x_1]+F[x_2]+F[x_3]+…+F[x_t]$且$x_1&gt;x_2&gt;x_3&gt;…&gt;x_t$是不连续的正整数</p>
+<p>以85为例，将其分解得$85=55+21+8+1$</p>
+<p>令先手取完$F[x_t]$，即最小斐波那契堆，由于各$x$不连续，则有$x_{t-1}&gt;x_t + 1$，得$F[x_{t-1}]&gt;2*F[x_t] $</p>
+<p>后手只能取$F[x_{t-1}]$这堆，且不能一次取完</p>
+<p>此时后手面临这个子游戏：只有$F[x_{t-1}]$这堆苹果，且后手先取，后手必败</p>
+<p>同理知对以后的每一堆苹果，后手总是必败</p>
+<p>综上，<strong>当n不是斐波那契数时，后手必败</strong></p>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入桌上苹果数<span class="built_in">n</span></span><br><span class="line">	<span class="built_in">if</span> (<span class="built_in">n</span>是斐波那契数) 后手胜</span><br><span class="line">	else 先手胜</span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -380,22 +435,16 @@
     
 
     <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/" rel="tag"># 博弈论</a>
-          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2020/11/07/%E5%8D%9A%E5%BC%88%E8%AE%BA-BashGame/" rel="prev" title="博弈论-BashGame">
-                  <i class="fa fa-chevron-left"></i> 博弈论-BashGame
+                <a href="/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="prev" title="零碎的知识点">
+                  <i class="fa fa-chevron-left"></i> 零碎的知识点
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2020/11/07/%E6%95%B0%E5%AD%A6-%E8%B4%9D%E8%92%82%E5%AE%9A%E7%90%86/" rel="next" title="数学-贝蒂定理">
-                  数学-贝蒂定理 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>

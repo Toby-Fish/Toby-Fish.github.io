@@ -24,20 +24,28 @@
     var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.0.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
 
-  <meta name="description" content="位移运算相关问题">
+  <meta name="description" content="记录学习过程中遇到的各种知识点">
 <meta property="og:type" content="article">
-<meta property="og:title" content="知识点-移位运算">
-<meta property="og:url" content="http://example.com/2021/03/24/%E7%9F%A5%E8%AF%86%E7%82%B9-%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97/index.html">
+<meta property="og:title" content="零碎的知识点">
+<meta property="og:url" content="http://example.com/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/index.html">
 <meta property="og:site_name" content="FEZ的博客">
-<meta property="og:description" content="位移运算相关问题">
+<meta property="og:description" content="记录学习过程中遇到的各种知识点">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-03-24T13:26:03.000Z">
-<meta property="article:modified_time" content="2021-03-24T14:04:06.036Z">
+<meta property="og:image" content="http://example.com/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/%E8%A1%A8%E8%BE%BE%E5%BC%8F_1.png">
+<meta property="og:image" content="http://example.com/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/%E8%A1%A8%E8%BE%BE%E5%BC%8F_2.png">
+<meta property="og:image" content="http://example.com/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/%E8%A1%A8%E8%BE%BE%E5%BC%8F_3.png">
+<meta property="og:image" content="http://example.com/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/%E8%A1%A8%E8%BE%BE%E5%BC%8F_4.png">
+<meta property="og:image" content="http://example.com/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/%E8%A1%A8%E8%BE%BE%E5%BC%8F_3.png">
+<meta property="og:image" content="http://example.com/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/%E8%A1%A8%E8%BE%BE%E5%BC%8F_5.png">
+<meta property="og:image" content="http://example.com/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/%E8%A1%A8%E8%BE%BE%E5%BC%8F_6.png">
+<meta property="article:published_time" content="2021-10-27T15:32:37.000Z">
+<meta property="article:modified_time" content="2021-10-27T15:47:20.074Z">
 <meta property="article:author" content="FEZ">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/%E8%A1%A8%E8%BE%BE%E5%BC%8F_1.png">
 
 
-<link rel="canonical" href="http://example.com/2021/03/24/%E7%9F%A5%E8%AF%86%E7%82%B9-%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97/">
+<link rel="canonical" href="http://example.com/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/">
 
 
 <script class="page-configurations">
@@ -50,7 +58,7 @@
   };
 </script>
 
-  <title>知识点-移位运算 | FEZ的博客</title>
+  <title>零碎的知识点 | FEZ的博客</title>
   
 
 
@@ -182,7 +190,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <section class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%8F%B3%E7%A7%BB"><span class="nav-number">1.</span> <span class="nav-text">一、右移</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%A7%BB%E5%8A%A8k%E4%BD%8D-k%E5%BE%88%E5%A4%A7"><span class="nav-number">2.</span> <span class="nav-text">二、移动k位(k很大)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E7%90%86%E8%A7%A3"><span class="nav-number">2.1.</span> <span class="nav-text">我的理解</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97"><span class="nav-number">1.</span> <span class="nav-text">移位运算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%8F%B3%E7%A7%BB"><span class="nav-number">1.1.</span> <span class="nav-text">一、右移</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%A7%BB%E5%8A%A8k%E4%BD%8D-k%E5%BE%88%E5%A4%A7"><span class="nav-number">1.2.</span> <span class="nav-text">二、移动k位(k很大)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E7%90%86%E8%A7%A3"><span class="nav-number">1.3.</span> <span class="nav-text">我的理解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E4%B8%AD%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">前中后缀表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2"><span class="nav-number">2.1.</span> <span class="nav-text">转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E7%9B%B4%E6%8E%A5%E8%BD%AC%E6%8D%A2"><span class="nav-number">2.1.1.</span> <span class="nav-text">方法一：直接转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E5%88%A9%E7%94%A8%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%A0%91"><span class="nav-number">2.1.2.</span> <span class="nav-text">方法二：利用表达式树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.1.3.</span> <span class="nav-text">代码实现</span></a></li></ol></li></ol></li></ol></div>
         </section>
         <!--/noindex-->
 
@@ -197,19 +205,19 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -250,7 +258,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/24/%E7%9F%A5%E8%AF%86%E7%82%B9-%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -263,7 +271,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          知识点-移位运算
+          零碎的知识点
         </h1>
 
         <div class="post-meta-container">
@@ -275,16 +283,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2021-03-24 21:26:03 / 修改时间：22:04:06" itemprop="dateCreated datePublished" datetime="2021-03-24T21:26:03+08:00">2021-03-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
-        </span>
+      <time title="创建时间：2021-10-27 23:32:37 / 修改时间：23:47:20" itemprop="dateCreated datePublished" datetime="2021-10-27T23:32:37+08:00">2021-10-27</time>
     </span>
 
   
@@ -295,7 +294,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>756</span>
+      <span>1.2k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -313,18 +312,47 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>位移运算相关问题</p>
+        <p>记录学习过程中遇到的各种知识点</p>
 <a id="more"></a>
 
-<h3 id="一、右移"><a href="#一、右移" class="headerlink" title="一、右移"></a>一、右移</h3><p>C语言标准并没有明确定义对于有符号数应该使用哪种类型的右移——算术右移或者逻辑右移都可以。不幸地，这就意味着任何假设一种或者另一种右移形式的代码都可能会遇到可移植性问题。<strong>然而，实际上，几乎所有的编译器/机器组合都对有符号数使用算术右移</strong>，且许多程序员也假设机器会使用这种右移。<strong>另一方面，对于无符号数，右移必须是逻辑的。</strong></p>
+<h1 id="移位运算"><a href="#移位运算" class="headerlink" title="移位运算"></a>移位运算</h1><h2 id="一、右移"><a href="#一、右移" class="headerlink" title="一、右移"></a>一、右移</h2><p>C语言标准并没有明确定义对于有符号数应该使用哪种类型的右移——算术右移或者逻辑右移都可以。不幸地，这就意味着任何假设一种或者另一种右移形式的代码都可能会遇到可移植性问题。<strong>然而，实际上，几乎所有的编译器/机器组合都对有符号数使用算术右移</strong>，且许多程序员也假设机器会使用这种右移。<strong>另一方面，对于无符号数，右移必须是逻辑的。</strong></p>
 <p>与C相比，Java对于如何进行右移有明确的定义。表达式$x&gt;&gt;k$会将$x$算术右移$k$个位置，而$x&gt;&gt;&gt;k$会对$x$做逻辑右移</p>
-<h3 id="二、移动k位-k很大"><a href="#二、移动k位-k很大" class="headerlink" title="二、移动k位(k很大)"></a>二、移动k位(k很大)</h3><p>对于一个由$w$位组成的数据类型，如果要移动$k \ge w$位会得到什么结果呢？例如，思考下面的表达式会得到什么结果：</p>
+<h2 id="二、移动k位-k很大"><a href="#二、移动k位-k很大" class="headerlink" title="二、移动k位(k很大)"></a>二、移动k位(k很大)</h2><p>对于一个由$w$位组成的数据类型，如果要移动$k \ge w$位会得到什么结果呢？例如，思考下面的表达式会得到什么结果：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> lval = <span class="number">0x12345678</span> &lt;&lt; <span class="number">32</span>;</span><br><span class="line"><span class="keyword">int</span> aval = <span class="number">0xFEDCBA98</span> &gt;&gt; <span class="number">36</span>;</span><br><span class="line"><span class="keyword">unsigned</span> uval = <span class="number">0xFEDCBA98</span>u &gt;&gt; <span class="number">40</span>;</span><br></pre></td></tr></table></figure>
 
 <p>在许多机器上，当移动一个$w$位的值时，移位指令只考虑位移量的低$\log_2w$位，因此实际上位移量就是通过计算$k$ mod $w$得到的，例如，当$w=32$时，上面三个位移运算分别是移动0、4、8位，得到结果：</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">lval</span>	<span class="number">0</span>x<span class="number">12345678</span>;</span><br><span class="line"><span class="attribute">aval</span>	<span class="number">0</span>xFFEDCBA<span class="number">9</span>;</span><br><span class="line"><span class="attribute">uval</span>	<span class="number">0</span>x<span class="number">00</span>FEDCBA;</span><br></pre></td></tr></table></figure>
 
-<h4 id="我的理解"><a href="#我的理解" class="headerlink" title="我的理解"></a>我的理解</h4><p>假设数据类型是32位的，绝大多数情况下左移（或右移）的$k$值都在0至31之间，所以系统只“安排”了5个bit来负责记录移位时的$k$值，因此当试图移位32位（甚至更多位）时，由于只有5个bit负责此事，相当于令$k$对32取模，取模结果为实际移动位数。同理数据类型为64位时，系统（应该会）“安排”6个bit负责记录移位的$k$值，相当于令$k$对64取模。</p>
+<h2 id="我的理解"><a href="#我的理解" class="headerlink" title="我的理解"></a>我的理解</h2><p>假设数据类型是32位的，绝大多数情况下左移（或右移）的$k$值都在0至31之间，所以系统只“安排”了5个bit来负责记录移位时的$k$值，因此当试图移位32位（甚至更多位）时，由于只有5个bit负责此事，相当于令$k$对32取模，取模结果为实际移动位数。同理数据类型为64位时，系统（应该会）“安排”6个bit负责记录移位的$k$值，相当于令$k$对64取模。</p>
+<h1 id="前中后缀表达式"><a href="#前中后缀表达式" class="headerlink" title="前中后缀表达式"></a>前中后缀表达式</h1><p>平时计算所使用的表达式都是中缀表达式，如</p>
+<img src="/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/%E8%A1%A8%E8%BE%BE%E5%BC%8F_1.png" class>
+
+<p>而这样的带有括号以及区分优先级的表达式对计算机而言却难以计算</p>
+<p>于是考虑将其转为前缀表达式（波兰式）或后缀表达式（逆波兰式）</p>
+<h2 id="转换"><a href="#转换" class="headerlink" title="转换"></a>转换</h2><p>以中缀表达式</p>
+<img src="/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/%E8%A1%A8%E8%BE%BE%E5%BC%8F_2.png" class>
+
+<p>为例，考虑将其转换为前缀表达式</p>
+<h3 id="方法一：直接转换"><a href="#方法一：直接转换" class="headerlink" title="方法一：直接转换"></a>方法一：直接转换</h3><p>1.首先按运算顺序层层给表达式加上括号</p>
+<img src="/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/%E8%A1%A8%E8%BE%BE%E5%BC%8F_3.png" class>
+
+<p>2.从最里层括号开始，忽略括号，符号在前，数字在后</p>
+<img src="/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/%E8%A1%A8%E8%BE%BE%E5%BC%8F_4.png" class>
+
+<hr>
+<p>再考虑将其转换为后缀表达式</p>
+<p>1.首先按运算顺序层层给表达式加上括号</p>
+<img src="/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/%E8%A1%A8%E8%BE%BE%E5%BC%8F_3.png" class>
+
+<p>2.从最里层括号开始，忽略括号，数字在前，符号在后</p>
+<img src="/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/%E8%A1%A8%E8%BE%BE%E5%BC%8F_5.png" class>
+
+<h3 id="方法二：利用表达式树"><a href="#方法二：利用表达式树" class="headerlink" title="方法二：利用表达式树"></a>方法二：利用表达式树</h3><p>将中缀表达式转换为表达式树，叶子节点是数值，非叶子节点为符号。则先序遍历、中序遍历与后序遍历分别对应前缀表达式、中缀表达式与后缀表达式</p>
+<p>建树时，一般选择根节点为优先级最低且居于表达式正中的符号</p>
+<img src="/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/%E8%A1%A8%E8%BE%BE%E5%BC%8F_6.png" class>
+
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>对于任意两种类型的表达式间相互转换，均可使用栈实现</p>
+<p>只需分别定义一个操作数栈和操作符栈，规定好各符号在栈内外优先级即可</p>
 
     </div>
 
@@ -338,13 +366,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/03/19/%E8%AF%BB%E4%B9%A6%E8%AE%B0%E5%BD%95/" rel="prev" title="读书记录">
-                  <i class="fa fa-chevron-left"></i> 读书记录
+                <a href="/2021/10/27/APUE-%E4%B9%A0%E9%A2%98/" rel="prev" title="APUE-习题">
+                  <i class="fa fa-chevron-left"></i> APUE-习题
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/03/25/BUG/" rel="next" title="BUG">
-                  BUG <i class="fa fa-chevron-right"></i>
+                <a href="/2021/10/27/GameTheory/" rel="next" title="GameTheory">
+                  GameTheory <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
