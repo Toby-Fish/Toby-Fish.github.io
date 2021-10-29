@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.0.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+
+  <meta name="description" content="记录学习过程中遇到的各种知识点">
+<meta property="og:type" content="article">
+<meta property="og:title" content="零碎的知识">
+<meta property="og:url" content="http://example.com/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:site_name" content="FEZ的博客">
+<meta property="og:description" content="记录学习过程中遇到的各种知识点">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86/%E8%A1%A8%E8%BE%BE%E5%BC%8F_1.png">
+<meta property="og:image" content="http://example.com/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86/%E8%A1%A8%E8%BE%BE%E5%BC%8F_2.png">
+<meta property="og:image" content="http://example.com/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86/%E8%A1%A8%E8%BE%BE%E5%BC%8F_3.png">
+<meta property="og:image" content="http://example.com/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86/%E8%A1%A8%E8%BE%BE%E5%BC%8F_4.png">
+<meta property="og:image" content="http://example.com/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86/%E8%A1%A8%E8%BE%BE%E5%BC%8F_3.png">
+<meta property="og:image" content="http://example.com/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86/%E8%A1%A8%E8%BE%BE%E5%BC%8F_5.png">
+<meta property="og:image" content="http://example.com/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86/%E8%A1%A8%E8%BE%BE%E5%BC%8F_6.png">
+<meta property="og:image" content="http://example.com/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86/%E5%A3%B0%E6%98%8E%E8%A7%A3%E6%9E%90.png">
+<meta property="article:published_time" content="2021-10-27T15:32:37.000Z">
+<meta property="article:modified_time" content="2021-10-29T10:42:49.104Z">
+<meta property="article:author" content="FEZ">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86/%E8%A1%A8%E8%BE%BE%E5%BC%8F_1.png">
+
+
+<link rel="canonical" href="http://example.com/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>零碎的知识 | FEZ的博客</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?7035c3f4ba1040e0d1972d11a3943ebb";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">FEZ的博客</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97"><span class="nav-number">1.</span> <span class="nav-text">移位运算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%8F%B3%E7%A7%BB"><span class="nav-number">1.1.</span> <span class="nav-text">一、右移</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%A7%BB%E5%8A%A8k%E4%BD%8D-k%E5%BE%88%E5%A4%A7"><span class="nav-number">1.2.</span> <span class="nav-text">二、移动k位(k很大)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E7%90%86%E8%A7%A3"><span class="nav-number">1.3.</span> <span class="nav-text">我的理解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E4%B8%AD%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">前中后缀表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2"><span class="nav-number">2.1.</span> <span class="nav-text">转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E7%9B%B4%E6%8E%A5%E8%BD%AC%E6%8D%A2"><span class="nav-number">2.1.1.</span> <span class="nav-text">方法一：直接转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E5%88%A9%E7%94%A8%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%A0%91"><span class="nav-number">2.1.2.</span> <span class="nav-text">方法二：利用表达式树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.1.3.</span> <span class="nav-text">代码实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Warshall%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">Warshall算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%E8%A7%A3%E9%87%8A%E5%99%A8"><span class="nav-number">4.</span> <span class="nav-text">声明解释器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B4%E6%98%8E"><span class="nav-number">4.1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">4.2.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%88%E6%9E%9C"><span class="nav-number">4.3.</span> <span class="nav-text">效果</span></a></li></ol></li></ol></div>
+        </section>
+        <!--/noindex-->
+
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="FEZ"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">FEZ</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </section>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="FEZ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FEZ的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          零碎的知识
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-27 23:32:37" itemprop="dateCreated datePublished" datetime="2021-10-27T23:32:37+08:00">2021-10-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-10-29 18:42:49" itemprop="dateModified" datetime="2021-10-29T18:42:49+08:00">2021-10-29</time>
+      </span>
+
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>5.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>记录学习过程中遇到的各种知识点</p>
+<a id="more"></a>
+
+<h1 id="移位运算"><a href="#移位运算" class="headerlink" title="移位运算"></a>移位运算</h1><h2 id="一、右移"><a href="#一、右移" class="headerlink" title="一、右移"></a>一、右移</h2><p>C语言标准并没有明确定义对于有符号数应该使用哪种类型的右移——算术右移或者逻辑右移都可以。不幸地，这就意味着任何假设一种或者另一种右移形式的代码都可能会遇到可移植性问题。<strong>然而，实际上，几乎所有的编译器/机器组合都对有符号数使用算术右移</strong>，且许多程序员也假设机器会使用这种右移。<strong>另一方面，对于无符号数，右移必须是逻辑的。</strong></p>
+<p>与C相比，Java对于如何进行右移有明确的定义。表达式$x&gt;&gt;k$会将$x$算术右移$k$个位置，而$x&gt;&gt;&gt;k$会对$x$做逻辑右移</p>
+<h2 id="二、移动k位-k很大"><a href="#二、移动k位-k很大" class="headerlink" title="二、移动k位(k很大)"></a>二、移动k位(k很大)</h2><p>对于一个由$w$位组成的数据类型，如果要移动$k \ge w$位会得到什么结果呢？例如，思考下面的表达式会得到什么结果：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> lval = <span class="number">0x12345678</span> &lt;&lt; <span class="number">32</span>;</span><br><span class="line"><span class="keyword">int</span> aval = <span class="number">0xFEDCBA98</span> &gt;&gt; <span class="number">36</span>;</span><br><span class="line"><span class="keyword">unsigned</span> uval = <span class="number">0xFEDCBA98</span>u &gt;&gt; <span class="number">40</span>;</span><br></pre></td></tr></table></figure>
+
+<p>在许多机器上，当移动一个$w$位的值时，移位指令只考虑位移量的低$\log_2w$位，因此实际上位移量就是通过计算$k$ mod $w$得到的，例如，当$w=32$时，上面三个位移运算分别是移动0、4、8位，得到结果：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">lval</span>	<span class="number">0</span>x<span class="number">12345678</span>;</span><br><span class="line"><span class="attribute">aval</span>	<span class="number">0</span>xFFEDCBA<span class="number">9</span>;</span><br><span class="line"><span class="attribute">uval</span>	<span class="number">0</span>x<span class="number">00</span>FEDCBA;</span><br></pre></td></tr></table></figure>
+
+<h2 id="我的理解"><a href="#我的理解" class="headerlink" title="我的理解"></a>我的理解</h2><p>假设数据类型是32位的，绝大多数情况下左移（或右移）的$k$值都在0至31之间，所以系统只“安排”了5个bit来负责记录移位时的$k$值，因此当试图移位32位（甚至更多位）时，由于只有5个bit负责此事，相当于令$k$对32取模，取模结果为实际移动位数。同理数据类型为64位时，系统（应该会）“安排”6个bit负责记录移位的$k$值，相当于令$k$对64取模。</p>
+<h1 id="前中后缀表达式"><a href="#前中后缀表达式" class="headerlink" title="前中后缀表达式"></a>前中后缀表达式</h1><p>平时计算所使用的表达式都是中缀表达式，如</p>
+<img src="/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86/%E8%A1%A8%E8%BE%BE%E5%BC%8F_1.png" class>
+
+<p>而这样的带有括号以及区分优先级的表达式对计算机而言却难以计算</p>
+<p>于是考虑将其转为前缀表达式（波兰式）或后缀表达式（逆波兰式）</p>
+<h2 id="转换"><a href="#转换" class="headerlink" title="转换"></a>转换</h2><p>以中缀表达式</p>
+<img src="/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86/%E8%A1%A8%E8%BE%BE%E5%BC%8F_2.png" class>
+
+<p>为例，考虑将其转换为前缀表达式</p>
+<h3 id="方法一：直接转换"><a href="#方法一：直接转换" class="headerlink" title="方法一：直接转换"></a>方法一：直接转换</h3><p>1.首先按运算顺序层层给表达式加上括号</p>
+<img src="/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86/%E8%A1%A8%E8%BE%BE%E5%BC%8F_3.png" class>
+
+<p>2.从最里层括号开始，忽略括号，符号在前，数字在后</p>
+<img src="/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86/%E8%A1%A8%E8%BE%BE%E5%BC%8F_4.png" class>
+
+<hr>
+<p>再考虑将其转换为后缀表达式</p>
+<p>1.首先按运算顺序层层给表达式加上括号</p>
+<img src="/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86/%E8%A1%A8%E8%BE%BE%E5%BC%8F_3.png" class>
+
+<p>2.从最里层括号开始，忽略括号，数字在前，符号在后</p>
+<img src="/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86/%E8%A1%A8%E8%BE%BE%E5%BC%8F_5.png" class>
+
+<h3 id="方法二：利用表达式树"><a href="#方法二：利用表达式树" class="headerlink" title="方法二：利用表达式树"></a>方法二：利用表达式树</h3><p>将中缀表达式转换为表达式树，叶子节点是数值，非叶子节点为符号。则先序遍历、中序遍历与后序遍历分别对应前缀表达式、中缀表达式与后缀表达式</p>
+<p>建树时，一般选择根节点为优先级最低且居于表达式正中的符号</p>
+<img src="/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86/%E8%A1%A8%E8%BE%BE%E5%BC%8F_6.png" class>
+
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>对于任意两种类型的表达式间相互转换，均可使用栈实现</p>
+<p>只需分别定义一个操作数栈和操作符栈，规定好各符号在栈内外优先级即可</p>
+<h1 id="Warshall算法"><a href="#Warshall算法" class="headerlink" title="Warshall算法"></a>Warshall算法</h1><p>1962年，S.Warshall提出了一个计算传递闭包关系矩阵的有效方法，可以在计算机上编程实现</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Warshall</span><span class="params">(<span class="keyword">int</span> m[][])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; n;j++)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)</span><br><span class="line">            <span class="keyword">if</span> (m[i][j])</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>;k &lt; n;k++)</span><br><span class="line">                    m[i][k] = m[i][k] | m[j][k];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span>** _Matrix;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Enter matrix size:&quot;</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    _Matrix = <span class="keyword">new</span> <span class="keyword">int</span>* [n];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++) _Matrix[i] = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Enter the elements line by line:&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++) <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; n;j++) <span class="built_in">cin</span> &gt;&gt; _Matrix[i][j];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Warshall</span><span class="params">(<span class="keyword">int</span>** m)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; n;j++)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)</span><br><span class="line">            <span class="keyword">if</span> (m[i][j])</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>;k &lt; n;k++)</span><br><span class="line">                    m[i][k] = m[i][k] | m[j][k];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Print</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; n;j++) <span class="built_in">cout</span> &lt;&lt; _Matrix[i][j] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Init();</span><br><span class="line">    Warshall(_Matrix);</span><br><span class="line">    Print();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="声明解释器"><a href="#声明解释器" class="headerlink" title="声明解释器"></a>声明解释器</h1><h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>用来解释声明的一个小玩意</p>
+<p>作用：输入一个声明，程序解释该声明</p>
+<img src="/2021/10/27/%E9%9B%B6%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86/%E5%A3%B0%E6%98%8E%E8%A7%A3%E6%9E%90.png" class>
+
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctype.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXTOKENS   100							<span class="comment">/* 一条声明中最大标记数量 */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXTOKENLEN 64							<span class="comment">/* 每个标记最大长度 */</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">type_tag</span> &#123;</span> TYPE, QUALIFIER, IDENTIFIER &#125;;	<span class="comment">/* 定义类型标签，包括标识符、限定符、类型符 */</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">token</span> &#123;</span>									<span class="comment">/* 声明一个标记结构，其中type是枚举变量中的类型 */</span></span><br><span class="line">    <span class="keyword">char</span> type;</span><br><span class="line">    <span class="keyword">char</span> <span class="built_in">string</span>[MAXTOKENLEN];					<span class="comment">/* 类型的名字，例如int, double */</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> top = <span class="number">-1</span>;									<span class="comment">/* 栈顶 */</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">token</span> <span class="title">stack</span>[<span class="title">MAXTOKENS</span>];</span>					</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">token</span> <span class="title">this</span>;</span>								<span class="comment">/* 最近读入的标记 */</span></span><br><span class="line"></span><br><span class="line"><span class="function">struct token <span class="title">pop</span><span class="params">( <span class="keyword">void</span> )</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">stack</span>[top--];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">( struct token t )</span> </span>&#123;</span><br><span class="line">    <span class="built_in">stack</span>[++top] = t;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 确认当前读入标志的类型 */</span></span><br><span class="line"><span class="function"><span class="keyword">enum</span> type_tag <span class="title">classify_string</span><span class="params">( <span class="keyword">void</span> )</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> *s = <span class="keyword">this</span>.<span class="built_in">string</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ( !<span class="built_in">strcmp</span>( s, <span class="string">&quot;const&quot;</span> ) ) &#123;</span><br><span class="line">        <span class="built_in">strcpy</span>( s, <span class="string">&quot;read-only&quot;</span> );</span><br><span class="line">        <span class="keyword">return</span> QUALIFIER;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> ( !<span class="built_in">strcmp</span>( s, <span class="string">&quot;volatile&quot;</span> ) ) <span class="keyword">return</span> QUALIFIER;</span><br><span class="line">    <span class="keyword">if</span> ( !<span class="built_in">strcmp</span>( s, <span class="string">&quot;void&quot;</span> ) )     <span class="keyword">return</span> TYPE;</span><br><span class="line">    <span class="keyword">if</span> ( !<span class="built_in">strcmp</span>( s, <span class="string">&quot;signed&quot;</span> ) )   <span class="keyword">return</span> TYPE;</span><br><span class="line">    <span class="keyword">if</span> ( !<span class="built_in">strcmp</span>( s, <span class="string">&quot;unsigned&quot;</span> ) ) <span class="keyword">return</span> TYPE;</span><br><span class="line">    <span class="keyword">if</span> ( !<span class="built_in">strcmp</span>( s, <span class="string">&quot;char&quot;</span> ) )     <span class="keyword">return</span> TYPE;</span><br><span class="line">    <span class="keyword">if</span> ( !<span class="built_in">strcmp</span>( s, <span class="string">&quot;short&quot;</span> ) )    <span class="keyword">return</span> TYPE;</span><br><span class="line">    <span class="keyword">if</span> ( !<span class="built_in">strcmp</span>( s, <span class="string">&quot;int&quot;</span> ) )      <span class="keyword">return</span> TYPE;</span><br><span class="line">    <span class="keyword">if</span> ( !<span class="built_in">strcmp</span>( s, <span class="string">&quot;long&quot;</span> ) )     <span class="keyword">return</span> TYPE;</span><br><span class="line">    <span class="keyword">if</span> ( !<span class="built_in">strcmp</span>( s, <span class="string">&quot;float&quot;</span> ) )    <span class="keyword">return</span> TYPE;</span><br><span class="line">    <span class="keyword">if</span> ( !<span class="built_in">strcmp</span>( s, <span class="string">&quot;double&quot;</span> ) )   <span class="keyword">return</span> TYPE;</span><br><span class="line">    <span class="keyword">if</span> ( !<span class="built_in">strcmp</span>( s, <span class="string">&quot;struct&quot;</span> ) )   <span class="keyword">return</span> TYPE;</span><br><span class="line">    <span class="keyword">if</span> ( !<span class="built_in">strcmp</span>( s, <span class="string">&quot;union&quot;</span> ) )    <span class="keyword">return</span> TYPE;</span><br><span class="line">    <span class="keyword">if</span> ( !<span class="built_in">strcmp</span>( s, <span class="string">&quot;enum&quot;</span> ) )     <span class="keyword">return</span> TYPE;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> IDENTIFIER;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 从标准输入读入一个标记 */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">gettoken</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> *p = <span class="keyword">this</span>.<span class="built_in">string</span>;</span><br><span class="line">    <span class="keyword">while</span> ( ( *p = getchar() ) == <span class="string">&#x27; &#x27;</span> )</span><br><span class="line">        ;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ( <span class="built_in">isalnum</span>( *p ) ) &#123;</span><br><span class="line">        <span class="keyword">while</span> ( <span class="built_in">isalnum</span>( *++p = getchar() ) )</span><br><span class="line">            ;</span><br><span class="line">        ungetc( *p, <span class="built_in">stdin</span> );</span><br><span class="line">        *p = <span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">        <span class="keyword">this</span>.type = classify_string();</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ( *p == <span class="string">&#x27;*&#x27;</span> ) &#123;</span><br><span class="line">        <span class="built_in">strcpy</span>( <span class="keyword">this</span>.<span class="built_in">string</span>, <span class="string">&quot;pointer to&quot;</span> );</span><br><span class="line">        <span class="keyword">this</span>.type = <span class="string">&#x27;*&#x27;</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.<span class="built_in">string</span>[<span class="number">1</span>] = <span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">    <span class="keyword">this</span>.type = *p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">read_to_first_identifier</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    gettoken();</span><br><span class="line">    <span class="keyword">while</span> ( <span class="keyword">this</span>.type != IDENTIFIER ) &#123;</span><br><span class="line">        push( <span class="keyword">this</span> );</span><br><span class="line">        gettoken();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>( <span class="string">&quot;%s is &quot;</span>, <span class="keyword">this</span>.<span class="built_in">string</span> );</span><br><span class="line">    gettoken();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">deal_with_function_args</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> ( <span class="keyword">this</span>.type != <span class="string">&#x27;)&#x27;</span> )</span><br><span class="line">        gettoken();</span><br><span class="line">    gettoken();</span><br><span class="line">    <span class="built_in">printf</span>( <span class="string">&quot;function returning &quot;</span> );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">deal_with_arrays</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> ( <span class="keyword">this</span>.type == <span class="string">&#x27;[&#x27;</span> ) &#123;</span><br><span class="line">        <span class="built_in">printf</span>( <span class="string">&quot;array &quot;</span> );</span><br><span class="line">        gettoken();</span><br><span class="line">        <span class="keyword">if</span> ( <span class="built_in">isdigit</span>( <span class="keyword">this</span>.<span class="built_in">string</span>[<span class="number">0</span>] ) ) &#123;</span><br><span class="line">            <span class="built_in">printf</span>( <span class="string">&quot;0.. %d &quot;</span>, atoi(<span class="keyword">this</span>.<span class="built_in">string</span>) - <span class="number">1</span> );</span><br><span class="line">            gettoken();</span><br><span class="line">        &#125;</span><br><span class="line">        gettoken();</span><br><span class="line">        <span class="built_in">printf</span>( <span class="string">&quot;of &quot;</span> );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">deal_with_any_pointers</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> ( <span class="built_in">stack</span>[top].type == <span class="string">&#x27;*&#x27;</span> ) &#123;</span><br><span class="line">        <span class="built_in">printf</span>( <span class="string">&quot;%s &quot;</span>, pop().<span class="built_in">string</span> );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">deal_with_declarator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">switch</span>( <span class="keyword">this</span>.type ) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;[&#x27;</span>:</span><br><span class="line">            deal_with_arrays();</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;(&#x27;</span>:</span><br><span class="line">            deal_with_function_args();</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    deal_with_any_pointers();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> ( top &gt;= <span class="number">0</span> ) &#123;</span><br><span class="line">        <span class="keyword">if</span> ( <span class="built_in">stack</span>[top].type == <span class="string">&#x27;(&#x27;</span> ) &#123;</span><br><span class="line">            pop();</span><br><span class="line">            gettoken();</span><br><span class="line">            deal_with_declarator();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> </span><br><span class="line">            <span class="built_in">printf</span>( <span class="string">&quot;%s &quot;</span>, pop().<span class="built_in">string</span> );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    read_to_first_identifier();</span><br><span class="line">    deal_with_declarator();</span><br><span class="line">    <span class="built_in">printf</span>( <span class="string">&quot;\n&quot;</span> );</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fez@papyruszzz:~$ ./cdecl</span><br><span class="line">int *<span class="built_in"> const </span>(*next[])()</span><br><span class="line">next is<span class="built_in"> array </span>of pointer to function returning read-only pointer to<span class="built_in"> int </span></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/10/27/APUE%E4%B9%A0%E9%A2%98/" rel="prev" title="APUE-习题">
+                  <i class="fa fa-chevron-left"></i> APUE-习题
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/10/27/GameTheory/" rel="next" title="GameTheory">
+                  GameTheory <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FEZ</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">383k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">5:48</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+      <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
