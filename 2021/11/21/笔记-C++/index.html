@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.0.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+
+  <meta name="description" content="C++面向对象高级编程防卫式声明1234#ifndef __MYSTRING__#define __MYSTRING__...#endif  内联函数如果函数在class body内定义完成，便自动成为inline候选人 构造函数初始化尽量使用initialization list初始化 一个变量数值的设定有两个阶段，初始化阶段和赋值阶段。initialization list是第一阶段设定，在花">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++笔记">
+<meta property="og:url" content="http://example.com/2021/11/21/%E7%AC%94%E8%AE%B0-C++/index.html">
+<meta property="og:site_name" content="FEZ的博客">
+<meta property="og:description" content="C++面向对象高级编程防卫式声明1234#ifndef __MYSTRING__#define __MYSTRING__...#endif  内联函数如果函数在class body内定义完成，便自动成为inline候选人 构造函数初始化尽量使用initialization list初始化 一个变量数值的设定有两个阶段，初始化阶段和赋值阶段。initialization list是第一阶段设定，在花">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2021/11/21/%E7%AC%94%E8%AE%B0-C++/Users/戒指王/AppData/Roaming/Typora/typora-user-images/image-20211205205844770.png">
+<meta property="og:image" content="http://example.com/2021/11/21/%E7%AC%94%E8%AE%B0-C++/Users/戒指王/AppData/Roaming/Typora/typora-user-images/image-20211205213857518.png">
+<meta property="article:published_time" content="2021-11-21T02:24:23.000Z">
+<meta property="article:modified_time" content="2021-12-06T02:58:55.230Z">
+<meta property="article:author" content="FEZ">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/11/21/%E7%AC%94%E8%AE%B0-C++/Users/戒指王/AppData/Roaming/Typora/typora-user-images/image-20211205205844770.png">
+
+
+<link rel="canonical" href="http://example.com/2021/11/21/%E7%AC%94%E8%AE%B0-C++/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>C++笔记 | FEZ的博客</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?7035c3f4ba1040e0d1972d11a3943ebb";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">FEZ的博客</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">C++面向对象高级编程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%B2%E5%8D%AB%E5%BC%8F%E5%A3%B0%E6%98%8E"><span class="nav-number">1.1.</span> <span class="nav-text">防卫式声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">内联函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">1.3.</span> <span class="nav-text">构造函数初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92"><span class="nav-number">1.4.</span> <span class="nav-text">参数传递</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#const%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0"><span class="nav-number">1.5.</span> <span class="nav-text">const成员函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AB%E6%9C%89%E6%8C%87%E9%92%88%E7%9A%84%E7%B1%BB"><span class="nav-number">1.6.</span> <span class="nav-text">含有指针的类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#array-new%E4%B8%80%E5%AE%9A%E8%A6%81%E6%90%AD%E9%85%8Darray-delete"><span class="nav-number">1.7.</span> <span class="nav-text">array new一定要搭配array delete</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E4%B8%8E%E6%9E%90%E6%9E%84"><span class="nav-number">1.8.</span> <span class="nav-text">构造与析构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%85%BC%E8%B0%88%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">C++程序设计兼谈对象模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2%E5%87%BD%E6%95%B0"><span class="nav-number">2.1.</span> <span class="nav-text">转换函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#non-explicit-one-argument-constructor"><span class="nav-number">2.2.</span> <span class="nav-text">non-explicit one argument constructor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#explicit%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">2.3.</span> <span class="nav-text">explicit关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pointer-like-classes"><span class="nav-number">2.4.</span> <span class="nav-text">pointer-like classes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#function-like-classes%EF%BC%88%E4%BB%BF%E5%87%BD%E6%95%B0%EF%BC%89"><span class="nav-number">2.5.</span> <span class="nav-text">function-like classes（仿函数）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#function-template-%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF"><span class="nav-number">2.6.</span> <span class="nav-text">function template 函数模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#member-template-%E6%88%90%E5%91%98%E6%A8%A1%E6%9D%BF"><span class="nav-number">2.7.</span> <span class="nav-text">member template 成员模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#specialization-%E7%89%B9%E5%8C%96"><span class="nav-number">2.8.</span> <span class="nav-text">specialization 特化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#partial-specialization-%E5%81%8F%E7%89%B9%E5%8C%96"><span class="nav-number">2.9.</span> <span class="nav-text">partial specialization 偏特化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#template-template-parameter-%E6%A8%A1%E6%9D%BF%E6%A8%A1%E6%9D%BF%E5%8F%82%E6%95%B0"><span class="nav-number">2.10.</span> <span class="nav-text">template template parameter 模板模板参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#variadic-templates-%E6%95%B0%E9%87%8F%E4%B8%8D%E5%AE%9A%E7%9A%84%E6%A8%A1%E6%9D%BF%E5%8F%82%E6%95%B0"><span class="nav-number">2.11.</span> <span class="nav-text">variadic templates 数量不定的模板参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference-%E5%BC%95%E7%94%A8"><span class="nav-number">2.12.</span> <span class="nav-text">reference 引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8Evptr%E5%92%8Cvtbl"><span class="nav-number">2.13.</span> <span class="nav-text">关于vptr和vtbl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8EDynamic-Binding"><span class="nav-number">2.14.</span> <span class="nav-text">关于Dynamic Binding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%88%E8%B0%88const"><span class="nav-number">2.15.</span> <span class="nav-text">谈谈const</span></a></li></ol></li></ol></div>
+        </section>
+        <!--/noindex-->
+
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="FEZ"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">FEZ</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </section>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/21/%E7%AC%94%E8%AE%B0-C++/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="FEZ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FEZ的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C++笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-11-21 10:24:23" itemprop="dateCreated datePublished" datetime="2021-11-21T10:24:23+08:00">2021-11-21</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-12-06 10:58:55" itemprop="dateModified" datetime="2021-12-06T10:58:55+08:00">2021-12-06</time>
+      </span>
+
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>12k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>11 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="C-面向对象高级编程"><a href="#C-面向对象高级编程" class="headerlink" title="C++面向对象高级编程"></a>C++面向对象高级编程</h1><h2 id="防卫式声明"><a href="#防卫式声明" class="headerlink" title="防卫式声明"></a>防卫式声明</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> __MYSTRING__</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __MYSTRING__</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="内联函数"><a href="#内联函数" class="headerlink" title="内联函数"></a>内联函数</h2><p>如果函数在<code>class body</code>内定义完成，便自动成为<code>inline</code>候选人</p>
+<h2 id="构造函数初始化"><a href="#构造函数初始化" class="headerlink" title="构造函数初始化"></a>构造函数初始化</h2><p>尽量使用<code>initialization list</code>初始化</p>
+<p>一个变量数值的设定有两个阶段，初始化阶段和赋值阶段。<code>initialization list</code>是第一阶段设定，在花括号内用<code>=</code>符号赋值是第二阶段</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> h, w;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Rectangle(<span class="keyword">int</span> height, <span class="keyword">int</span> width)</span><br><span class="line">        :h(height), w(width) &#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h2><p>传引用，返回引用，如果可以的话</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span> <span class="built_in">complex</span>&amp; </span><br><span class="line">__doap1(<span class="built_in">complex</span>* ths, <span class="keyword">const</span> <span class="built_in">complex</span>&amp; r)</span><br><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">return</span> *ths;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>传递者无需知道接收者是以<code>reference</code>形式接收</p>
+<h2 id="const成员函数"><a href="#const成员函数" class="headerlink" title="const成员函数"></a>const成员函数</h2><p>总是应该考虑类的成员函数是否改变类的数据成员。若不改变，应显式地用<code>const</code>关键字限制函数行为</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">person</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> age;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> <span class="keyword">this</span>-&gt;age; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="含有指针的类"><a href="#含有指针的类" class="headerlink" title="含有指针的类"></a>含有指针的类</h2><p>如果指针是类的成员，则应仔细考虑拷贝构造函数，赋值函数和析构函数的编写，避免浅拷贝</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">String</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    String(<span class="keyword">const</span> <span class="keyword">char</span> *cstr = <span class="number">0</span>);</span><br><span class="line">    String(<span class="keyword">const</span> String&amp; str);</span><br><span class="line">    String&amp; <span class="keyword">operator</span> =(<span class="keyword">const</span> String&amp; str);</span><br><span class="line">    ~String();</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">char</span> *m_data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于赋值运算符重载函数，一定要先检查是否自我赋值</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span> String&amp; String::<span class="keyword">operator</span>=(<span class="keyword">const</span> String&amp; str)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">this</span> == &amp;str)</span><br><span class="line">		<span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">delete</span>[] m_data;</span><br><span class="line">	m_data = <span class="keyword">new</span> <span class="keyword">char</span>[ <span class="built_in">strlen</span>(str.m_data) + <span class="number">1</span>];</span><br><span class="line">	<span class="built_in">strcpy</span>(m_data, str.m_data);</span><br><span class="line">	<span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="array-new一定要搭配array-delete"><a href="#array-new一定要搭配array-delete" class="headerlink" title="array new一定要搭配array delete"></a>array new一定要搭配array delete</h2><p>就是说，用<code>new</code>关键词动态分配了一个数组，释放内存时一定得用<code>delete []</code>释放整个数组。如果没有加上中括号，可能会导致内存泄漏。</p>
+<p>为什么只是<strong>可能</strong>？例如你动态分配N个某种类型的对象，它们是连在一起放在内存的某一块地方，负责管理的数据结构会记录这一块存的东西占了多大空间，存了多少个对象等等。所以当使用<code>delete</code>释放内存时，无论加不加中括号，N个对象的空间都会被回收，内存泄漏并不是发生在这里。试想，若这N个对象每个也都动态申请了内存，那么每个对象死亡时按理应该调用析构函数释放内存。如果使用<code>delete[]</code>，编译器知道释放的是一个数组，编译器会分别调用这N个对象的析构函数，确保每个函数动态申请的空间都被释放掉，没有内存泄漏；但如果没有加上中括号，编译器以为释放的不是数组而只是一个元素，于是只会调用数组里第一个元素的析构函数，剩余元素的析构函数没有调用，它们所动态申请的空间也因此没有释放，导致了内存泄漏。</p>
+<p>综上，如果动态申请一个对象数组，如果每个对象并没有动态申请空间，那么就算释放数组时忘记加中括号也不会有啥实际问题，但若每个对象单独又申请了空间，那么除了第一个元素外，剩余元素的动态申请的空间都没有回收，造成了泄漏</p>
+<h2 id="构造与析构"><a href="#构造与析构" class="headerlink" title="构造与析构"></a>构造与析构</h2><p>构造由内而外，析构由外而内</p>
+<h1 id="C-程序设计兼谈对象模型"><a href="#C-程序设计兼谈对象模型" class="headerlink" title="C++程序设计兼谈对象模型"></a>C++程序设计兼谈对象模型</h1><h2 id="转换函数"><a href="#转换函数" class="headerlink" title="转换函数"></a>转换函数</h2><p>转换函数能将一种类型的对象转换为另一种类型的对象，试想，你编写了一个分数类(Fraction)，该类成员变量为分子和分母，将该类的对象转换为一个浮点数用于算术运算是否是比较合乎情理的呢？于是，我们在类中添加<code>operator double()</code>转换函数，负责在需要时将该类的对象转换为<code>double</code>类型的对象</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fraction</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	Fraction(duoble num, <span class="keyword">double</span> den = <span class="number">1</span>)</span><br><span class="line">	 : m_numerator(num), m_denominator(den) &#123;&#125;</span><br><span class="line">    </span><br><span class="line">	<span class="function"><span class="keyword">operator</span> <span class="title">double</span> <span class="params">()</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function">	</span>&#123; <span class="keyword">return</span> m_numerator / m_denominator; &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="keyword">double</span> m_numerator;		<span class="comment">//分子</span></span><br><span class="line">	<span class="keyword">double</span> m_denominator;	<span class="comment">//分母</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在编写如上转换函数后，我们可以将此类对象直接用于算数运算</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Fraction <span class="title">f</span><span class="params">(<span class="number">3.0</span>, <span class="number">5.0</span>)</span></span>;</span><br><span class="line"><span class="keyword">double</span> d = <span class="number">4</span> + f;</span><br></pre></td></tr></table></figure>
+
+<p>当执行<code>d = 4 + f</code>语句时，编译器首先查看是否存在一个操作符重载函数，它的第一个参数是整数（或浮点数），第二个参数是<code>Fraction</code>类型的对象，没有这么个函数。于是又找是否存在转换函数，将<code>Fraction</code>类型的对象转换为<code>double</code>类型对象，找到了，于是调用该函数，将其转换为一个浮点值参与运算</p>
+<p>需注意，<code>operator double() const</code>函数没有返回值</p>
+<h2 id="non-explicit-one-argument-constructor"><a href="#non-explicit-one-argument-constructor" class="headerlink" title="non-explicit one argument constructor"></a>non-explicit one argument constructor</h2><p>C++中既然存在上面提到的转换函数这种“把自己的类型对象转换为别的类型对象”的方法，也有“将其他类型对象转换为自己类型对象”的方法</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fraction</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	Fraction(duoble num, <span class="keyword">double</span> den = <span class="number">1</span>)</span><br><span class="line">	 : m_numerator(num), m_denominator(den) &#123;&#125;</span><br><span class="line">    </span><br><span class="line">	Fraction <span class="keyword">operator</span>+(<span class="keyword">const</span> Fraction f)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> Fraciton(...);</span><br><span class="line">	&#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="keyword">double</span> m_numerator;		<span class="comment">//分子</span></span><br><span class="line">	<span class="keyword">double</span> m_denominator;	<span class="comment">//分母</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">Fraction <span class="title">f</span><span class="params">(<span class="number">3</span>, <span class="number">5</span>)</span></span>;</span><br><span class="line">    Fraction d2 = f + <span class="number">4</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>首先观察该类的构造函数，有两个参数，但第二个有默认值，实际使用的时候可以只指明第一个参数值即可。可以说这个构造函数有两个<code>parameter</code>，而只有第一个参数是没有指明默认值的(<code>non-explicit one argument</code>)。再考虑<code>d2 = f + 4;</code>，<code>f</code>位于加号的左边，看起来有点满足<code>Fraction</code>类的加号重载函数，但是加号重载函数要求的参数是一个<code>Fraction</code>类的对象，而此时能作为参数的只有一个<code>4</code>，那能不能考虑将<code>4</code>从<code>int</code>类型转换为<code>Fraction</code>类型呢？整数<code>4</code>可以看作分数<code>4/1</code>，这符合我们的常识，编译器用<code>Fraction</code>类的构造函数，将<code>4</code>作为第一个参数，而第二个参数取默认值<code>1</code>，将原本<code>int</code>类的对象<code>4</code>转换为一个<code>Fraction</code>对象，于是加法得以进行</p>
+<p>（以上解释是侯捷老师在课程中的解释，但说实话我还是不太明白编译器为啥就知道默默地去用构造函数来进行类型转换）</p>
+<p>再看下述代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fraction</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	Fraction(duoble num, <span class="keyword">double</span> den = <span class="number">1</span>)</span><br><span class="line">	 : m_numerator(num), m_denominator(den) &#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">operator</span> <span class="title">double</span> <span class="params">()</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function">	</span>&#123; <span class="keyword">return</span> m_numerator / m_denominator; &#125;</span><br><span class="line">    </span><br><span class="line">	Fraction <span class="keyword">operator</span>+(<span class="keyword">const</span> Fraction f)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> Fraciton(...);</span><br><span class="line">	&#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="keyword">double</span> m_numerator;		<span class="comment">//分子</span></span><br><span class="line">	<span class="keyword">double</span> m_denominator;	<span class="comment">//分母</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">Fraction <span class="title">f</span><span class="params">(<span class="number">3</span>, <span class="number">5</span>)</span></span>;</span><br><span class="line">    Fraction d2 = f + <span class="number">4</span>; <span class="comment">//[Error]ambiguous</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里main函数里的加法，将<code>f</code>转换为<code>double</code>类型对象也走得通，将数值<code>4</code>转换为<code>Fraction</code>类型对象也走得通，语句具有二义性，因此编译报错。但如果改变加法顺序</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Fraction</span> d<span class="number">2</span> = <span class="number">4</span> + f;</span><br></pre></td></tr></table></figure>
+
+<p>分析知此情形只能是将<code>f</code>转换为<code>double</code>类型</p>
+<h2 id="explicit关键字"><a href="#explicit关键字" class="headerlink" title="explicit关键字"></a>explicit关键字</h2><p>explicit的意思是“清楚明白的，明确的，详述的；直截了当的，坦率的”。将其用于修饰构造函数，告诉编译器，“这个构造函数只能用于它的本职工作——在创建该类对象时进行初始化，别偷偷拿去搞什么类型转换的事情”。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fraction</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">explicit</span> <span class="title">Fraction</span><span class="params">(duoble num, <span class="keyword">double</span> den = <span class="number">1</span>)</span></span></span><br><span class="line">	 : m_numerator(num), m_denominator(den) &#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">operator</span> <span class="title">double</span> <span class="params">()</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function">	</span>&#123; <span class="keyword">return</span> m_numerator / m_denominator; &#125;</span><br><span class="line">    </span><br><span class="line">	Fraction <span class="keyword">operator</span>+(<span class="keyword">const</span> Fraction f)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> Fraciton(...);</span><br><span class="line">	&#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="keyword">double</span> m_numerator;		<span class="comment">//分子</span></span><br><span class="line">	<span class="keyword">double</span> m_denominator;	<span class="comment">//分母</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">Fraction <span class="title">f</span><span class="params">(<span class="number">3</span>, <span class="number">5</span>)</span></span>;</span><br><span class="line">    Fraction d2 = f + <span class="number">4</span>; <span class="comment">//[Error]conversion from &#x27;double&#x27; to &#x27;Fraction&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>加上<code>explicit</code>关键字后，由于参数类型不匹配，加号运算符重载这条路走不通了，因此<code>f + 4</code>唯一合理的解释就是将<code>f</code>通过转换函数转换为<code>double</code>类型的对象</p>
+<h2 id="pointer-like-classes"><a href="#pointer-like-classes" class="headerlink" title="pointer-like classes"></a>pointer-like classes</h2><p>以智能指针为例</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">shared_ptr</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	T&amp; <span class="keyword">operator</span>*() <span class="keyword">const</span></span><br><span class="line">	&#123; <span class="keyword">return</span> *px; &#125;</span><br><span class="line">	</span><br><span class="line">	T* <span class="keyword">operator</span>-&gt;() <span class="keyword">const</span></span><br><span class="line">	&#123; <span class="keyword">return</span> px; &#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">shared_ptr</span>(T* p): px(p) &#123; &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	T*		px;</span><br><span class="line">	<span class="keyword">long</span>*	pn;</span><br><span class="line">...	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>智能指针用起来得像一个指针，所以得重载以上两个运算符。值得注意的是<code>-&gt;</code>运算符的重载，试想，若用户如此使用智能指针</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">shared_ptr</span>&lt;Foo&gt; <span class="title">sp</span><span class="params">(<span class="keyword">new</span> Foo)</span></span>;</span><br><span class="line">sp-&gt;method();</span><br></pre></td></tr></table></figure>
+
+<p>实际上用户是想</p>
+<figure class="highlight monkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">px-&gt;<span class="function"><span class="keyword">method</span>(</span>);</span><br></pre></td></tr></table></figure>
+
+<p>但观察我们的<code>-&gt;</code>重载函数发现，重载函数已经将<code>-&gt;</code>运算符用掉了，让人产生疑惑。侯捷老师对此的解释是，<code>-&gt;</code>运算符很特别，它作用下去得到的结果会继续作用下去，因此该运算法能继续为<code>px</code>所用，上述的写法是行得通的</p>
+<p>那不禁追问，为什么<code>-&gt;</code>运算符就恰好能行得通呢？答案是：语言是人创造的，语言的创造者想到了要这么用<code>-&gt;</code>运算符，就在底层实现了对如此使用的支持</p>
+<h2 id="function-like-classes（仿函数）"><a href="#function-like-classes（仿函数）" class="headerlink" title="function-like classes（仿函数）"></a>function-like classes（仿函数）</h2><p>说实话这一节学得并不很懂，一个仿函数的实例如下</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">identity</span> :</span> <span class="keyword">public</span> unary_function&lt;T, T&gt; &#123;</span><br><span class="line">	<span class="keyword">const</span> T&amp;</span><br><span class="line">	<span class="keyword">operator</span>() (<span class="keyword">const</span> T&amp; x) <span class="keyword">const</span> &#123; <span class="keyword">return</span> x; &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>使用它</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">double</span> d1 = <span class="number">5</span>;</span><br><span class="line"><span class="built_in">double</span> d2 = identity&lt;<span class="built_in">double</span>&gt;()(d1);</span><br></pre></td></tr></table></figure>
+
+<p>第一对括号是生成<code>identity&lt;double&gt;</code>类型的临时对象，第二对括号里是函数的参数。语句将<code>d2</code>的值设为<code>5</code></p>
+<h2 id="function-template-函数模板"><a href="#function-template-函数模板" class="headerlink" title="function template 函数模板"></a>function template 函数模板</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">inline</span></span><br><span class="line"><span class="function"><span class="keyword">const</span> T&amp; <span class="title">min</span><span class="params">(<span class="keyword">const</span> T&amp; a, <span class="keyword">const</span> T&amp; b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> b &lt; a? b : a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>函数模板在使用时可以不指定类型（当然，指定也可以），编译器会自动进行<strong>实参推导</strong><code>argument deduction</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">stone r1(2, 3), r2(1, 4), r3;</span><br><span class="line">r3 = min(r1, r2);</span><br></pre></td></tr></table></figure>
+
+<h2 id="member-template-成员模板"><a href="#member-template-成员模板" class="headerlink" title="member template 成员模板"></a>member template 成员模板</h2><p>一个模板内部又有模板，则里面嵌套这个就是成员模板。常用于构造函数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T1</span>, <span class="keyword">class</span> <span class="title">T2</span>&gt;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">pair</span> &#123;</span></span><br><span class="line">	T1 first;</span><br><span class="line">	T2 second;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">pair</span>(): first(T1()), second(T2()) &#123;&#125;</span><br><span class="line">	pari(<span class="keyword">const</span> T1&amp; a, <span class="keyword">const</span> T2&amp; b)</span><br><span class="line">		: first(a), second(b) &#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">U1</span>, <span class="keyword">class</span> <span class="title">U2</span>&gt;</span></span><br><span class="line">	<span class="built_in">pair</span>(<span class="keyword">const</span> <span class="built_in">pair</span>&lt;U1, U2&gt;&amp; p)</span><br><span class="line">		: first(p.first), second(p.second) &#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>试想这么一种情形：有两个基类，每个基类分别派生出一个派生类</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base1</span> &#123;</span>&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Derived1</span>:</span> <span class="keyword">public</span> Base1 &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base2</span> &#123;</span>&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Derived2</span>:</span> <span class="keyword">public</span> Base1 &#123;&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">pair</span>&lt;Derived1, Derived2&gt; p;</span><br><span class="line">pair&lt;Base1, Base2&gt; p2(p);</span><br><span class="line"><span class="comment">//等价于pair&lt;Base1, Base2&gt; p2(pair&lt;Drived1, Drived2&gt;());</span></span><br></pre></td></tr></table></figure>
+
+<p>用对象<code>p</code>作为参数构造<code>p2</code>，<code>p2</code>调用的是成员模板的构造函数，可以这么做吗？用派生类对象给基类对象赋值？可以，这称为向上造型<code>up-cast</code></p>
+<h2 id="specialization-特化"><a href="#specialization-特化" class="headerlink" title="specialization 特化"></a>specialization 特化</h2><p>特化与泛化整好相反，特化指定类型</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这是泛化</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">key</span>&gt;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">hash</span> &#123;</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//这是特化</span></span><br><span class="line"><span class="keyword">template</span> &lt;&gt;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">hash</span>&lt;</span><span class="keyword">char</span>&gt; &#123;</span><br><span class="line">	<span class="function"><span class="keyword">size_t</span> <span class="title">operator</span><span class="params">()</span> <span class="params">(<span class="keyword">char</span> x)</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> x; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用特化结构对象</span></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; hash&lt;<span class="keyword">char</span>&gt;()(<span class="string">&#x27;a&#x27;</span>) &lt;&lt; <span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+
+<p>关键词<code>template</code>后面接一对空的尖括号</p>
+<p>函数名后加上一对尖括号，尖括号中指定需要特化的类型</p>
+<h2 id="partial-specialization-偏特化"><a href="#partial-specialization-偏特化" class="headerlink" title="partial specialization 偏特化"></a>partial specialization 偏特化</h2><p>有两种类型的偏特化</p>
+<p>1）个数的偏</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这是没有特化的模板</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> Alloc&gt;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">vector</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	...</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//这是指定了一个泛化类型的偏特化</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Alloc&gt;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">vector</span>&lt;</span><span class="keyword">bool</span>, Alloc&gt;</span><br><span class="line">&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>另一个例子</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这是没有特化的模板</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T1</span>, <span class="keyword">class</span> <span class="title">T2</span>&gt;</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">sample</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	...</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//这是指定了一个泛化类型的偏特化</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T1</span>&gt;</span></span><br><span class="line"><span class="function">class <span class="title">sample</span><span class="params">(T1, <span class="keyword">int</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>2）范围的偏</p>
+<p>先看例子</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//没有特化</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	...</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//该类模板的范围从T类型特化到了T的指针类型，范围缩小了</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span>&lt;</span>T*&gt;</span><br><span class="line">&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C&lt;string&gt; obj1<span class="comment">;</span></span><br><span class="line">C&lt;string*&gt; obj2<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+
+<p>使用时，若实际类型不是指针，则生成的是没有特化的类模板的对象<code>obj1</code>，若类型是指针，则生成的是范围特化了的类模板的对象<code>obj2</code>；注意，没特化的类模板和特化了的类模板看起来很像，但实际完全是两个东西，没啥关联</p>
+<h2 id="template-template-parameter-模板模板参数"><a href="#template-template-parameter-模板模板参数" class="headerlink" title="template template parameter 模板模板参数"></a>template template parameter 模板模板参数</h2><p>一句话，一个模板的参数又是一个模板</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="class"><span class="keyword">class</span> <span class="title">SmartPtr</span>&gt;</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">XCls</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	SmartPtr&lt;T&gt; sp;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	XCls(): sp(<span class="keyword">new</span> T) &#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>使用</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">XCls&lt;<span class="built_in">string</span>, <span class="built_in">shared_ptr</span>&gt; p1;</span><br></pre></td></tr></table></figure>
+
+<p>注意到模板的参数和模板的参数模板的参数都是T。这样，当模板的第一个参数T确定时，参数模板的参数也随之确定，很自然就有<code>SmartPtr&lt;T&gt;</code>这样的用法</p>
+<p>模板模板参数有什么用？见下面这个例子</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;<span class="class"><span class="keyword">class</span> <span class="title">Container</span>&gt;</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">XCls</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	Container&lt;T&gt; c;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>使用</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">using</span> Lst = <span class="built_in">list</span>&lt;T, allocator&lt;T&gt;&gt;;		<span class="comment">//前两行暂时不用管</span></span><br><span class="line">	XCls&lt;<span class="built_in">string</span>, Lst&gt; mylist;</span><br></pre></td></tr></table></figure>
+
+<p>第一个参数决定存储数据类型，第二个参数决定用于存储的容器类型</p>
+<p>看另一个例子</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>, <span class="keyword">class</span> <span class="title">Sequence</span> =</span> <span class="built_in">deque</span>&lt;T&gt;&gt;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">stack</span> &#123;</span></span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">bool</span> <span class="keyword">operator</span>== &lt;&gt; (<span class="keyword">const</span> <span class="built_in">stack</span>&amp;, <span class="keyword">const</span> <span class="built_in">stack</span>&amp;);</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">bool</span> <span class="keyword">operator</span>&lt; &lt;&gt; (<span class="keyword">const</span> <span class="built_in">stack</span>&amp;, <span class="keyword">const</span> <span class="built_in">stack</span>&amp;);</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">	Sequence c; 	<span class="comment">//底层容器</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>使用</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">stack</span>&lt;<span class="keyword">int</span>, <span class="built_in">list</span>&lt;<span class="keyword">int</span>&gt;&gt; s;</span><br></pre></td></tr></table></figure>
+
+<p>注意，这个例子不是模板模板参数，即其第二个参数不是模板。在使用<code>stack</code>时，第二个参数要显示指明<code>list</code>存储的对象类型，直接绑定死了，但之前例子里的模板模板参数在使用时第二个参数是不显式指定容器的参数类型的，而是在模板代码里绑定</p>
+<h2 id="variadic-templates-数量不定的模板参数"><a href="#variadic-templates-数量不定的模板参数" class="headerlink" title="variadic templates 数量不定的模板参数"></a>variadic templates 数量不定的模板参数</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... Types&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">const</span> T&amp; firstArg, <span class="keyword">const</span> Types&amp;... args)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; firstArg &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	print(args...);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="number">7.5</span>, <span class="string">&quot;hello&quot;</span>, <span class="literal">false</span>, <span class="number">42</span>);</span><br></pre></td></tr></table></figure>
+
+<p>两点值得注意：1）<code>typename...</code>，<code>Types&amp;...</code>以及<code>args...</code>，三个点是语法的一部分，表示数目不定（0个或多个），如果想知道可变参数的个数可使用<code>sizeof...(args)</code>；2）注意到代码第一行有一个无参数的<code>print()</code>函数。当第四行有参数的<code>print()</code>不停递归调用自身时，每递归一次参数减少一个，当参数数目为零时不满足第四行的<code>print()</code>的调用要求（第四行这个函数要求至少有一个参数）。因此，若不写一个无参的<code>print()</code>，则编译出错</p>
+<p>令我有点困惑的是在使用时不指明模板类型，而是直接传递函数参数调用函数，由函数参数类型自动倒推模板参数类型？虽然确实可以运行得到正确结果，还是不太明白背后的原理</p>
+<h2 id="reference-引用"><a href="#reference-引用" class="headerlink" title="reference 引用"></a>reference 引用</h2><p>实际上，引用底层是用指针实现的，但它给人一种假象，似乎它真就是引用对象的别名</p>
+<p>定义一个对象<code>int x = 0;</code>，再用一个引用对象引用它<code>int&amp; rx = x;</code>，对象和引用实际储存在内存里两个<strong>不同</strong>的位置，而且由于引用底层是指针实现的，理论上它的大小是该机器上指针大小（一半4字节或8字节），但对象的大小可大可小，没有限制。所以理论上对象和引用的大小可以不同，地址也不同。但是，当你使用</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sizeof</span>(x) == <span class="keyword">sizeof</span>(rx);</span><br><span class="line">&amp;x == &amp;rx;</span><br></pre></td></tr></table></figure>
+
+<p>进行比较判别是，会发现这两个判等表达式总是为真。故引用提供了一种假象，好似真的只是别名，让用户用起来十分便捷。引用的一个较大用处就是函数参数可以设置为传引用。的确，引用能实现的直接用指针也能实现，但用引用实现更加优雅</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func1</span><span class="params">(Cls* pobj)</span> </span>&#123; pobj-&gt;xxx(); &#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func2</span><span class="params">(Cls  obj)</span>  </span>&#123; obj.xxx(); &#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func3</span><span class="params">(Cls&amp; obj)</span>  </span>&#123; obj.xxx(); &#125;</span><br><span class="line">...</span><br><span class="line">	Cls obj;</span><br><span class="line">	func1(&amp;obj);	<span class="comment">//接口不同</span></span><br><span class="line">	func2(obj);</span><br><span class="line">	func3(obj);</span><br></pre></td></tr></table></figure>
+
+<p>以上述代码为例，三个函数分别是传指针，传值和传参数。观察发现，传值和传引用接口相同，而传指针较为特别</p>
+<p>需注意</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">imag</span><span class="params">(<span class="keyword">const</span> <span class="keyword">double</span>&amp; im)</span> </span>&#123; ... &#125;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">imag</span><span class="params">(<span class="keyword">const</span> <span class="keyword">double</span>  im)</span> </span>&#123; ... &#125;</span><br></pre></td></tr></table></figure>
+
+<p>此两函数的函数签名<code>signature</code>被视作相同，故不能同时存在</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">imag</span><span class="params">(<span class="keyword">const</span> <span class="keyword">double</span> im)</span> <span class="keyword">const</span> </span>&#123; ... &#125;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">imag</span><span class="params">(<span class="keyword">const</span> <span class="keyword">double</span> im)</span>       </span>&#123; ... &#125;</span><br><span class="line">或</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">imag</span><span class="params">(<span class="keyword">const</span> <span class="keyword">double</span>&amp; im)</span> <span class="keyword">const</span> </span>&#123; ... &#125;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">imag</span><span class="params">(<span class="keyword">const</span> <span class="keyword">double</span>&amp; im)</span>       </span>&#123; ... &#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于这两组函数中的一组，在函数名，参数表均相同的情况下，一个函数用<code>const</code>修饰，另一个没有，故其函数签名<strong>不一样</strong>，可同时存在。老实说为啥有无<code>const</code>能区分两个几乎一模一样的函数让我感到很疑惑，我也想不到合适的例子说服自己，但侯捷老师说它们不同，我也只好先保留疑惑</p>
+<p>2021/12/5 更新：疑惑已解决，见”谈谈const“小节</p>
+<h2 id="关于vptr和vtbl"><a href="#关于vptr和vtbl" class="headerlink" title="关于vptr和vtbl"></a>关于vptr和vtbl</h2><p><img src="/2021/11/21/%E7%AC%94%E8%AE%B0-C++/Users\戒指王\AppData\Roaming\Typora\typora-user-images\image-20211205205844770.png" alt="image-20211205205844770"></p>
+<p>父类有虚函数，子类必然继承父类的虚函数。一个类有虚函数意味着什么呢？从内存的角度看，一个类有虚函数，意味着这个类存在一个<strong>虚指针</strong><code>virtual pointer</code>，所以即使一个类除了虚函数其他啥数据也没有，用<code>sizeof()</code>去测这个类的对象的大小，会得到4或8，即一个指针的大小。虚指针指向一个<strong>虚函数表</strong><code>virtual table</code>。虚函数表里是该类从父类那里继承而来的各个虚函数以及该类自己定义的新的虚函数（如果有的话）</p>
+<p>注意，假设class A有两个虚函数<code>func1(), func2()</code>，class B继承自class A，而 class C又继承自class B。自然，这三个类都有自己的虚指针，<strong>但是三个类的指针指向的是三张不同的表</strong>。假如class B只重写了<code>func1()</code>，没有重写<code>func2()</code>，那么在class B的虚函数表里，一个表项指向的是原本class A的<code>func2()</code>的地址，另一个表项是指向一个新的、class B自己重写的<code>func1()</code>的地址。class B的<code>func1()</code>和class A的<code>func1()</code>是两个<strong>完全不同</strong>的函数。同理，若class C也是只重写了继承自class B的<code>func1()</code>，却没有重写<code>func2()</code>，则在class C的虚表中，一个表项指向class C自己的<code>fun1()</code>的地址，而另一个表项则是指向继承自class B的<code>func2()</code>，而class B的<code>func2()</code>其实也是从class A继承而来，因此，实际上class C的虚表的这个表项实际上最终是指向class A的<code>func2()</code>的地址。故在此例中，实际上只有四个虚函数：class A的<code>func1(), func2()</code>，class B的<code>func2()</code>和class C的<code>func2()</code>。三张不同的虚表，而每张虚表都有一个表项是指向class A的<code>func2()</code>的地址</p>
+<p>我们可以用父类的指针指向子类的对象，因为子类对象<strong>是</strong>一个父类对象。例如有<code>animal</code>这个类，而它有<code>dog</code>这么个子类，<code>dog</code>当然<strong>是</strong><code>animal</code>，因此可以按如下方式使用，称为<code>up-cast</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;animal*&gt; myVector;</span><br><span class="line">myVector.push_back(<span class="keyword">new</span> dog());</span><br></pre></td></tr></table></figure>
+
+<p>而<code>animal</code>不一定是<code>dog</code>，因此不能用<code>dog</code>类型的指针指向<code>animal</code>类型的对象</p>
+<p>如果<code>animal</code>类有一个虚函数<code>func1()</code>，<code>dog</code>类重写了这个函数。当我们用<code>animal</code>类的指针指向<code>dog</code>类的对象，并通过这个指针调用<code>func1()</code>函数时，我们其实希望调用的是<code>dog</code>类的<code>func1()</code>函数，因此，编译器不能看到指针类型是<code>animal</code>就直接调用<code>animal</code>类型的<code>func1()</code>，而应分析指针指向的对象实际是什么类型，调用实际指向的对象类型的<code>func1()</code>。这称为<strong>动态绑定</strong><code>dynamic binding</code>，传统C语言那种函数调用称为<strong>静态绑定</strong><code>static binding</code></p>
+<h2 id="关于Dynamic-Binding"><a href="#关于Dynamic-Binding" class="headerlink" title="关于Dynamic Binding"></a>关于Dynamic Binding</h2><p>注意，只有涉及指针时才考虑是否动态绑定，例如假设class A有虚函数<code>func()</code>，class B继承自class A，并且class B重写了<code>func()</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">B b;</span><br><span class="line">A a = (A)b;</span><br><span class="line">a.func();</span><br></pre></td></tr></table></figure>
+
+<p>这不是用A类型的指针去指B类型对象，而是把B类型对象强制转换为A类型对象。因此，如果通过a去调用虚函数，调用的是<code>A::func()</code>，但如果</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">B b;</span><br><span class="line">A* a = <span class="keyword">new</span> B();</span><br><span class="line">a-&gt;func();</span><br></pre></td></tr></table></figure>
+
+<p>这种情况下，则调用的是<code>B::func()</code></p>
+<h2 id="谈谈const"><a href="#谈谈const" class="headerlink" title="谈谈const"></a>谈谈const</h2><p>这一小节解决了之前遗留的一个疑惑：两个同名同参数的函数，一个用const修饰，一个没有，它们的函数签名是<strong>不一样的</strong>，即它俩可以并存，之前我就一直搞不懂那我调用时调用的是其中哪一个</p>
+<p>注意，首先这里讨论的是类的成员函数，其次，上文所说的用const修饰是指</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="function"><span class="keyword">char</span> <span class="title">func</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>而不是</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="function"><span class="keyword">const</span> <span class="keyword">char</span> <span class="title">func</span><span class="params">()</span> </span>&#123; &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/11/21/%E7%AC%94%E8%AE%B0-C++/Users\戒指王\AppData\Roaming\Typora\typora-user-images\image-20211205213857518.png" alt="image-20211205213857518"></p>
+<p>一个成员函数用const修饰代表它一定不会修改该类的成员变量，而不加const则说明它可能改变成员变量。因此用const修饰的成员变量只可能被同为const修饰的成员函数调用，而不可能被没const修饰的成员函数调用。但如果成员变量本身不是const修饰的，那无论成员函数是否有const修饰都可以调用它。这就存在我之前所产生的疑惑：当两个同名同参数函数同时存在，其中一个是const,另一个是非const,那么在调用时如何知道调用的究竟是哪个呢？</p>
+<p>答案见图中上方小字：当两个版本的成员函数同时存在时，const object调用const版本的函数，non-const object调用non-const版本，这就解决了我的疑惑</p>
+<p>这个知识点的用处何在呢？阅读上图右方的代码，basic_string是string底层的实现。我们可以有多个string对象，它们实际指向同一地址的字符串，以到达节约空间之效，而当某对象欲修改字符串内容时，为避免其行为影响到其他对象，因此必须进行<strong>写时复制</strong>。也就是说，平时通过<code>[]</code>运算符取字符串内容时，我们调用图右侧上方const版本的函数，而当通过该运算符修改字符串内容时，调用图右侧下方的non-const版本的函数，可在该函数中对字符串进行写时复制，避免错误发生</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/10/27/GameTheory/" rel="prev" title="GameTheory">
+                  <i class="fa fa-chevron-left"></i> GameTheory
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/11/22/%E7%AC%94%E8%AE%B0-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B/" rel="next" title="计算机网络-自顶向下-笔记">
+                  计算机网络-自顶向下-笔记 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FEZ</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">427k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">6:28</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+      <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
