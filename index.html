@@ -596,7 +596,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/11/22/%E7%AC%94%E8%AE%B0-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B/" class="post-title-link" itemprop="url">计算机网络-自顶向下-笔记</a>
+            <a href="/2021/11/22/%E7%AC%94%E8%AE%B0-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B/" class="post-title-link" itemprop="url">笔记-计算机网络-自顶向下</a>
         </h2>
 
         <div class="post-meta-container">
@@ -614,7 +614,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-12-13 10:30:17" itemprop="dateModified" datetime="2021-12-13T10:30:17+08:00">2021-12-13</time>
+        <time title="修改时间：2021-12-13 10:41:23" itemprop="dateModified" datetime="2021-12-13T10:41:23+08:00">2021-12-13</time>
       </span>
 
   
@@ -982,7 +982,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-12-06 10:58:55" itemprop="dateModified" datetime="2021-12-06T10:58:55+08:00">2021-12-06</time>
+        <time title="修改时间：2021-12-13 10:44:23" itemprop="dateModified" datetime="2021-12-13T10:44:23+08:00">2021-12-13</time>
       </span>
 
   
@@ -1154,7 +1154,8 @@
 
 <p>对于这两组函数中的一组，在函数名，参数表均相同的情况下，一个函数用<code>const</code>修饰，另一个没有，故其函数签名<strong>不一样</strong>，可同时存在。老实说为啥有无<code>const</code>能区分两个几乎一模一样的函数让我感到很疑惑，我也想不到合适的例子说服自己，但侯捷老师说它们不同，我也只好先保留疑惑</p>
 <p>2021/12/5 更新：疑惑已解决，见”谈谈const“小节</p>
-<h2 id="关于vptr和vtbl"><a href="#关于vptr和vtbl" class="headerlink" title="关于vptr和vtbl"></a>关于vptr和vtbl</h2><p><img src="/2021/11/21/%E7%AC%94%E8%AE%B0-C++/Users\戒指王\AppData\Roaming\Typora\typora-user-images\image-20211205205844770.png" alt="image-20211205205844770"></p>
+<h2 id="关于vptr和vtbl"><a href="#关于vptr和vtbl" class="headerlink" title="关于vptr和vtbl"></a>关于vptr和vtbl</h2><img src="/2021/11/21/%E7%AC%94%E8%AE%B0-C++/vptr_vtbl.png" class>
+
 <p>父类有虚函数，子类必然继承父类的虚函数。一个类有虚函数意味着什么呢？从内存的角度看，一个类有虚函数，意味着这个类存在一个<strong>虚指针</strong><code>virtual pointer</code>，所以即使一个类除了虚函数其他啥数据也没有，用<code>sizeof()</code>去测这个类的对象的大小，会得到4或8，即一个指针的大小。虚指针指向一个<strong>虚函数表</strong><code>virtual table</code>。虚函数表里是该类从父类那里继承而来的各个虚函数以及该类自己定义的新的虚函数（如果有的话）</p>
 <p>注意，假设class A有两个虚函数<code>func1(), func2()</code>，class B继承自class A，而 class C又继承自class B。自然，这三个类都有自己的虚指针，<strong>但是三个类的指针指向的是三张不同的表</strong>。假如class B只重写了<code>func1()</code>，没有重写<code>func2()</code>，那么在class B的虚函数表里，一个表项指向的是原本class A的<code>func2()</code>的地址，另一个表项是指向一个新的、class B自己重写的<code>func1()</code>的地址。class B的<code>func1()</code>和class A的<code>func1()</code>是两个<strong>完全不同</strong>的函数。同理，若class C也是只重写了继承自class B的<code>func1()</code>，却没有重写<code>func2()</code>，则在class C的虚表中，一个表项指向class C自己的<code>fun1()</code>的地址，而另一个表项则是指向继承自class B的<code>func2()</code>，而class B的<code>func2()</code>其实也是从class A继承而来，因此，实际上class C的虚表的这个表项实际上最终是指向class A的<code>func2()</code>的地址。故在此例中，实际上只有四个虚函数：class A的<code>func1(), func2()</code>，class B的<code>func2()</code>和class C的<code>func2()</code>。三张不同的虚表，而每张虚表都有一个表项是指向class A的<code>func2()</code>的地址</p>
 <p>我们可以用父类的指针指向子类的对象，因为子类对象<strong>是</strong>一个父类对象。例如有<code>animal</code>这个类，而它有<code>dog</code>这么个子类，<code>dog</code>当然<strong>是</strong><code>animal</code>，因此可以按如下方式使用，称为<code>up-cast</code></p>
@@ -1176,7 +1177,8 @@
 <p>而不是</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="function"><span class="keyword">const</span> <span class="keyword">char</span> <span class="title">func</span><span class="params">()</span> </span>&#123; &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/11/21/%E7%AC%94%E8%AE%B0-C++/Users\戒指王\AppData\Roaming\Typora\typora-user-images\image-20211205213857518.png" alt="image-20211205213857518"></p>
+<img src="/2021/11/21/%E7%AC%94%E8%AE%B0-C++/const.png" class>
+
 <p>一个成员函数用const修饰代表它一定不会修改该类的成员变量，而不加const则说明它可能改变成员变量。因此用const修饰的成员变量只可能被同为const修饰的成员函数调用，而不可能被没const修饰的成员函数调用。但如果成员变量本身不是const修饰的，那无论成员函数是否有const修饰都可以调用它。这就存在我之前所产生的疑惑：当两个同名同参数函数同时存在，其中一个是const,另一个是非const,那么在调用时如何知道调用的究竟是哪个呢？</p>
 <p>答案见图中上方小字：当两个版本的成员函数同时存在时，const object调用const版本的函数，non-const object调用non-const版本，这就解决了我的疑惑</p>
 <p>这个知识点的用处何在呢？阅读上图右方的代码，basic_string是string底层的实现。我们可以有多个string对象，它们实际指向同一地址的字符串，以到达节约空间之效，而当某对象欲修改字符串内容时，为避免其行为影响到其他对象，因此必须进行<strong>写时复制</strong>。也就是说，平时通过<code>[]</code>运算符取字符串内容时，我们调用图右侧上方const版本的函数，而当通过该运算符修改字符串内容时，调用图右侧下方的non-const版本的函数，可在该函数中对字符串进行写时复制，避免错误发生</p>
