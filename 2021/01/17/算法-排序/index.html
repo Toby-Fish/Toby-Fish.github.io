@@ -32,7 +32,7 @@
 <meta property="og:description" content="选择排序|插入排序|希尔排序|归并排序|快速排序|堆排序">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-01-17T14:17:30.000Z">
-<meta property="article:modified_time" content="2021-06-04T11:05:05.822Z">
+<meta property="article:modified_time" content="2021-12-18T05:36:45.925Z">
 <meta property="article:author" content="FEZ">
 <meta name="twitter:card" content="summary">
 
@@ -281,7 +281,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-06-04 19:05:05" itemprop="dateModified" datetime="2021-06-04T19:05:05+08:00">2021-06-04</time>
+        <time title="修改时间：2021-12-18 13:36:45" itemprop="dateModified" datetime="2021-12-18T13:36:45+08:00">2021-12-18</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -360,7 +360,7 @@
 <h5 id="B-三取样切分"><a href="#B-三取样切分" class="headerlink" title="B.三取样切分"></a>B.三取样切分</h5><p>改进快速排序性能的第二个办法是使用子数组的一小部分元素的中位数来切分数组。这样做得到的切分更好，但代价是需要计算中位数。人们发现将取样大小设置为3并用大小居中的元素切分的效果最好</p>
 <h5 id="C-熵最优的排序"><a href="#C-熵最优的排序" class="headerlink" title="C.熵最优的排序"></a>C.熵最优的排序</h5><p>实际应用中经常会出现含有大量重复元素的数组。我们实现的快速排序的性能尚可，但还有巨大的改进空间。一个简单的想法是将数组切分为<em>三部分</em>，分别对应小于、等于和大于切分元素的数组元素。</p>
 <p>三向切分的快速排序</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Quick3way</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparable[] a, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi)</span></span></span><br><span class="line"><span class="function">    </span>&#123;	<span class="comment">//调用此方法的公有sort()函数见上</span></span><br><span class="line">        <span class="keyword">if</span> (hi &lt;= lo) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">int</span> lt = lo, i = lo + <span class="number">1</span>, gt = hi;</span><br><span class="line">        Comparable v = a[lo];</span><br><span class="line">        <span class="keyword">while</span> (i &lt;= gt)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> cmp = a[i].compareTo(v);</span><br><span class="line">            <span class="keyword">if</span>	(cmp &lt; <span class="number">0</span>) exch(a, lt++, i++);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (cmp &gt; <span class="number">0</span>) exch(a, i, gt--);</span><br><span class="line">            <span class="keyword">else</span> i++;</span><br><span class="line">        &#125;<span class="comment">//现在 a[lo...lt - 1] &lt; v = a[lt..gt] &lt; a[gt + 1..hi]成立</span></span><br><span class="line">    &#125;</span><br><span class="line">    sort(a, lo, lt - <span class="number">1</span>);</span><br><span class="line">    sort(a, gt + <span class="number">1</span>, hi);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Quick3way</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparable[] a, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi)</span></span></span><br><span class="line"><span class="function">    </span>&#123;	<span class="comment">//调用此方法的公有sort()函数见上</span></span><br><span class="line">        <span class="keyword">if</span> (hi &lt;= lo) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">int</span> lt = lo, i = lo + <span class="number">1</span>, gt = hi;</span><br><span class="line">        Comparable v = a[lo];</span><br><span class="line">        <span class="keyword">while</span> (i &lt;= gt)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> cmp = a[i].compareTo(v);</span><br><span class="line">            <span class="keyword">if</span>	(cmp &lt; <span class="number">0</span>) exch(a, lt++, i++);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (cmp &gt; <span class="number">0</span>) exch(a, i, gt--);</span><br><span class="line">            <span class="keyword">else</span> i++;</span><br><span class="line">        &#125;<span class="comment">//现在 a[lo...lt - 1] &lt; v = a[lt..gt] &lt; a[gt + 1..hi]成立</span></span><br><span class="line">        </span><br><span class="line">        sort(a, lo, lt - <span class="number">1</span>);</span><br><span class="line">    	sort(a, gt + <span class="number">1</span>, hi);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>这段排序代码的切分能够将和切分元素相等的元素归为，这样它们就不会被包含在递归调用处理的子数组之中了。对于存在大量重复元素的数组，这种方法比标准的快速排序的效率高很多</p>
 <p>快排应用实例：找出一组数中的第k小元素</p>
@@ -451,13 +451,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">428k</span>
+    <span title="站点总字数">429k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:29</span>
+    <span title="站点阅读时长">6:30</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
