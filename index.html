@@ -192,7 +192,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -276,7 +276,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-12-09 16:32:20" itemprop="dateModified" datetime="2021-12-09T16:32:20+08:00">2021-12-09</time>
+        <time title="修改时间：2021-12-24 22:37:45" itemprop="dateModified" datetime="2021-12-24T22:37:45+08:00">2021-12-24</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -296,7 +296,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>779</span>
+      <span>813</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -324,6 +324,295 @@
             </div>
           <!--/noindex-->
         
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/24/%E7%AC%94%E8%AE%B0-UnixLinux%E5%A4%A7%E5%AD%A6%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="FEZ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FEZ的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/12/24/%E7%AC%94%E8%AE%B0-UnixLinux%E5%A4%A7%E5%AD%A6%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">笔记-UnixLinux大学教程</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-12-24 22:33:58 / 修改时间：23:57:32" itemprop="dateCreated datePublished" datetime="2021-12-24T22:33:58+08:00">2021-12-24</time>
+    </span>
+
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Unix键盘使用"><a href="#Unix键盘使用" class="headerlink" title="Unix键盘使用"></a>Unix键盘使用</h1><p>在键盘上，按下Return键或^M键（它们等价）可以发送一个CR码。按下Linefeed或者^J键可以发送一个LF码。CR为返回信号，LF码为换行信号。</p>
+<h2 id="修饰键：Ctrl键"><a href="#修饰键：Ctrl键" class="headerlink" title="修饰键：Ctrl键"></a>修饰键：Ctrl键</h2><table>
+<thead>
+<tr>
+<th align="center">erase</th>
+<th align="center">kill</th>
+<th align="center">werase</th>
+<th align="center">rprnt</th>
+<th align="center">flush</th>
+<th align="center">lnext</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">^H</td>
+<td align="center">^U</td>
+<td align="center">^W</td>
+<td align="center">^R</td>
+<td align="center">^O</td>
+<td align="center">^V</td>
+</tr>
+<tr>
+<td align="center">susp</td>
+<td align="center">intr</td>
+<td align="center">quit</td>
+<td align="center">stop</td>
+<td align="center">eof</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">^Z/^Y</td>
+<td align="center">^C</td>
+<td align="center">^\</td>
+<td align="center">^S/^Q</td>
+<td align="center">^D</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p>erase删除最后一个键入的字符，werase删除最后一个键入的单词，而kill则删除整行。</p>
+<h1 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h1><h2 id="以超级用户工作：su"><a href="#以超级用户工作：su" class="headerlink" title="以超级用户工作：su"></a>以超级用户工作：su</h2><p>su(substitute userid)命令允许您临时变成另一个用户标识。为此，只需在su命令后输入新的用户标识即可。</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">[harley]</span>$ su weedly</span><br><span class="line">Password:</span><br><span class="line"><span class="string">[weedly]</span>$</span><br></pre></td></tr></table></figure>
+
+<p>当您结束weedly的工作时，您需要做的就是结束当前shell。输入exit命令就可以结束当前shell。一旦结束了新shell，您就会自动返回原来的shell，即用户标识harley。</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[weedly]$ <span class="keyword">exit</span></span><br><span class="line">[harley]$ </span><br></pre></td></tr></table></figure>
+
+<p>上述例子中，您将用户标识变成weedly，但是仍然在harley的环境下工作。如果希望同时变换用户标识和环境，则需要在su命令名称之后键入一个-（连字符）。注意，连字符的两边都有一个空格。</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">su - weedly</span></span><br></pre></td></tr></table></figure>
+
+<p>现在您在weedly的环境中以weedly的名义工作了。</p>
+<p>为方便起见，如果su命令没有指定用户标识，那么默认的用户标识是<strong>root</strong>。因此，下述两个命令是等效的。</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">su</span> <span class="string">-</span></span><br><span class="line"><span class="attr">su</span> <span class="string">- root</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="以超级用户执行一条单独的指令：sudo"><a href="#以超级用户执行一条单独的指令：sudo" class="headerlink" title="以超级用户执行一条单独的指令：sudo"></a>以超级用户执行一条单独的指令：sudo</h2><p>直接切换至超级用户的时间太长会非常危险，sudo(substitute the userid an do something)命令允许您以另一个用户标识执行一条单独的命令。和su命令一样，sudo命令的默认用户标识为<strong>root</strong>。因此，为了以超级用户执行一条具体的命令，只需：</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="keyword">command</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="显示环境变量：printenv"><a href="#显示环境变量：printenv" class="headerlink" title="显示环境变量：printenv"></a>显示环境变量：printenv</h2><p>这个命令的名称printenv代表“print environment variables”。</p>
+<h2 id="键映射：stty"><a href="#键映射：stty" class="headerlink" title="键映射：stty"></a>键映射：stty</h2><p>显示系统的键盘映射时，使用下述命令：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">stty -a</span></span><br></pre></td></tr></table></figure>
+
+<p>stty是“set terminal”命令，-a意味着“显示所有的设置”。</p>
+<table>
+<thead>
+<tr>
+<th align="center">信号</th>
+<th align="center">键</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">erase</td>
+<td align="center">Backspack / Delete</td>
+<td align="center">删除键入的最后一个字符</td>
+</tr>
+<tr>
+<td align="center">werase</td>
+<td align="center">^W</td>
+<td align="center">删除键入的最后一个单词</td>
+</tr>
+<tr>
+<td align="center">kill</td>
+<td align="center">^X/^U</td>
+<td align="center">删除整行</td>
+</tr>
+<tr>
+<td align="center">intr</td>
+<td align="center">^C</td>
+<td align="center">停止正在运行的程序</td>
+</tr>
+<tr>
+<td align="center">quit</td>
+<td align="center">^\</td>
+<td align="center">停止程序并保存core文件</td>
+</tr>
+<tr>
+<td align="center">start</td>
+<td align="center">^Q</td>
+<td align="center">重新启动屏幕显示</td>
+</tr>
+<tr>
+<td align="center">eof</td>
+<td align="center">^D</td>
+<td align="center">指示已经没有数据</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p>如果希望修改键映射，只需键入stty，后面跟着信号的名称，然后是新的键赋值即可。例如，将kill键修改为^U的命令如下：</p>
+<figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stty <span class="keyword">kill</span> <span class="symbol">^U</span></span><br></pre></td></tr></table></figure>
+
+<p>当在stty命令中使用带Ctrl的字符名时，不必键入大写字母。例如，下面两条命令都能正常工作：</p>
+<figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">stty <span class="keyword">kill</span> <span class="symbol">^u</span></span><br><span class="line">stty <span class="keyword">kill</span> <span class="symbol">^U</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="在系统中查找程序：which、type、whence"><a href="#在系统中查找程序：which、type、whence" class="headerlink" title="在系统中查找程序：which、type、whence"></a>在系统中查找程序：which、type、whence</h2><p>查找某个程序是否可用的一种精确方法就是使用which命令，只需在键入的which命令后跟一个或多个程序的名称即可，例如：</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">which <span class="built_in">date</span> less vi harley</span><br></pre></td></tr></table></figure>
+
+<p>我的机器运行以上指令的输出为：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/usr/</span>bin/date</span><br><span class="line"><span class="regexp">/usr/</span>bin/less</span><br><span class="line"><span class="regexp">/usr/</span>bin/vi</span><br></pre></td></tr></table></figure>
+
+<p>which没有找到名为harley的程序，因此没有任何输出</p>
+<p>如果您使用的shell是Bash，那么which命令还有一个备用指令type，例如：</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="keyword">date</span></span><br></pre></td></tr></table></figure>
+
+<p>如果使用的是Korn shell，那么您可以使用whence命令：</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whence <span class="built_in">date</span></span><br></pre></td></tr></table></figure>
+
+<p>type和whence命令有时候要比which命令显示更多的细节信息。这在特定的环境下很有用。但是，在实机应用上，还是which命令的应用最广泛。</p>
+<h2 id="显示时间和日期：date"><a href="#显示时间和日期：date" class="headerlink" title="显示时间和日期：date"></a>显示时间和日期：date</h2><p>简单的输入：</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">date</span></span><br></pre></td></tr></table></figure>
+
+<p>Unix将显示当前的时间和日期。下面是一个样本输出，注意Unix使用的是24小时制时钟。</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Fri Dec <span class="number">24</span> <span class="number">23</span>:<span class="number">35</span>:<span class="number">06</span> CST <span class="number">2021</span></span><br></pre></td></tr></table></figure>
+
+<p>从本质上讲，Unix并没有运行在本地时间上。所有的Unix系统都使用协调世界时<code>Coordinated Universal Time, UTC</code>，它是格林威治标准时间<code>Greenwich Mean Time, GMT</code>的现代名称。Unix在需要时默默地在UTC和本地时区之间进行转换。本地时区的细节信息在安装Unix时指定。</p>
+<p>有时候，查看UTC时间比较便利。为了显示UTC时间，只需使用：</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">date</span> -u</span><br></pre></td></tr></table></figure>
+
+<h2 id="显示日历：cal"><a href="#显示日历：cal" class="headerlink" title="显示日历：cal"></a>显示日历：cal</h2><p>显示当前月份的日历时，可以输入：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">cal</span></span><br></pre></td></tr></table></figure>
+
+<p>显示某一年的日历时，需要指定年度。例如：</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cal <span class="number">1949</span></span><br></pre></td></tr></table></figure>
+
+<p>为了显示某个特点月份的日历，需要先指定月份，再指定年度。例如，显示1952年12月的日历的命令如下：</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cal <span class="number">12</span> <span class="number">1952</span></span><br></pre></td></tr></table></figure>
+
+<p>如果输入的是：</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cal <span class="number">12</span></span><br></pre></td></tr></table></figure>
+
+<p>那么得到的是公元12年的日历。</p>
+<p>如果不希望显示日期，只希望得到这一天是这一年中的第几天，只需在cal名称之后键入-j即可。</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">	cal -j <span class="number">12</span> <span class="number">2009</span></span><br><span class="line">	December <span class="number">2009</span></span><br><span class="line"> Su  Mo  Tu  We  Th  Fr  Sa</span><br><span class="line">        <span class="number">335</span> <span class="number">336</span> <span class="number">337</span> <span class="number">338</span> <span class="number">339</span></span><br><span class="line"><span class="number">340</span> <span class="number">341</span> <span class="number">342</span> <span class="number">343</span> <span class="number">344</span> <span class="number">345</span> <span class="number">346</span></span><br><span class="line"><span class="number">347</span> <span class="number">348</span> <span class="number">349</span> <span class="number">350</span> <span class="number">351</span> <span class="number">352</span> <span class="number">353</span></span><br><span class="line"><span class="number">354</span> <span class="number">355</span> <span class="number">356</span> <span class="number">357</span> <span class="number">358</span> <span class="number">359</span> <span class="number">360</span></span><br><span class="line"><span class="number">361</span> <span class="number">362</span> <span class="number">363</span> <span class="number">364</span> <span class="number">365</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="请求Unix提醒何时离开：leave"><a href="#请求Unix提醒何时离开：leave" class="headerlink" title="请求Unix提醒何时离开：leave"></a>请求Unix提醒何时离开：leave</h2><p>在计算机上工作时经常需要全神贯注，很容易忘记时间。为了帮助您及时完成其他事情，只需输入下述命令：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">leave</span></span><br></pre></td></tr></table></figure>
+
+<p>leave将询问您一个时间：</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">When</span> <span class="keyword">do</span> you have <span class="keyword">to</span> leave?</span><br></pre></td></tr></table></figure>
+
+<p>以<em>hhmm</em>（先是小时，后是分钟）的格式输入您希望离开的时间。例如希望在10：33离开，可以输入1033。</p>
+<p>时间输入既可以是12小时制也可以是24小时制。例如，1344意味着1：44PM。而如果输入的小时数小于等于12，那么leave假定时间位于接下来12小时内。例如，如果现在时间是8：00PM，而您输入的是855，那么leave将它解释为8：55PM，而不是8：55AM。</p>
+<p>如果需要在特定的时间间隔之后离开，则可以输入一个＋（加号），后面跟着分钟数。例如，如果需要在15分钟之后离开，可以输入：</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">leave +<span class="number">15</span></span><br></pre></td></tr></table></figure>
+
+<p>确保不要在+字符之后留空格。</p>
+<h2 id="内置计算器：bc"><a href="#内置计算器：bc" class="headerlink" title="内置计算器：bc"></a>内置计算器：bc</h2><p>如果您希望使用bc内置的数学函数库，那么在启动程序时需要使用-l(library)选项：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">bc -l</span></span><br></pre></td></tr></table></figure>
+
+<p>不希望使用bc时，可以通过按^D或输入quit命令。</p>
+<table>
+<thead>
+<tr>
+<th align="center">函数</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">sqrt(x)</td>
+<td align="center">x的平方根</td>
+</tr>
+<tr>
+<td align="center">s(x)</td>
+<td align="center">x的正弦：其中x的单位是弧度</td>
+</tr>
+<tr>
+<td align="center">c(x)</td>
+<td align="center">x的余弦：其中x的单位是弧度</td>
+</tr>
+<tr>
+<td align="center">a(x)</td>
+<td align="center">x的反正切：其中x的单位是弧度</td>
+</tr>
+<tr>
+<td align="center">ln(x)</td>
+<td align="center">x的自然对数</td>
+</tr>
+<tr>
+<td align="center">j(n, x)</td>
+<td align="center">x的n次整阶贝塞尔函数</td>
+</tr>
+</tbody></table>
+<p>默认情况下，bc假定做整数运算。您可以设置一个标度因子，告诉bc您希望保留小数点后几位。例如，要保留小数点后面3位，可以输入：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">scale</span>=<span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p>如果希望查看标度因子的值，只需简单输入：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">scale</span></span><br></pre></td></tr></table></figure>
+
+
       
     </div>
 
@@ -381,7 +670,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-12-13 13:14:02" itemprop="dateModified" datetime="2021-12-13T13:14:02+08:00">2021-12-13</time>
+        <time title="修改时间：2021-12-23 16:52:39" itemprop="dateModified" datetime="2021-12-23T16:52:39+08:00">2021-12-23</time>
       </span>
 
   
@@ -392,14 +681,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>13k</span>
+      <span>15k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>11 分钟</span>
+      <span>13 分钟</span>
     </span>
 </div>
 
@@ -417,7 +706,7 @@
 
 <p>对references类似，<code>rw</code>可能是个<code>reference to Widget</code>，<code>ra</code>则是个<code>reference to Airplane</code></p>
 <h1 id="1-让自己习惯C"><a href="#1-让自己习惯C" class="headerlink" title="1.让自己习惯C++"></a>1.让自己习惯C++</h1><h2 id="条款01：视C-为一个语言联邦"><a href="#条款01：视C-为一个语言联邦" class="headerlink" title="条款01：视C++为一个语言联邦"></a>条款01：视C++为一个语言联邦</h2><p>这个条款提供的视角很有意思，C++威力巨大，但涉及的东西太多太杂，融合了太多东西。将C++视为一个由相关次语言<code>sublanguage</code>组成的联邦而非单一语言或许对认识C++有所帮助</p>
-<p>主要的四个次语言：C, Object-Oriented C++，Template C++, STL。当从一个次语言切换到另一个次语言时，所遵从的高效编程策略也许会随之改变。例如对内置（C-like)类型而言pass by value通常比pass by reference更高效，但当从C part of C++移往Object-Oriented C++时，对于由用户定义的类型，pass by reference to const往往比pass by value更高效</p>
+<p>主要的四个次语言：C, Object-Oriented C++，Template C++, STL。当从一个次语言切换到另一个次语言时，所遵从的高效编程策略也许会随之改变。例如对内置（C-like）类型而言pass by value通常比pass by reference更高效，但当从C part of C++移往Object-Oriented C++时，对于由用户定义的类型，pass by reference to const往往比pass by value更高效</p>
 <p>C++高效编程守则视状况而变化，取绝于你使用C++的哪一部分</p>
 <h2 id="条款02：尽量以const-enum-inline替换-define"><a href="#条款02：尽量以const-enum-inline替换-define" class="headerlink" title="条款02：尽量以const, enum, inline替换 #define"></a>条款02：尽量以const, enum, inline替换 #define</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ASPECT_RATIO 1.653</span></span><br><span class="line">替换为</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> AspectRatio = <span class="number">1.653</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CALL_WITH_MAX(a, b) f( (a) &gt; (b) ? (a) : (b) )</span></span><br><span class="line">替换为</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">void</span> callWithMax(<span class="keyword">const</span> T&amp; a, <span class="keyword">const</span> T&amp; b)</span><br><span class="line">&#123;</span><br><span class="line">    f(a &gt; b ? a : b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -546,7 +835,27 @@
 <h2 id="条款40：明智而审慎地使用多重继承"><a href="#条款40：明智而审慎地使用多重继承" class="headerlink" title="条款40：明智而审慎地使用多重继承"></a>条款40：明智而审慎地使用多重继承</h2><p>多重继承比单一继承复杂。它可能导致新的歧义性，以及对virtual继承的需要</p>
 <p>virtual继承会增加大小、速度、初始化（及赋值）复杂度等等成本。如果virtual base classes不带任何数据，将是最具有实用价值的情况</p>
 <p>多重继承的确有正当用途。其中一个情节涉及“public继承某个Interface class”和“private继承某个协助实现的class”的两相组合</p>
-<h1 id="7-模板和泛型编程"><a href="#7-模板和泛型编程" class="headerlink" title="7.模板和泛型编程"></a>7.模板和泛型编程</h1><h1 id="8-定制new和delete"><a href="#8-定制new和delete" class="headerlink" title="8.定制new和delete"></a>8.定制new和delete</h1><h2 id="条款49：了解new-handler的行为"><a href="#条款49：了解new-handler的行为" class="headerlink" title="条款49：了解new-handler的行为"></a>条款49：了解new-handler的行为</h2><p>set_new_handler允许客户指定一个函数，在内存分配无法获得满足时被调用</p>
+<h1 id="7-模板和泛型编程"><a href="#7-模板和泛型编程" class="headerlink" title="7.模板和泛型编程"></a>7.模板和泛型编程</h1><h2 id="条款41：了解隐式接口和编译期多态"><a href="#条款41：了解隐式接口和编译期多态" class="headerlink" title="条款41：了解隐式接口和编译期多态"></a>条款41：了解隐式接口和编译期多态</h2><p>classes和templates都支持接口<code>interfaces</code>和多态<code>polymorphism</code></p>
+<p>对classes而言接口是显式的<code>explicit</code>，以函数签名为中心。多态则是通过virtual函数发生于运行期</p>
+<p>对template参数而言，接口是隐式的<code>implicit</code>，奠基于有效表达式。多态则是通过template具现化和函数重载解析<code>function overloading resolution</code>发生于编译器</p>
+<h2 id="条款42：了解typename的双重意义"><a href="#条款42：了解typename的双重意义" class="headerlink" title="条款42：了解typename的双重意义"></a>条款42：了解typename的双重意义</h2><p>声明template参数时，前缀关键字class和typename可互换</p>
+<p>请使用关键字typename标识嵌套从属类型名称，但不得在base class lists（基类列）或member initialization list（成员函数列）内以它作为base classes修饰符</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Derived</span>:</span> <span class="keyword">public</span> Base&lt;T&gt;::Nested &#123;		<span class="comment">//base class list中</span></span><br><span class="line"><span class="keyword">public</span>:										<span class="comment">//不允许&quot;typename&quot;</span></span><br><span class="line">	<span class="function"><span class="keyword">explicit</span> <span class="title">Derived</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function">		: Base&lt;T&gt;::<span class="title">Nested</span><span class="params">(x)</span>				<span class="comment">//mem.init.list中</span></span></span><br><span class="line"><span class="function">		</span>&#123;									<span class="comment">//不允许&quot;typename&quot;</span></span><br><span class="line">			<span class="keyword">typename</span> Base&lt;T&gt;::Nested temp;	<span class="comment">//嵌套从属类型名称</span></span><br><span class="line">			...					<span class="comment">//既不在base class list中也不在mem.init.list中</span></span><br><span class="line">		&#125;						<span class="comment">//作为一个base class修饰符需加上typename</span></span><br><span class="line">		...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="条款43：学习处理模板化基类内的名称"><a href="#条款43：学习处理模板化基类内的名称" class="headerlink" title="条款43：学习处理模板化基类内的名称"></a>条款43：学习处理模板化基类内的名称</h2><p>可在derived class templates内通过”this-&gt;”指涉base class templates内的成员名称，或藉由一个明白写出的“base class资格修饰符“完成</p>
+<h2 id="条款44：将与参数无关的代码抽离templates"><a href="#条款44：将与参数无关的代码抽离templates" class="headerlink" title="条款44：将与参数无关的代码抽离templates"></a>条款44：将与参数无关的代码抽离templates</h2><p>Template生成多个classes和多个函数，所以任何template代码都不该与某个造成膨胀的template参数产生相依关系</p>
+<p>因非类型模板参数<code>non-type template parameters</code>而造成的代码膨胀，往往可消除，做法是以函数参数或class成员变量替换template参数</p>
+<p>因类型参数<code>type parameters</code>而造成的代码膨胀，往往可降低，做法是让带有完全相同二进制表述<code>binary representations</code>的具现类型<code>instantiation types</code>共享实现码</p>
+<h2 id="条款45：运用成员函数模板接受所有兼容类型"><a href="#条款45：运用成员函数模板接受所有兼容类型" class="headerlink" title="条款45：运用成员函数模板接受所有兼容类型"></a>条款45：运用成员函数模板接受所有兼容类型</h2><p>请使用member function templates（成员函数模板）生成“可接受所有兼容类型”的函数</p>
+<p>如果你声明member templates用于“泛化copy构造”或“泛化assignment操作”，你还是需要声明正常的copy构造函数和copy assignment操作符</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">shared_ptr</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">shared_ptr</span>(<span class="built_in">shared_ptr</span> <span class="keyword">const</span>&amp; r);				<span class="comment">//copy构造函数</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">template</span>&lt;U&gt;</span><br><span class="line">	<span class="built_in">shared_ptr</span>(<span class="built_in">shared_ptr</span>&lt;U&gt; <span class="keyword">const</span>&amp; r);				<span class="comment">//泛化copy构造函数</span></span><br><span class="line">	</span><br><span class="line">	<span class="built_in">shared_ptr</span>&amp; <span class="keyword">operator</span>=(<span class="built_in">shared_ptr</span> <span class="keyword">const</span>&amp; r);		<span class="comment">//copy assignment</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">template</span>&lt;U&gt;</span><br><span class="line">	<span class="built_in">shared_ptr</span>&amp; <span class="keyword">operator</span>=(<span class="built_in">shared_ptr</span>&lt;U&gt; <span class="keyword">const</span>&amp; r);	<span class="comment">//泛化copy assignment</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="条款46：需要类型转换时请为模板定义非成员函数"><a href="#条款46：需要类型转换时请为模板定义非成员函数" class="headerlink" title="条款46：需要类型转换时请为模板定义非成员函数"></a>条款46：需要类型转换时请为模板定义非成员函数</h2><p>当我们编写一个class template，而它提供之“与此template相关的”函数支持“所有参数之隐式转换”时，请将那些函数定义为“class template内部的friend函数”</p>
+<h2 id="条款47：请使用traits-classes表现类型信息"><a href="#条款47：请使用traits-classes表现类型信息" class="headerlink" title="条款47：请使用traits classes表现类型信息"></a>条款47：请使用traits classes表现类型信息</h2><p>Traits classes使得“类型相关信息”在编译期可用。它们以templates和“templates特化”完成实现</p>
+<p>整合重载技术<code>overloading</code>后，traits classes有可能在编译期对类型执行if…else测试</p>
+<h2 id="条款48：认识template元编程"><a href="#条款48：认识template元编程" class="headerlink" title="条款48：认识template元编程"></a>条款48：认识template元编程</h2><p>Template metaprogramming（TMP， 模板元编程）可将工作由运行期移往至编译器期，因而得以实现早期错误侦测和更高的执行效率</p>
+<p>TMP可被用来生成“基于政策选择组合”<code>based on combinations of policy choices</code>的客户定制代码，也可用来避免生成对某些特殊类型并不适合的代码</p>
+<h1 id="8-定制new和delete"><a href="#8-定制new和delete" class="headerlink" title="8.定制new和delete"></a>8.定制new和delete</h1><h2 id="条款49：了解new-handler的行为"><a href="#条款49：了解new-handler的行为" class="headerlink" title="条款49：了解new-handler的行为"></a>条款49：了解new-handler的行为</h2><p>set_new_handler允许客户指定一个函数，在内存分配无法获得满足时被调用</p>
 <p>Nothrow new是一个颇为局限的工具，因为它只适用于内存分配；后继的构造函数还是可能抛出异常</p>
 <h2 id="条款50：了解new和delete的合理替换时机"><a href="#条款50：了解new和delete的合理替换时机" class="headerlink" title="条款50：了解new和delete的合理替换时机"></a>条款50：了解new和delete的合理替换时机</h2><p>有许多理由需要写个自定的new和delete，包括改善效能、对heap运用错误进行调试、收集heap使用信息</p>
 <h2 id="条款51：编写new和delete时需固守常规"><a href="#条款51：编写new和delete时需固守常规" class="headerlink" title="条款51：编写new和delete时需固守常规"></a>条款51：编写new和delete时需固守常规</h2><p>operator new应该内含一个无穷循环，并在其中尝试分配内存，如果它无法满足内存需求，就该调用new-handler。它也应该有能力处理0 bytes申请。Class专属版本还应该处理“比正确大小更大的（错误）申请”</p>
@@ -1688,110 +1997,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/25/CSAPP-Homework/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="FEZ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="FEZ的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/25/CSAPP-Homework/" class="post-title-link" itemprop="url">CSAPP-Homework</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-07-25 17:08:28" itemprop="dateCreated datePublished" datetime="2021-07-25T17:08:28+08:00">2021-07-25</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-12-06 23:39:28" itemprop="dateModified" datetime="2021-12-06T23:39:28+08:00">2021-12-06</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
-        </span>
-    </span>
-
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>53k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>48 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>各章节作业答案及简要解析</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/07/25/CSAPP-Homework/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
 
   
   <nav class="pagination">
@@ -1847,13 +2052,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">429k</span>
+    <span title="站点总字数">434k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:30</span>
+    <span title="站点阅读时长">6:35</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动

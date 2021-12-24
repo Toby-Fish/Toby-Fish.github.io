@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.0.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+
+  <meta name="description" content="Unix键盘使用在键盘上，按下Return键或^M键（它们等价）可以发送一个CR码。按下Linefeed或者^J键可以发送一个LF码。CR为返回信号，LF码为换行信号。 修饰键：Ctrl键   erase kill werase rprnt flush lnext    ^H ^U ^W ^R ^O ^V   susp intr quit stop eof    ^Z&#x2F;^Y ^C ^\ ^S&#x2F;^Q">
+<meta property="og:type" content="article">
+<meta property="og:title" content="笔记-UnixLinux大学教程">
+<meta property="og:url" content="http://example.com/2021/12/24/%E7%AC%94%E8%AE%B0-UnixLinux%E5%A4%A7%E5%AD%A6%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:site_name" content="FEZ的博客">
+<meta property="og:description" content="Unix键盘使用在键盘上，按下Return键或^M键（它们等价）可以发送一个CR码。按下Linefeed或者^J键可以发送一个LF码。CR为返回信号，LF码为换行信号。 修饰键：Ctrl键   erase kill werase rprnt flush lnext    ^H ^U ^W ^R ^O ^V   susp intr quit stop eof    ^Z&#x2F;^Y ^C ^\ ^S&#x2F;^Q">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-12-24T14:33:58.000Z">
+<meta property="article:modified_time" content="2021-12-24T15:57:32.241Z">
+<meta property="article:author" content="FEZ">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2021/12/24/%E7%AC%94%E8%AE%B0-UnixLinux%E5%A4%A7%E5%AD%A6%E6%95%99%E7%A8%8B/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>笔记-UnixLinux大学教程 | FEZ的博客</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?7035c3f4ba1040e0d1972d11a3943ebb";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">FEZ的博客</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Unix%E9%94%AE%E7%9B%98%E4%BD%BF%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">Unix键盘使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E9%A5%B0%E9%94%AE%EF%BC%9ACtrl%E9%94%AE"><span class="nav-number">1.1.</span> <span class="nav-text">修饰键：Ctrl键</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A5%E8%B6%85%E7%BA%A7%E7%94%A8%E6%88%B7%E5%B7%A5%E4%BD%9C%EF%BC%9Asu"><span class="nav-number">2.1.</span> <span class="nav-text">以超级用户工作：su</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A5%E8%B6%85%E7%BA%A7%E7%94%A8%E6%88%B7%E6%89%A7%E8%A1%8C%E4%B8%80%E6%9D%A1%E5%8D%95%E7%8B%AC%E7%9A%84%E6%8C%87%E4%BB%A4%EF%BC%9Asudo"><span class="nav-number">2.2.</span> <span class="nav-text">以超级用户执行一条单独的指令：sudo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%EF%BC%9Aprintenv"><span class="nav-number">2.3.</span> <span class="nav-text">显示环境变量：printenv</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%94%AE%E6%98%A0%E5%B0%84%EF%BC%9Astty"><span class="nav-number">2.4.</span> <span class="nav-text">键映射：stty</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E7%B3%BB%E7%BB%9F%E4%B8%AD%E6%9F%A5%E6%89%BE%E7%A8%8B%E5%BA%8F%EF%BC%9Awhich%E3%80%81type%E3%80%81whence"><span class="nav-number">2.5.</span> <span class="nav-text">在系统中查找程序：which、type、whence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E6%97%B6%E9%97%B4%E5%92%8C%E6%97%A5%E6%9C%9F%EF%BC%9Adate"><span class="nav-number">2.6.</span> <span class="nav-text">显示时间和日期：date</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E6%97%A5%E5%8E%86%EF%BC%9Acal"><span class="nav-number">2.7.</span> <span class="nav-text">显示日历：cal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82Unix%E6%8F%90%E9%86%92%E4%BD%95%E6%97%B6%E7%A6%BB%E5%BC%80%EF%BC%9Aleave"><span class="nav-number">2.8.</span> <span class="nav-text">请求Unix提醒何时离开：leave</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E7%BD%AE%E8%AE%A1%E7%AE%97%E5%99%A8%EF%BC%9Abc"><span class="nav-number">2.9.</span> <span class="nav-text">内置计算器：bc</span></a></li></ol></li></ol></div>
+        </section>
+        <!--/noindex-->
+
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="FEZ"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">FEZ</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </section>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/24/%E7%AC%94%E8%AE%B0-UnixLinux%E5%A4%A7%E5%AD%A6%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="FEZ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FEZ的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          笔记-UnixLinux大学教程
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-12-24 22:33:58 / 修改时间：23:57:32" itemprop="dateCreated datePublished" datetime="2021-12-24T22:33:58+08:00">2021-12-24</time>
+    </span>
+
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Unix键盘使用"><a href="#Unix键盘使用" class="headerlink" title="Unix键盘使用"></a>Unix键盘使用</h1><p>在键盘上，按下Return键或^M键（它们等价）可以发送一个CR码。按下Linefeed或者^J键可以发送一个LF码。CR为返回信号，LF码为换行信号。</p>
+<h2 id="修饰键：Ctrl键"><a href="#修饰键：Ctrl键" class="headerlink" title="修饰键：Ctrl键"></a>修饰键：Ctrl键</h2><table>
+<thead>
+<tr>
+<th align="center">erase</th>
+<th align="center">kill</th>
+<th align="center">werase</th>
+<th align="center">rprnt</th>
+<th align="center">flush</th>
+<th align="center">lnext</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">^H</td>
+<td align="center">^U</td>
+<td align="center">^W</td>
+<td align="center">^R</td>
+<td align="center">^O</td>
+<td align="center">^V</td>
+</tr>
+<tr>
+<td align="center">susp</td>
+<td align="center">intr</td>
+<td align="center">quit</td>
+<td align="center">stop</td>
+<td align="center">eof</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">^Z/^Y</td>
+<td align="center">^C</td>
+<td align="center">^\</td>
+<td align="center">^S/^Q</td>
+<td align="center">^D</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p>erase删除最后一个键入的字符，werase删除最后一个键入的单词，而kill则删除整行。</p>
+<h1 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h1><h2 id="以超级用户工作：su"><a href="#以超级用户工作：su" class="headerlink" title="以超级用户工作：su"></a>以超级用户工作：su</h2><p>su(substitute userid)命令允许您临时变成另一个用户标识。为此，只需在su命令后输入新的用户标识即可。</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">[harley]</span>$ su weedly</span><br><span class="line">Password:</span><br><span class="line"><span class="string">[weedly]</span>$</span><br></pre></td></tr></table></figure>
+
+<p>当您结束weedly的工作时，您需要做的就是结束当前shell。输入exit命令就可以结束当前shell。一旦结束了新shell，您就会自动返回原来的shell，即用户标识harley。</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[weedly]$ <span class="keyword">exit</span></span><br><span class="line">[harley]$ </span><br></pre></td></tr></table></figure>
+
+<p>上述例子中，您将用户标识变成weedly，但是仍然在harley的环境下工作。如果希望同时变换用户标识和环境，则需要在su命令名称之后键入一个-（连字符）。注意，连字符的两边都有一个空格。</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">su - weedly</span></span><br></pre></td></tr></table></figure>
+
+<p>现在您在weedly的环境中以weedly的名义工作了。</p>
+<p>为方便起见，如果su命令没有指定用户标识，那么默认的用户标识是<strong>root</strong>。因此，下述两个命令是等效的。</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">su</span> <span class="string">-</span></span><br><span class="line"><span class="attr">su</span> <span class="string">- root</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="以超级用户执行一条单独的指令：sudo"><a href="#以超级用户执行一条单独的指令：sudo" class="headerlink" title="以超级用户执行一条单独的指令：sudo"></a>以超级用户执行一条单独的指令：sudo</h2><p>直接切换至超级用户的时间太长会非常危险，sudo(substitute the userid an do something)命令允许您以另一个用户标识执行一条单独的命令。和su命令一样，sudo命令的默认用户标识为<strong>root</strong>。因此，为了以超级用户执行一条具体的命令，只需：</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="keyword">command</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="显示环境变量：printenv"><a href="#显示环境变量：printenv" class="headerlink" title="显示环境变量：printenv"></a>显示环境变量：printenv</h2><p>这个命令的名称printenv代表“print environment variables”。</p>
+<h2 id="键映射：stty"><a href="#键映射：stty" class="headerlink" title="键映射：stty"></a>键映射：stty</h2><p>显示系统的键盘映射时，使用下述命令：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">stty -a</span></span><br></pre></td></tr></table></figure>
+
+<p>stty是“set terminal”命令，-a意味着“显示所有的设置”。</p>
+<table>
+<thead>
+<tr>
+<th align="center">信号</th>
+<th align="center">键</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">erase</td>
+<td align="center">Backspack / Delete</td>
+<td align="center">删除键入的最后一个字符</td>
+</tr>
+<tr>
+<td align="center">werase</td>
+<td align="center">^W</td>
+<td align="center">删除键入的最后一个单词</td>
+</tr>
+<tr>
+<td align="center">kill</td>
+<td align="center">^X/^U</td>
+<td align="center">删除整行</td>
+</tr>
+<tr>
+<td align="center">intr</td>
+<td align="center">^C</td>
+<td align="center">停止正在运行的程序</td>
+</tr>
+<tr>
+<td align="center">quit</td>
+<td align="center">^\</td>
+<td align="center">停止程序并保存core文件</td>
+</tr>
+<tr>
+<td align="center">start</td>
+<td align="center">^Q</td>
+<td align="center">重新启动屏幕显示</td>
+</tr>
+<tr>
+<td align="center">eof</td>
+<td align="center">^D</td>
+<td align="center">指示已经没有数据</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p>如果希望修改键映射，只需键入stty，后面跟着信号的名称，然后是新的键赋值即可。例如，将kill键修改为^U的命令如下：</p>
+<figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stty <span class="keyword">kill</span> <span class="symbol">^U</span></span><br></pre></td></tr></table></figure>
+
+<p>当在stty命令中使用带Ctrl的字符名时，不必键入大写字母。例如，下面两条命令都能正常工作：</p>
+<figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">stty <span class="keyword">kill</span> <span class="symbol">^u</span></span><br><span class="line">stty <span class="keyword">kill</span> <span class="symbol">^U</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="在系统中查找程序：which、type、whence"><a href="#在系统中查找程序：which、type、whence" class="headerlink" title="在系统中查找程序：which、type、whence"></a>在系统中查找程序：which、type、whence</h2><p>查找某个程序是否可用的一种精确方法就是使用which命令，只需在键入的which命令后跟一个或多个程序的名称即可，例如：</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">which <span class="built_in">date</span> less vi harley</span><br></pre></td></tr></table></figure>
+
+<p>我的机器运行以上指令的输出为：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/usr/</span>bin/date</span><br><span class="line"><span class="regexp">/usr/</span>bin/less</span><br><span class="line"><span class="regexp">/usr/</span>bin/vi</span><br></pre></td></tr></table></figure>
+
+<p>which没有找到名为harley的程序，因此没有任何输出</p>
+<p>如果您使用的shell是Bash，那么which命令还有一个备用指令type，例如：</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="keyword">date</span></span><br></pre></td></tr></table></figure>
+
+<p>如果使用的是Korn shell，那么您可以使用whence命令：</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whence <span class="built_in">date</span></span><br></pre></td></tr></table></figure>
+
+<p>type和whence命令有时候要比which命令显示更多的细节信息。这在特定的环境下很有用。但是，在实机应用上，还是which命令的应用最广泛。</p>
+<h2 id="显示时间和日期：date"><a href="#显示时间和日期：date" class="headerlink" title="显示时间和日期：date"></a>显示时间和日期：date</h2><p>简单的输入：</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">date</span></span><br></pre></td></tr></table></figure>
+
+<p>Unix将显示当前的时间和日期。下面是一个样本输出，注意Unix使用的是24小时制时钟。</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Fri Dec <span class="number">24</span> <span class="number">23</span>:<span class="number">35</span>:<span class="number">06</span> CST <span class="number">2021</span></span><br></pre></td></tr></table></figure>
+
+<p>从本质上讲，Unix并没有运行在本地时间上。所有的Unix系统都使用协调世界时<code>Coordinated Universal Time, UTC</code>，它是格林威治标准时间<code>Greenwich Mean Time, GMT</code>的现代名称。Unix在需要时默默地在UTC和本地时区之间进行转换。本地时区的细节信息在安装Unix时指定。</p>
+<p>有时候，查看UTC时间比较便利。为了显示UTC时间，只需使用：</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">date</span> -u</span><br></pre></td></tr></table></figure>
+
+<h2 id="显示日历：cal"><a href="#显示日历：cal" class="headerlink" title="显示日历：cal"></a>显示日历：cal</h2><p>显示当前月份的日历时，可以输入：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">cal</span></span><br></pre></td></tr></table></figure>
+
+<p>显示某一年的日历时，需要指定年度。例如：</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cal <span class="number">1949</span></span><br></pre></td></tr></table></figure>
+
+<p>为了显示某个特点月份的日历，需要先指定月份，再指定年度。例如，显示1952年12月的日历的命令如下：</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cal <span class="number">12</span> <span class="number">1952</span></span><br></pre></td></tr></table></figure>
+
+<p>如果输入的是：</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cal <span class="number">12</span></span><br></pre></td></tr></table></figure>
+
+<p>那么得到的是公元12年的日历。</p>
+<p>如果不希望显示日期，只希望得到这一天是这一年中的第几天，只需在cal名称之后键入-j即可。</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">	cal -j <span class="number">12</span> <span class="number">2009</span></span><br><span class="line">	December <span class="number">2009</span></span><br><span class="line"> Su  Mo  Tu  We  Th  Fr  Sa</span><br><span class="line">        <span class="number">335</span> <span class="number">336</span> <span class="number">337</span> <span class="number">338</span> <span class="number">339</span></span><br><span class="line"><span class="number">340</span> <span class="number">341</span> <span class="number">342</span> <span class="number">343</span> <span class="number">344</span> <span class="number">345</span> <span class="number">346</span></span><br><span class="line"><span class="number">347</span> <span class="number">348</span> <span class="number">349</span> <span class="number">350</span> <span class="number">351</span> <span class="number">352</span> <span class="number">353</span></span><br><span class="line"><span class="number">354</span> <span class="number">355</span> <span class="number">356</span> <span class="number">357</span> <span class="number">358</span> <span class="number">359</span> <span class="number">360</span></span><br><span class="line"><span class="number">361</span> <span class="number">362</span> <span class="number">363</span> <span class="number">364</span> <span class="number">365</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="请求Unix提醒何时离开：leave"><a href="#请求Unix提醒何时离开：leave" class="headerlink" title="请求Unix提醒何时离开：leave"></a>请求Unix提醒何时离开：leave</h2><p>在计算机上工作时经常需要全神贯注，很容易忘记时间。为了帮助您及时完成其他事情，只需输入下述命令：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">leave</span></span><br></pre></td></tr></table></figure>
+
+<p>leave将询问您一个时间：</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">When</span> <span class="keyword">do</span> you have <span class="keyword">to</span> leave?</span><br></pre></td></tr></table></figure>
+
+<p>以<em>hhmm</em>（先是小时，后是分钟）的格式输入您希望离开的时间。例如希望在10：33离开，可以输入1033。</p>
+<p>时间输入既可以是12小时制也可以是24小时制。例如，1344意味着1：44PM。而如果输入的小时数小于等于12，那么leave假定时间位于接下来12小时内。例如，如果现在时间是8：00PM，而您输入的是855，那么leave将它解释为8：55PM，而不是8：55AM。</p>
+<p>如果需要在特定的时间间隔之后离开，则可以输入一个＋（加号），后面跟着分钟数。例如，如果需要在15分钟之后离开，可以输入：</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">leave +<span class="number">15</span></span><br></pre></td></tr></table></figure>
+
+<p>确保不要在+字符之后留空格。</p>
+<h2 id="内置计算器：bc"><a href="#内置计算器：bc" class="headerlink" title="内置计算器：bc"></a>内置计算器：bc</h2><p>如果您希望使用bc内置的数学函数库，那么在启动程序时需要使用-l(library)选项：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">bc -l</span></span><br></pre></td></tr></table></figure>
+
+<p>不希望使用bc时，可以通过按^D或输入quit命令。</p>
+<table>
+<thead>
+<tr>
+<th align="center">函数</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">sqrt(x)</td>
+<td align="center">x的平方根</td>
+</tr>
+<tr>
+<td align="center">s(x)</td>
+<td align="center">x的正弦：其中x的单位是弧度</td>
+</tr>
+<tr>
+<td align="center">c(x)</td>
+<td align="center">x的余弦：其中x的单位是弧度</td>
+</tr>
+<tr>
+<td align="center">a(x)</td>
+<td align="center">x的反正切：其中x的单位是弧度</td>
+</tr>
+<tr>
+<td align="center">ln(x)</td>
+<td align="center">x的自然对数</td>
+</tr>
+<tr>
+<td align="center">j(n, x)</td>
+<td align="center">x的n次整阶贝塞尔函数</td>
+</tr>
+</tbody></table>
+<p>默认情况下，bc假定做整数运算。您可以设置一个标度因子，告诉bc您希望保留小数点后几位。例如，要保留小数点后面3位，可以输入：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">scale</span>=<span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p>如果希望查看标度因子的值，只需简单输入：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">scale</span></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/12/06/%E7%AC%94%E8%AE%B0-EffectiveCpp/" rel="prev" title="笔记-Effective C++">
+                  <i class="fa fa-chevron-left"></i> 笔记-Effective C++
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FEZ</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">434k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">6:35</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+      <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
