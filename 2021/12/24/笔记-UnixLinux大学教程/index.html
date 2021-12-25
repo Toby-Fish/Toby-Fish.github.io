@@ -24,15 +24,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.0.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
 
-  <meta name="description" content="Unix键盘使用在键盘上，按下Return键或^M键（它们等价）可以发送一个CR码。按下Linefeed或者^J键可以发送一个LF码。CR为返回信号，LF码为换行信号。 修饰键：Ctrl键   erase kill werase rprnt flush lnext    ^H ^U ^W ^R ^O ^V   susp intr quit stop eof    ^Z&#x2F;^Y ^C ^\ ^S&#x2F;^Q">
+  <meta name="description" content="Unix键盘使用在键盘上，按下&lt;Return&gt;键或^M键（它们等价）可以发送一个CR码。按下&lt;Linefeed&gt;或者^J键可以发送一个LF码。CR为返回信号，LF码为换行信号。 修饰键：&lt;Ctrl&gt;键   erase kill werase rprnt flush lnext    ^H ^U ^W ^R ^O ^V   susp intr quit stop">
 <meta property="og:type" content="article">
 <meta property="og:title" content="笔记-UnixLinux大学教程">
 <meta property="og:url" content="http://example.com/2021/12/24/%E7%AC%94%E8%AE%B0-UnixLinux%E5%A4%A7%E5%AD%A6%E6%95%99%E7%A8%8B/index.html">
 <meta property="og:site_name" content="FEZ的博客">
-<meta property="og:description" content="Unix键盘使用在键盘上，按下Return键或^M键（它们等价）可以发送一个CR码。按下Linefeed或者^J键可以发送一个LF码。CR为返回信号，LF码为换行信号。 修饰键：Ctrl键   erase kill werase rprnt flush lnext    ^H ^U ^W ^R ^O ^V   susp intr quit stop eof    ^Z&#x2F;^Y ^C ^\ ^S&#x2F;^Q">
+<meta property="og:description" content="Unix键盘使用在键盘上，按下&lt;Return&gt;键或^M键（它们等价）可以发送一个CR码。按下&lt;Linefeed&gt;或者^J键可以发送一个LF码。CR为返回信号，LF码为换行信号。 修饰键：&lt;Ctrl&gt;键   erase kill werase rprnt flush lnext    ^H ^U ^W ^R ^O ^V   susp intr quit stop">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-12-24T14:33:58.000Z">
-<meta property="article:modified_time" content="2021-12-24T15:57:32.241Z">
+<meta property="article:modified_time" content="2021-12-25T08:11:59.516Z">
 <meta property="article:author" content="FEZ">
 <meta name="twitter:card" content="summary">
 
@@ -182,7 +182,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <section class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Unix%E9%94%AE%E7%9B%98%E4%BD%BF%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">Unix键盘使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E9%A5%B0%E9%94%AE%EF%BC%9ACtrl%E9%94%AE"><span class="nav-number">1.1.</span> <span class="nav-text">修饰键：Ctrl键</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A5%E8%B6%85%E7%BA%A7%E7%94%A8%E6%88%B7%E5%B7%A5%E4%BD%9C%EF%BC%9Asu"><span class="nav-number">2.1.</span> <span class="nav-text">以超级用户工作：su</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A5%E8%B6%85%E7%BA%A7%E7%94%A8%E6%88%B7%E6%89%A7%E8%A1%8C%E4%B8%80%E6%9D%A1%E5%8D%95%E7%8B%AC%E7%9A%84%E6%8C%87%E4%BB%A4%EF%BC%9Asudo"><span class="nav-number">2.2.</span> <span class="nav-text">以超级用户执行一条单独的指令：sudo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%EF%BC%9Aprintenv"><span class="nav-number">2.3.</span> <span class="nav-text">显示环境变量：printenv</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%94%AE%E6%98%A0%E5%B0%84%EF%BC%9Astty"><span class="nav-number">2.4.</span> <span class="nav-text">键映射：stty</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E7%B3%BB%E7%BB%9F%E4%B8%AD%E6%9F%A5%E6%89%BE%E7%A8%8B%E5%BA%8F%EF%BC%9Awhich%E3%80%81type%E3%80%81whence"><span class="nav-number">2.5.</span> <span class="nav-text">在系统中查找程序：which、type、whence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E6%97%B6%E9%97%B4%E5%92%8C%E6%97%A5%E6%9C%9F%EF%BC%9Adate"><span class="nav-number">2.6.</span> <span class="nav-text">显示时间和日期：date</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E6%97%A5%E5%8E%86%EF%BC%9Acal"><span class="nav-number">2.7.</span> <span class="nav-text">显示日历：cal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82Unix%E6%8F%90%E9%86%92%E4%BD%95%E6%97%B6%E7%A6%BB%E5%BC%80%EF%BC%9Aleave"><span class="nav-number">2.8.</span> <span class="nav-text">请求Unix提醒何时离开：leave</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E7%BD%AE%E8%AE%A1%E7%AE%97%E5%99%A8%EF%BC%9Abc"><span class="nav-number">2.9.</span> <span class="nav-text">内置计算器：bc</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Unix%E9%94%AE%E7%9B%98%E4%BD%BF%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">Unix键盘使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E9%A5%B0%E9%94%AE%EF%BC%9A-lt-Ctrl-gt-%E9%94%AE"><span class="nav-number">1.1.</span> <span class="nav-text">修饰键：&lt;Ctrl&gt;键</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A5%E8%B6%85%E7%BA%A7%E7%94%A8%E6%88%B7%E5%B7%A5%E4%BD%9C%EF%BC%9Asu"><span class="nav-number">2.1.</span> <span class="nav-text">以超级用户工作：su</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A5%E8%B6%85%E7%BA%A7%E7%94%A8%E6%88%B7%E6%89%A7%E8%A1%8C%E4%B8%80%E6%9D%A1%E5%8D%95%E7%8B%AC%E7%9A%84%E6%8C%87%E4%BB%A4%EF%BC%9Asudo"><span class="nav-number">2.2.</span> <span class="nav-text">以超级用户执行一条单独的指令：sudo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%94%AE%E6%98%A0%E5%B0%84%EF%BC%9Astty"><span class="nav-number">2.3.</span> <span class="nav-text">键映射：stty</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E7%B3%BB%E7%BB%9F%E4%B8%AD%E6%9F%A5%E6%89%BE%E7%A8%8B%E5%BA%8F%EF%BC%9Awhich%E3%80%81type%E3%80%81whence"><span class="nav-number">2.4.</span> <span class="nav-text">在系统中查找程序：which、type、whence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E6%97%B6%E9%97%B4%E5%92%8C%E6%97%A5%E6%9C%9F%EF%BC%9Adate"><span class="nav-number">2.5.</span> <span class="nav-text">显示时间和日期：date</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E6%97%A5%E5%8E%86%EF%BC%9Acal"><span class="nav-number">2.6.</span> <span class="nav-text">显示日历：cal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF%EF%BC%9Auptime%E3%80%81hostname%E3%80%81uname"><span class="nav-number">2.7.</span> <span class="nav-text">查看系统信息：uptime、hostname、uname</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%BF%A1%E6%81%AF%EF%BC%9Awhoami"><span class="nav-number">2.8.</span> <span class="nav-text">显示自己的信息：whoami</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82Unix%E6%8F%90%E9%86%92%E4%BD%95%E6%97%B6%E7%A6%BB%E5%BC%80%EF%BC%9Aleave"><span class="nav-number">2.9.</span> <span class="nav-text">请求Unix提醒何时离开：leave</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E7%BD%AE%E8%AE%A1%E7%AE%97%E5%99%A8%EF%BC%9Abc"><span class="nav-number">2.10.</span> <span class="nav-text">内置计算器：bc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFUnix%E6%89%8B%E5%86%8C%EF%BC%9Fman"><span class="nav-number">2.11.</span> <span class="nav-text">什么是Unix手册？man</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E7%A7%8D%E5%BF%AB%E9%80%9F%E6%9F%A5%E8%AF%A2%E5%91%BD%E4%BB%A4%E4%BD%9C%E7%94%A8%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%9Awhatis"><span class="nav-number">2.12.</span> <span class="nav-text">一种快速查询命令作用的方法：whatis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E5%91%BD%E4%BB%A4%EF%BC%9Aapropos"><span class="nav-number">2.13.</span> <span class="nav-text">搜索命令：apropos</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Info%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.14.</span> <span class="nav-text">Info系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%EF%BC%9Aenv%E3%80%81printenv"><span class="nav-number">2.15.</span> <span class="nav-text">显示环境变量：env、printenv</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BAshell%E5%8F%98%E9%87%8F%EF%BC%9Aset"><span class="nav-number">2.16.</span> <span class="nav-text">显示shell变量：set</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%8F%98%E9%87%8F%E7%9A%84%E5%80%BC%EF%BC%9Aecho%E3%80%81print"><span class="nav-number">2.17.</span> <span class="nav-text">显示及使用变量的值：echo、print</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bourne-shell%E5%AE%B6%E6%97%8F%E4%BD%BF%E7%94%A8%E5%8F%98%E9%87%8F%EF%BC%9Aexport%E3%80%81unset"><span class="nav-number">2.18.</span> <span class="nav-text">Bourne shell家族使用变量：export、unset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-shell%E5%AE%B6%E6%97%8F%E4%BD%BF%E7%94%A8%E5%8F%98%E9%87%8F%EF%BC%9Asetenv%E3%80%81unsetenv%E3%80%81set%E3%80%81unset"><span class="nav-number">2.19.</span> <span class="nav-text">C-shell家族使用变量：setenv、unsetenv、set、unset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell%E9%80%89%E9%A1%B9%EF%BC%9Aset-o%E3%80%81set-o"><span class="nav-number">2.20.</span> <span class="nav-text">shell选项：set -o、set +o</span></a></li></ol></li></ol></div>
         </section>
         <!--/noindex-->
 
@@ -273,10 +273,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2021-12-24 22:33:58 / 修改时间：23:57:32" itemprop="dateCreated datePublished" datetime="2021-12-24T22:33:58+08:00">2021-12-24</time>
+      <time title="创建时间：2021-12-24 22:33:58" itemprop="dateCreated datePublished" datetime="2021-12-24T22:33:58+08:00">2021-12-24</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-12-25 16:11:59" itemprop="dateModified" datetime="2021-12-25T16:11:59+08:00">2021-12-25</time>
+      </span>
 
   
       </div>
@@ -286,14 +292,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>2.8k</span>
+      <span>9.3k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
+      <span>8 分钟</span>
     </span>
 </div>
 
@@ -304,8 +310,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="Unix键盘使用"><a href="#Unix键盘使用" class="headerlink" title="Unix键盘使用"></a>Unix键盘使用</h1><p>在键盘上，按下Return键或^M键（它们等价）可以发送一个CR码。按下Linefeed或者^J键可以发送一个LF码。CR为返回信号，LF码为换行信号。</p>
-<h2 id="修饰键：Ctrl键"><a href="#修饰键：Ctrl键" class="headerlink" title="修饰键：Ctrl键"></a>修饰键：Ctrl键</h2><table>
+        <h1 id="Unix键盘使用"><a href="#Unix键盘使用" class="headerlink" title="Unix键盘使用"></a>Unix键盘使用</h1><p>在键盘上，按下&lt;Return&gt;键或^M键（它们等价）可以发送一个CR码。按下&lt;Linefeed&gt;或者^J键可以发送一个LF码。CR为返回信号，LF码为换行信号。</p>
+<h2 id="修饰键：-lt-Ctrl-gt-键"><a href="#修饰键：-lt-Ctrl-gt-键" class="headerlink" title="修饰键：&lt;Ctrl&gt;键"></a>修饰键：&lt;Ctrl&gt;键</h2><table>
 <thead>
 <tr>
 <th align="center">erase</th>
@@ -355,10 +361,9 @@
 <p>为方便起见，如果su命令没有指定用户标识，那么默认的用户标识是<strong>root</strong>。因此，下述两个命令是等效的。</p>
 <figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">su</span> <span class="string">-</span></span><br><span class="line"><span class="attr">su</span> <span class="string">- root</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="以超级用户执行一条单独的指令：sudo"><a href="#以超级用户执行一条单独的指令：sudo" class="headerlink" title="以超级用户执行一条单独的指令：sudo"></a>以超级用户执行一条单独的指令：sudo</h2><p>直接切换至超级用户的时间太长会非常危险，sudo(substitute the userid an do something)命令允许您以另一个用户标识执行一条单独的命令。和su命令一样，sudo命令的默认用户标识为<strong>root</strong>。因此，为了以超级用户执行一条具体的命令，只需：</p>
+<h2 id="以超级用户执行一条单独的指令：sudo"><a href="#以超级用户执行一条单独的指令：sudo" class="headerlink" title="以超级用户执行一条单独的指令：sudo"></a>以超级用户执行一条单独的指令：sudo</h2><p>切换至超级用户的时间太长会非常危险，sudo(substitute the userid an do something)命令允许您以另一个用户标识执行一条单独的命令。和su命令一样，sudo命令的默认用户标识为<strong>root</strong>。因此，为了以超级用户执行一条具体的命令，只需：</p>
 <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="keyword">command</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="显示环境变量：printenv"><a href="#显示环境变量：printenv" class="headerlink" title="显示环境变量：printenv"></a>显示环境变量：printenv</h2><p>这个命令的名称printenv代表“print environment variables”。</p>
 <h2 id="键映射：stty"><a href="#键映射：stty" class="headerlink" title="键映射：stty"></a>键映射：stty</h2><p>显示系统的键盘映射时，使用下述命令：</p>
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">stty -a</span></span><br></pre></td></tr></table></figure>
 
@@ -458,6 +463,20 @@
 <p>如果不希望显示日期，只希望得到这一天是这一年中的第几天，只需在cal名称之后键入-j即可。</p>
 <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">	cal -j <span class="number">12</span> <span class="number">2009</span></span><br><span class="line">	December <span class="number">2009</span></span><br><span class="line"> Su  Mo  Tu  We  Th  Fr  Sa</span><br><span class="line">        <span class="number">335</span> <span class="number">336</span> <span class="number">337</span> <span class="number">338</span> <span class="number">339</span></span><br><span class="line"><span class="number">340</span> <span class="number">341</span> <span class="number">342</span> <span class="number">343</span> <span class="number">344</span> <span class="number">345</span> <span class="number">346</span></span><br><span class="line"><span class="number">347</span> <span class="number">348</span> <span class="number">349</span> <span class="number">350</span> <span class="number">351</span> <span class="number">352</span> <span class="number">353</span></span><br><span class="line"><span class="number">354</span> <span class="number">355</span> <span class="number">356</span> <span class="number">357</span> <span class="number">358</span> <span class="number">359</span> <span class="number">360</span></span><br><span class="line"><span class="number">361</span> <span class="number">362</span> <span class="number">363</span> <span class="number">364</span> <span class="number">365</span></span><br></pre></td></tr></table></figure>
 
+<h2 id="查看系统信息：uptime、hostname、uname"><a href="#查看系统信息：uptime、hostname、uname" class="headerlink" title="查看系统信息：uptime、hostname、uname"></a>查看系统信息：uptime、hostname、uname</h2><p><strong>uptime</strong>用来显示系统已经运行多长时间（也就是连续运行）的有关信息：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">uptime</span></span><br></pre></td></tr></table></figure>
+
+<p>一些典型的输出：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">11</span>:<span class="number">10</span>AM up <span class="number">103</span> days, <span class="number">6</span>:<span class="number">13</span>, <span class="number">3</span> users,</span><br><span class="line">  <span class="attribute">load</span> averages: <span class="number">1</span>.<span class="number">90</span>, <span class="number">1</span>.<span class="number">49</span>, <span class="number">1</span>.<span class="number">38</span></span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，系统已经运行了103天6小时13分钟，而且当前有3个用户标识登录。最后三个数字展现了一直等待执行的程序的数量，分别是之前1分钟、5分钟和15分钟的平均数。这些数字表示系统的负载。负载越高，系统所做的工作就越多。</p>
+<p><strong>hostname</strong>命令用来查看计算机的名称。如果经常登录不止一台计算机，那么该命令非常管用。如果忘记了正在使用的是哪一个系统，则可以输入：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hostname</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>uname</strong>命令显示操作系统的名称。</p>
+<h2 id="显示自己的信息：whoami"><a href="#显示自己的信息：whoami" class="headerlink" title="显示自己的信息：whoami"></a>显示自己的信息：whoami</h2><p><strong>whoami</strong>命令显示您登录使用的用户标识。如果您突然得了健忘症，忘记了自己的名字，那么whoami命令也许特别有用。如果您的系统上没有whoami命令，则可以尝试输入下面3个单独的单词：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">who am i</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="请求Unix提醒何时离开：leave"><a href="#请求Unix提醒何时离开：leave" class="headerlink" title="请求Unix提醒何时离开：leave"></a>请求Unix提醒何时离开：leave</h2><p>在计算机上工作时经常需要全神贯注，很容易忘记时间。为了帮助您及时完成其他事情，只需输入下述命令：</p>
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">leave</span></span><br></pre></td></tr></table></figure>
 
@@ -511,6 +530,363 @@
 
 <p>如果希望查看标度因子的值，只需简单输入：</p>
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">scale</span></span><br></pre></td></tr></table></figure>
+
+<p>bc允许设置并使用变量。变量由变量名和值组成。在bc中，变量名由一个小写字母构成。也就是说，bc中共有26个变量，从a到z（一定确保<strong>不要使用</strong>大写字母，当使用基时才使用它们——参见下面）。</p>
+<p>您可以使用等号设置变量的值。例如，将变量x的值设置为100，可以输入：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">x</span>=<span class="number">100</span></span><br></pre></td></tr></table></figure>
+
+<p>显示变量的值，只需输入变量名，例如：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">x</span></span><br></pre></td></tr></table></figure>
+
+<p>默认情况下，在变量没有赋值之前，bc假定所有变量的值为0。</p>
+<p>一般情况下，bc计算时使用10作为基。但是，有时候您可能需要使用另一种基进行计算。bc允许对输入和输出指定不同的基。具体操作时，需要设置两个特殊的变量：<strong>ibase</strong>是用于输入的基；<strong>obase</strong>是用于输出的基。</p>
+<p>例如，如果希望以基16显示答案，可以输入：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">obase</span>=<span class="number">16</span></span><br></pre></td></tr></table></figure>
+
+<p>如果希望以基8输入数字，则需要使用：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">ibase</span>=<span class="number">8</span></span><br></pre></td></tr></table></figure>
+
+<p>对于大于或等于10的基值，bc分别使用大写字母A、B、C、D、E、F表示值10、11、12、13、14和15.记住一定要使用大写字母，如果使用了小写字母，那么bc将会认为它是变量，从而使结果出错。</p>
+<p>为方便起见，无论设置的输入基是什么，都可以使用这些大写字母。例如，即使现在使用的基是10，表达式A+1的值也是11。</p>
+<p>和其他变量一样，直接输入ibase和obase自身就可以获得它们的当前值：</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ibase</span>; <span class="built_in">obase</span></span><br></pre></td></tr></table></figure>
+
+<p>但是，一定要小心。因为一旦设置了obase的值，所有的输出都将以这个基进行显示，显示的值可能会对您产生麻烦。例如，如果您输入：</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">obase</span>=<span class="number">16</span></span><br><span class="line"><span class="built_in">obase</span></span><br></pre></td></tr></table></figure>
+
+<p>那么您将看到：</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+<p>这是因为此时所有的输出都以基16显示，而在基16中，值“16”就表示为10。</p>
+<p>同理，一旦修改了ibase，在输入时也必须特别小心。例如，假设您设置了：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">ibase</span>=<span class="number">16</span></span><br></pre></td></tr></table></figure>
+
+<p>现在希望将obase设置为基10，因此您输入：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">obase</span>=<span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+<p>但是，您忘了现在的输入基是16，而10在基16中其实是“16”。因此，obase还是被设置成基16。</p>
+<p>为了避免出现这样的错误，可以使用字母A到F，无论ibase的值是多少，它们仍然是原来的值。因此，如果事情出现了混乱，您总可以这样重新设置基：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">obase</span>=A<span class="comment">; ibase=A</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="什么是Unix手册？man"><a href="#什么是Unix手册？man" class="headerlink" title="什么是Unix手册？man"></a>什么是Unix手册？man</h2><p>下面准备讨论的命令是针对less分页程序的，因为大多数Unix系统使用它。如果man命令使用的是more或者pg，那么为了获得该特定分页程序的帮助摘要信息，您也只需按下h键。</p>
+<table>
+<thead>
+<tr>
+<th align="left">通用命令</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">q</td>
+<td>退出</td>
+</tr>
+<tr>
+<td align="left">h</td>
+<td>显示帮助信息</td>
+</tr>
+<tr>
+<td align="left"><strong>阅读说明书页</strong></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">&lt;Sapce&gt;</td>
+<td>显示下一屏</td>
+</tr>
+<tr>
+<td align="left">&lt;PageDown&gt;</td>
+<td>显示下一屏</td>
+</tr>
+<tr>
+<td align="left">f</td>
+<td>显示下一屏</td>
+</tr>
+<tr>
+<td align="left">&lt;PageUp&gt;</td>
+<td>显示上一屏</td>
+</tr>
+<tr>
+<td align="left">b</td>
+<td>显示上一屏</td>
+</tr>
+<tr>
+<td align="left"><strong>搜索</strong></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">/pattern</td>
+<td>向下搜索特定的模式</td>
+</tr>
+<tr>
+<td align="left">?pattern</td>
+<td>向上搜索特定的模式</td>
+</tr>
+<tr>
+<td align="left">/</td>
+<td>向下搜索上一模式</td>
+</tr>
+<tr>
+<td align="left">n</td>
+<td>向下搜索上一模式</td>
+</tr>
+<tr>
+<td align="left">?</td>
+<td>向上搜索上一模式</td>
+</tr>
+<tr>
+<td align="left">N</td>
+<td>向上搜索上一模式</td>
+</tr>
+<tr>
+<td align="left"><strong>在说明书页中移动</strong></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">&lt;Return&gt;</td>
+<td>向下移一行</td>
+</tr>
+<tr>
+<td align="left">&lt;Down&gt;</td>
+<td>向下移一行</td>
+</tr>
+<tr>
+<td align="left">&lt;Up&gt;</td>
+<td>向上移一行</td>
+</tr>
+<tr>
+<td align="left">g(go to top)</td>
+<td>移到页的顶部</td>
+</tr>
+<tr>
+<td align="left">G(go to bottom)</td>
+<td>移到页的底部</td>
+</tr>
+</tbody></table>
+<p>当阅读说明书页时，如果您键入一个!（感叹号），就可以在它之后键入一条shell命令。man程序将把这条命令发送给shell，而shell将运行这个命令。当命令结束后，可以按下&lt;Return&gt;键返回到man程序中。</p>
+<h2 id="一种快速查询命令作用的方法：whatis"><a href="#一种快速查询命令作用的方法：whatis" class="headerlink" title="一种快速查询命令作用的方法：whatis"></a>一种快速查询命令作用的方法：whatis</h2><p>当输入man命令时，Unix将显示整个手册页。但有时候，您可能只对一个简要描述感兴趣。在这种情况下，还有另外一种方法。</p>
+<p>说明书页的Name节中包含一行描述。如果只想看这一行内容，可以键入man -f，后面跟一个或者多个命令的名称。例如：</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">man -f <span class="built_in">time</span> <span class="built_in">date</span></span><br></pre></td></tr></table></figure>
+
+<p>在man命令的这种形式中，-f称为一个选项，代表单词“files”。每个说明书页都存储在一个单独的文件中。当使用-f选项时，就是告诉man查找哪些文件。</p>
+<p>为了方便起见，可以使用命令whatis来取代man -f。例如，如果想显示时间，但是不能确定是使用time命令还是date命令，就可以输入下面两条命令中的任意一条：</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">whatis <span class="built_in">time</span> <span class="built_in">date</span></span><br><span class="line">man -f <span class="built_in">time</span> <span class="built_in">date</span></span><br></pre></td></tr></table></figure>
+
+<p>您将看到类似下面的显示信息：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">time (7)             - overview of time <span class="keyword">and</span> timers</span><br><span class="line">time (3am)           - time functions <span class="keyword">for</span> gawk</span><br><span class="line">time (1)             - <span class="builtin-name">run</span> programs <span class="keyword">and</span> summarize<span class="built_in"> system resource </span>usage</span><br><span class="line">time (2)             - <span class="builtin-name">get</span> time <span class="keyword">in</span> seconds</span><br><span class="line">date (1)             - <span class="builtin-name">print</span> <span class="keyword">or</span> <span class="builtin-name">set</span> the<span class="built_in"> system </span>date <span class="keyword">and</span> time</span><br></pre></td></tr></table></figure>
+
+<p>第1、2、4行不是指向第1节的，可以忽略这三行。查看第3、5行，就可以知道您需要使用的命令是date。</p>
+<p>众所周知，在输入man命令时，可以指定一个特定的节号（例如man 1 date)。至于man -f或者whatis命令，就不能再指定具体的节号。Unix总是搜索整个手册。因此，查找手册包含什么内容最好输入：</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whatis <span class="built_in">int</span>ro</span><br></pre></td></tr></table></figure>
+
+<p>这样将会显示每个intro页的简要说明，例如：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">intro (1)            - introduction <span class="keyword">to</span><span class="built_in"> user </span>commands</span><br><span class="line">intro (2)            - introduction <span class="keyword">to</span><span class="built_in"> system </span>calls</span><br><span class="line">intro (3)            - introduction <span class="keyword">to</span> library functions</span><br><span class="line">intro (4)            - introduction <span class="keyword">to</span> special files</span><br><span class="line">intro (5)            - introduction <span class="keyword">to</span> file formats <span class="keyword">and</span> filesystems</span><br><span class="line">intro (6)            - introduction <span class="keyword">to</span> games</span><br><span class="line">intro (7)            - introduction <span class="keyword">to</span> overview <span class="keyword">and</span> miscellany section</span><br><span class="line">intro (8)            - introduction <span class="keyword">to</span> administration <span class="keyword">and</span> privileged commands</span><br></pre></td></tr></table></figure>
+
+<h2 id="搜索命令：apropos"><a href="#搜索命令：apropos" class="headerlink" title="搜索命令：apropos"></a>搜索命令：apropos</h2><p>当希望学习某条具体的命令时，可以使用man来显示该命令的说明书页。但是，如果您知道想做什么，但是却不能确定使用哪条命令，该怎么办呢？</p>
+<p>解决方法就是使用带有-k选项的man命令。这样将搜索NAME节中包含特定关键字的命令（字母k代表“keyword”）。例如，假如您希望查找手册中与手册自身相关的所有条目，则可以输入：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">man -k manual</span></span><br></pre></td></tr></table></figure>
+
+<p>为了方便起见，可以使用单个单词apropos待替man -k：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">apropos manual</span></span><br></pre></td></tr></table></figure>
+
+<p>apropos命令搜索所有的单行命令描述，查找那些包含有指定字符串的描述。为了使该命令的功能更强大，在该命令中Unix不区分大小写字母。下面是上例的一些示例输出：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">aclocal-1.16 (1)     -<span class="built_in"> manual page </span><span class="keyword">for</span> aclocal 1.16.1</span><br><span class="line">apropos (1)          - search the<span class="built_in"> manual page </span>names <span class="keyword">and</span> descriptions</span><br><span class="line">automake (1)         -<span class="built_in"> manual page </span><span class="keyword">for</span> automake 1.16.1</span><br><span class="line">automake-1.16 (1)    -<span class="built_in"> manual page </span><span class="keyword">for</span> automake 1.16.1</span><br><span class="line">catman (8)           - create <span class="keyword">or</span> update the pre-formatted<span class="built_in"> manual </span>pages</span><br><span class="line">man (1)              - an<span class="built_in"> interface </span><span class="keyword">to</span> the<span class="built_in"> system </span>reference manuals</span><br><span class="line">man-recode (1)       - convert<span class="built_in"> manual </span>pages <span class="keyword">to</span> another encoding</span><br><span class="line">manconv (1)          - convert<span class="built_in"> manual page </span><span class="keyword">from</span> one encoding <span class="keyword">to</span> another</span><br><span class="line">mandb (8)            - create <span class="keyword">or</span> update the<span class="built_in"> manual page </span>index caches</span><br><span class="line">manpath (1)          - determine search path <span class="keyword">for</span><span class="built_in"> manual </span>pages</span><br><span class="line">manual_user_enter_context (3) - determine SELinux context(s) <span class="keyword">for</span><span class="built_in"> user </span>sessions</span><br><span class="line">qemu-qmp-ref (7)     - QEMU QMP Reference Manual</span><br><span class="line">whatis (1)           - display one-line<span class="built_in"> manual page </span>descriptions</span><br><span class="line">whereis (1)          - locate the binary, source, <span class="keyword">and</span><span class="built_in"> manual page </span>files <span class="keyword">for</span> a command</span><br></pre></td></tr></table></figure>
+
+<h2 id="Info系统"><a href="#Info系统" class="headerlink" title="Info系统"></a>Info系统</h2><p>Info系统是一个联机帮助系统，独立于Unix手册，用来记录GNU实用工具。因为许多类型的Unix——包括几乎所有的Linux系统，都使用GNU实用工具，所以大多数人发现了解如何同时使用联机手册和Info非常有用。</p>
+<p>从表面上看，Info与联机手册有点相似。信息存储在文件中，每个文件一个主题，这与说明书页相似。这些文件称为Info文件，而且要阅读它们时，需要使用info程序。为此，只需键入info，后面跟着命令的名称即可。</p>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">man <span class="built_in">date</span></span><br><span class="line"><span class="built_in">info</span> <span class="built_in">date</span></span><br></pre></td></tr></table></figure>
+
+<p>如果不能确定希望学习哪条命令，或者您希望浏览系统，则可以输入info命令本身：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">info</span></span><br></pre></td></tr></table></figure>
+
+<p>当以这种方式启动Info时，它显示一个称为<strong>目录节点</strong><code>Directory Node</code>的特殊节点。目录节点包含主要主题的列表，因此可以认为它是整个Info系统的主菜单。</p>
+<p>在Info系统中有许多命令可以使用，下图总结了一些最重要的命令。</p>
+<table>
+<thead>
+<tr>
+<th>通用命令</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>q</td>
+<td>退出</td>
+</tr>
+<tr>
+<td>h</td>
+<td>启动帮助向导</td>
+</tr>
+<tr>
+<td>?</td>
+<td>显示命令摘要列表</td>
+</tr>
+<tr>
+<td><strong>阅读节点</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>&lt;PageDown&gt;</td>
+<td>显示下一屏</td>
+</tr>
+<tr>
+<td>&lt;Space&gt;</td>
+<td>显示下一屏</td>
+</tr>
+<tr>
+<td>&lt;Space&gt;</td>
+<td>（在节点底部时）跳转到下一个节点</td>
+</tr>
+<tr>
+<td>&lt;PageUp&gt;</td>
+<td>显示上一屏</td>
+</tr>
+<tr>
+<td>&lt;Backspace&gt;</td>
+<td>显示上一屏</td>
+</tr>
+<tr>
+<td>&lt;Delete&gt;</td>
+<td>显示上一屏</td>
+</tr>
+<tr>
+<td>&lt;Backspace&gt;</td>
+<td>（在节点顶部时）跳转到上一个节点</td>
+</tr>
+<tr>
+<td>&lt;Delete&gt;</td>
+<td>（在节点顶部时）跳转到上一个节点</td>
+</tr>
+<tr>
+<td><strong>在节点中移动</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>b</td>
+<td>跳转到当前节点的开头</td>
+</tr>
+<tr>
+<td>&lt;Up&gt;</td>
+<td>将光标向上移动一行</td>
+</tr>
+<tr>
+<td>&lt;Down&gt;</td>
+<td>将光标向下移动一行</td>
+</tr>
+<tr>
+<td>&lt;Right&gt;</td>
+<td>将光标向右移动一个位置</td>
+</tr>
+<tr>
+<td>&lt;Left&gt;</td>
+<td>将光标向左移动一个位置</td>
+</tr>
+<tr>
+<td><strong>在同一个文件中从一个节点跳转到另一个节点</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>n</td>
+<td>跳转到同一个文件的下一个节点</td>
+</tr>
+<tr>
+<td>p</td>
+<td>跳转到同一个文件的上一个节点</td>
+</tr>
+<tr>
+<td>t</td>
+<td>跳转到顶节点（Top Node，文件中的第一个节点）</td>
+</tr>
+<tr>
+<td><strong>从一个文件跳转到另一个文件</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>&lt;Tab&gt;</td>
+<td>将光标移动到下一个链接上</td>
+</tr>
+<tr>
+<td>&lt;Shift&gt;-&lt;Tab&gt;</td>
+<td>将光标移动到上一个链接上</td>
+</tr>
+<tr>
+<td>&lt;Return&gt;</td>
+<td>到达链接指向的新节点或文件</td>
+</tr>
+<tr>
+<td>l</td>
+<td>跳转到上一个（刚才观看的）节点</td>
+</tr>
+<tr>
+<td>d</td>
+<td>跳转到目录节点（主菜单）</td>
+</tr>
+</tbody></table>
+<h2 id="显示环境变量：env、printenv"><a href="#显示环境变量：env、printenv" class="headerlink" title="显示环境变量：env、printenv"></a>显示环境变量：env、printenv</h2><p>为了显示默认变量，可以使用命令env：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">env</span></span><br></pre></td></tr></table></figure>
+
+<p>在许多系统上，还有另外一个命令可以是用，这个命令是printenv：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">printenv</span></span><br></pre></td></tr></table></figure>
+
+<p>名称printenv代表“print environment variables”。</p>
+<h2 id="显示shell变量：set"><a href="#显示shell变量：set" class="headerlink" title="显示shell变量：set"></a>显示shell变量：set</h2><p>使用不带选项或者参数的set命令可以显示所有的shell变量以及它们的值：</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="显示及使用变量的值：echo、print"><a href="#显示及使用变量的值：echo、print" class="headerlink" title="显示及使用变量的值：echo、print"></a>显示及使用变量的值：echo、print</h2><p>echo命令的任务就是显示赋予它的任何对象的值。为了显示一个变量的值，需要使用一个$（美元符号）字符。后面跟着用花括号括起来的变量名。例如，显示变量TERM的值，可以输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;TERM&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果没有歧义，也可以省略花括号：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$TERM</span></span><br></pre></td></tr></table></figure>
+
+<p>在shell中，一些标点符号字符称为“元字符”，它们拥有特殊的含义。为了防止shell解释元字符，需要将元字符包含在双引号中。这就告诉shell照字面意义接受字符。例如，为了显示尖括号中的TERM值。您可以输入下述命令：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo The terminal<span class="built_in"> type </span>is &lt;<span class="variable">$TERM</span>&gt;.</span><br></pre></td></tr></table></figure>
+
+<p>但是，&lt;和&gt;字符是元字符，表示“重定向”，所以该命令不能正常运行。为此，您需要使用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;The terminal type is &lt;<span class="variable">$TERM</span>&gt;.&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>所有的shell都允许使用echo命令显示文本和变量。至于Korn shell，还可以使用print命令：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">print</span> <span class="string">&quot;The terminal type is <span class="variable">$TERM</span>.&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Bourne-shell家族使用变量：export、unset"><a href="#Bourne-shell家族使用变量：export、unset" class="headerlink" title="Bourne shell家族使用变量：export、unset"></a>Bourne shell家族使用变量：export、unset</h2><p>对于Bourne shell家族，创建变量非常简单。所需做的全部事情就是键入一个名称，后跟一个=（等号）字符，再后跟一个值。变量的值必须是字符串。创建变量的语法为：</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">NAME</span>=<span class="keyword">value</span></span><br></pre></td></tr></table></figure>
+
+<p>我们创建一个命名为HARLEY的变量，并将值cool赋给它：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">HARLEY</span>=<span class="string">&quot;a cool boy&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>在Bourne shell家族中，每个新变量都自动地被设置成shell变量。使用export命令可以将变量导出到环境中。</p>
+<p>因此，此时HARLEY只是一个shell变量。如果启动一个新shell或者运行一条命令，则新进程并不能访问HARLEY，因为它还不是环境变量。下面将HARLEY导出到环境中：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">export</span> HARLEY</span><br></pre></td></tr></table></figure>
+
+<p>现在HARLEY变量既是shell变量又是环境变量了。如果这时再启动一个新shell或者运行一条命令，那么它们就可以访问HARLEY。</p>
+<p>export命令实际上允许同时设置变量并导出到环境中。该命令的语法为：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">export</span> NAME[=value]<span class="built_in">..</span></span><br></pre></td></tr></table></figure>
+
+<p>下面举一个简单的例子：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">export</span> <span class="attribute">PAGER</span>=less</span><br></pre></td></tr></table></figure>
+
+<p>正如前面所述，当创建变量时，我们称这是在设置变量。当删除变量时，我们称这是在<strong>复位</strong><code>unset</code>变量。变量极少需要复位，但是如果需要的话，则可以使用unset命令。该命令的语法比较简单：</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">unset</span></span> NAME..</span><br></pre></td></tr></table></figure>
+
+<p>下面举例说明：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">unset</span> HARLEY WEEDLY</span><br></pre></td></tr></table></figure>
+
+<h2 id="C-shell家族使用变量：setenv、unsetenv、set、unset"><a href="#C-shell家族使用变量：setenv、unsetenv、set、unset" class="headerlink" title="C-shell家族使用变量：setenv、unsetenv、set、unset"></a>C-shell家族使用变量：setenv、unsetenv、set、unset</h2><p>在C-shell家族中，使用setenv和unsetenv命令可以设置（创建）或复位（删除）环境变量。设置或复位shell变量时，需要使用set和unset命令。</p>
+<p>setenv命令的语法如下所示：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute"><span class="nomarkup">setenv</span></span> NAME<span class="meta"> [value]</span></span><br></pre></td></tr></table></figure>
+
+<p>注意，该命令中未使用=（等号）字符。</p>
+<h2 id="shell选项：set-o、set-o"><a href="#shell选项：set-o、set-o" class="headerlink" title="shell选项：set -o、set +o"></a>shell选项：set -o、set +o</h2><p>shell选项就像on/off开关一样。当打开一个选项时，就说<strong>设置</strong>了这个选项。这将告诉shell以某种方式运行。当关闭这个选项时，就说<strong>复位</strong>了这个选项。这也就是告诉shell停止以这种方式运行。</p>
+<p>要设置一个选项，可以使用：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> -o <span class="keyword">option</span></span><br></pre></td></tr></table></figure>
+
+<p>要复位一个选项，可以使用：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> +o <span class="keyword">option</span></span><br></pre></td></tr></table></figure>
+
+<p>例如，假设shell正在运行，您希望设置monitor选项，则可以使用：</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> -o <span class="comment">monitor</span></span><br></pre></td></tr></table></figure>
+
+<p>为了复位monitor，可以使用：</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> +o <span class="comment">monitor</span></span><br></pre></td></tr></table></figure>
+
+<p>要显示shell选项的当前值，可以使用set -o或set +o命令本身：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">set</span> -o</span><br><span class="line"><span class="builtin-name">set</span> +o</span><br></pre></td></tr></table></figure>
 
 
     </div>
@@ -588,13 +964,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">434k</span>
+    <span title="站点总字数">441k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:35</span>
+    <span title="站点阅读时长">6:41</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
