@@ -32,7 +32,7 @@
 <meta property="og:description" content="Unix键盘使用在键盘上，按下&lt;Return&gt;键或^M键（它们等价）可以发送一个CR码。按下&lt;Linefeed&gt;或者^J键可以发送一个LF码。CR为返回信号，LF码为换行信号。 修饰键：&lt;Ctrl&gt;键   erase kill werase rprnt flush lnext    ^H ^U ^W ^R ^O ^V   susp intr quit stop">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-12-24T14:33:58.000Z">
-<meta property="article:modified_time" content="2021-12-25T08:11:59.516Z">
+<meta property="article:modified_time" content="2021-12-29T07:31:39.803Z">
 <meta property="article:author" content="FEZ">
 <meta name="twitter:card" content="summary">
 
@@ -182,7 +182,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <section class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Unix%E9%94%AE%E7%9B%98%E4%BD%BF%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">Unix键盘使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E9%A5%B0%E9%94%AE%EF%BC%9A-lt-Ctrl-gt-%E9%94%AE"><span class="nav-number">1.1.</span> <span class="nav-text">修饰键：&lt;Ctrl&gt;键</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A5%E8%B6%85%E7%BA%A7%E7%94%A8%E6%88%B7%E5%B7%A5%E4%BD%9C%EF%BC%9Asu"><span class="nav-number">2.1.</span> <span class="nav-text">以超级用户工作：su</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A5%E8%B6%85%E7%BA%A7%E7%94%A8%E6%88%B7%E6%89%A7%E8%A1%8C%E4%B8%80%E6%9D%A1%E5%8D%95%E7%8B%AC%E7%9A%84%E6%8C%87%E4%BB%A4%EF%BC%9Asudo"><span class="nav-number">2.2.</span> <span class="nav-text">以超级用户执行一条单独的指令：sudo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%94%AE%E6%98%A0%E5%B0%84%EF%BC%9Astty"><span class="nav-number">2.3.</span> <span class="nav-text">键映射：stty</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E7%B3%BB%E7%BB%9F%E4%B8%AD%E6%9F%A5%E6%89%BE%E7%A8%8B%E5%BA%8F%EF%BC%9Awhich%E3%80%81type%E3%80%81whence"><span class="nav-number">2.4.</span> <span class="nav-text">在系统中查找程序：which、type、whence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E6%97%B6%E9%97%B4%E5%92%8C%E6%97%A5%E6%9C%9F%EF%BC%9Adate"><span class="nav-number">2.5.</span> <span class="nav-text">显示时间和日期：date</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E6%97%A5%E5%8E%86%EF%BC%9Acal"><span class="nav-number">2.6.</span> <span class="nav-text">显示日历：cal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF%EF%BC%9Auptime%E3%80%81hostname%E3%80%81uname"><span class="nav-number">2.7.</span> <span class="nav-text">查看系统信息：uptime、hostname、uname</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%BF%A1%E6%81%AF%EF%BC%9Awhoami"><span class="nav-number">2.8.</span> <span class="nav-text">显示自己的信息：whoami</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82Unix%E6%8F%90%E9%86%92%E4%BD%95%E6%97%B6%E7%A6%BB%E5%BC%80%EF%BC%9Aleave"><span class="nav-number">2.9.</span> <span class="nav-text">请求Unix提醒何时离开：leave</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E7%BD%AE%E8%AE%A1%E7%AE%97%E5%99%A8%EF%BC%9Abc"><span class="nav-number">2.10.</span> <span class="nav-text">内置计算器：bc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFUnix%E6%89%8B%E5%86%8C%EF%BC%9Fman"><span class="nav-number">2.11.</span> <span class="nav-text">什么是Unix手册？man</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E7%A7%8D%E5%BF%AB%E9%80%9F%E6%9F%A5%E8%AF%A2%E5%91%BD%E4%BB%A4%E4%BD%9C%E7%94%A8%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%9Awhatis"><span class="nav-number">2.12.</span> <span class="nav-text">一种快速查询命令作用的方法：whatis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E5%91%BD%E4%BB%A4%EF%BC%9Aapropos"><span class="nav-number">2.13.</span> <span class="nav-text">搜索命令：apropos</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Info%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.14.</span> <span class="nav-text">Info系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%EF%BC%9Aenv%E3%80%81printenv"><span class="nav-number">2.15.</span> <span class="nav-text">显示环境变量：env、printenv</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BAshell%E5%8F%98%E9%87%8F%EF%BC%9Aset"><span class="nav-number">2.16.</span> <span class="nav-text">显示shell变量：set</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%8F%98%E9%87%8F%E7%9A%84%E5%80%BC%EF%BC%9Aecho%E3%80%81print"><span class="nav-number">2.17.</span> <span class="nav-text">显示及使用变量的值：echo、print</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bourne-shell%E5%AE%B6%E6%97%8F%E4%BD%BF%E7%94%A8%E5%8F%98%E9%87%8F%EF%BC%9Aexport%E3%80%81unset"><span class="nav-number">2.18.</span> <span class="nav-text">Bourne shell家族使用变量：export、unset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-shell%E5%AE%B6%E6%97%8F%E4%BD%BF%E7%94%A8%E5%8F%98%E9%87%8F%EF%BC%9Asetenv%E3%80%81unsetenv%E3%80%81set%E3%80%81unset"><span class="nav-number">2.19.</span> <span class="nav-text">C-shell家族使用变量：setenv、unsetenv、set、unset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell%E9%80%89%E9%A1%B9%EF%BC%9Aset-o%E3%80%81set-o"><span class="nav-number">2.20.</span> <span class="nav-text">shell选项：set -o、set +o</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Unix%E9%94%AE%E7%9B%98%E4%BD%BF%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">Unix键盘使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E9%A5%B0%E9%94%AE%EF%BC%9A-lt-Ctrl-gt-%E9%94%AE"><span class="nav-number">1.1.</span> <span class="nav-text">修饰键：&lt;Ctrl&gt;键</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%83%E5%AD%97%E7%AC%A6"><span class="nav-number">2.</span> <span class="nav-text">元字符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4"><span class="nav-number">3.</span> <span class="nav-text">命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A5%E8%B6%85%E7%BA%A7%E7%94%A8%E6%88%B7%E5%B7%A5%E4%BD%9C%EF%BC%9Asu"><span class="nav-number">3.1.</span> <span class="nav-text">以超级用户工作：su</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A5%E8%B6%85%E7%BA%A7%E7%94%A8%E6%88%B7%E6%89%A7%E8%A1%8C%E4%B8%80%E6%9D%A1%E5%8D%95%E7%8B%AC%E7%9A%84%E6%8C%87%E4%BB%A4%EF%BC%9Asudo"><span class="nav-number">3.2.</span> <span class="nav-text">以超级用户执行一条单独的指令：sudo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%94%AE%E6%98%A0%E5%B0%84%EF%BC%9Astty"><span class="nav-number">3.3.</span> <span class="nav-text">键映射：stty</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E7%B3%BB%E7%BB%9F%E4%B8%AD%E6%9F%A5%E6%89%BE%E7%A8%8B%E5%BA%8F%EF%BC%9Awhich%E3%80%81type%E3%80%81whence"><span class="nav-number">3.4.</span> <span class="nav-text">在系统中查找程序：which、type、whence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E6%97%B6%E9%97%B4%E5%92%8C%E6%97%A5%E6%9C%9F%EF%BC%9Adate"><span class="nav-number">3.5.</span> <span class="nav-text">显示时间和日期：date</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E6%97%A5%E5%8E%86%EF%BC%9Acal"><span class="nav-number">3.6.</span> <span class="nav-text">显示日历：cal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF%EF%BC%9Auptime%E3%80%81hostname%E3%80%81uname"><span class="nav-number">3.7.</span> <span class="nav-text">查看系统信息：uptime、hostname、uname</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%BF%A1%E6%81%AF%EF%BC%9Awhoami"><span class="nav-number">3.8.</span> <span class="nav-text">显示自己的信息：whoami</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82Unix%E6%8F%90%E9%86%92%E4%BD%95%E6%97%B6%E7%A6%BB%E5%BC%80%EF%BC%9Aleave"><span class="nav-number">3.9.</span> <span class="nav-text">请求Unix提醒何时离开：leave</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E7%BD%AE%E8%AE%A1%E7%AE%97%E5%99%A8%EF%BC%9Abc"><span class="nav-number">3.10.</span> <span class="nav-text">内置计算器：bc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFUnix%E6%89%8B%E5%86%8C%EF%BC%9Fman"><span class="nav-number">3.11.</span> <span class="nav-text">什么是Unix手册？man</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E7%A7%8D%E5%BF%AB%E9%80%9F%E6%9F%A5%E8%AF%A2%E5%91%BD%E4%BB%A4%E4%BD%9C%E7%94%A8%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%9Awhatis"><span class="nav-number">3.12.</span> <span class="nav-text">一种快速查询命令作用的方法：whatis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E5%91%BD%E4%BB%A4%EF%BC%9Aapropos"><span class="nav-number">3.13.</span> <span class="nav-text">搜索命令：apropos</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Info%E7%B3%BB%E7%BB%9F"><span class="nav-number">3.14.</span> <span class="nav-text">Info系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%EF%BC%9Aenv%E3%80%81printenv"><span class="nav-number">3.15.</span> <span class="nav-text">显示环境变量：env、printenv</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BAshell%E5%8F%98%E9%87%8F%EF%BC%9Aset"><span class="nav-number">3.16.</span> <span class="nav-text">显示shell变量：set</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%8F%98%E9%87%8F%E7%9A%84%E5%80%BC%EF%BC%9Aecho%E3%80%81print"><span class="nav-number">3.17.</span> <span class="nav-text">显示及使用变量的值：echo、print</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bourne-shell%E5%AE%B6%E6%97%8F%E4%BD%BF%E7%94%A8%E5%8F%98%E9%87%8F%EF%BC%9Aexport%E3%80%81unset"><span class="nav-number">3.18.</span> <span class="nav-text">Bourne shell家族使用变量：export、unset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-shell%E5%AE%B6%E6%97%8F%E4%BD%BF%E7%94%A8%E5%8F%98%E9%87%8F%EF%BC%9Asetenv%E3%80%81unsetenv%E3%80%81set%E3%80%81unset"><span class="nav-number">3.19.</span> <span class="nav-text">C-shell家族使用变量：setenv、unsetenv、set、unset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell%E9%80%89%E9%A1%B9%EF%BC%9Aset-o%E3%80%81set-o"><span class="nav-number">3.20.</span> <span class="nav-text">shell选项：set -o、set +o</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell%E5%86%85%E7%BD%AE%E5%91%BD%E4%BB%A4%EF%BC%9Atype"><span class="nav-number">3.21.</span> <span class="nav-text">shell内置命令：type</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%86%E5%8F%B2%E5%88%97%E8%A1%A8%EF%BC%9Afc%E3%80%81history"><span class="nav-number">3.22.</span> <span class="nav-text">历史列表：fc、history</span></a></li></ol></li></ol></div>
         </section>
         <!--/noindex-->
 
@@ -281,7 +281,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-12-25 16:11:59" itemprop="dateModified" datetime="2021-12-25T16:11:59+08:00">2021-12-25</time>
+        <time title="修改时间：2021-12-29 15:31:39" itemprop="dateModified" datetime="2021-12-29T15:31:39+08:00">2021-12-29</time>
       </span>
 
   
@@ -292,14 +292,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>9.3k</span>
+      <span>12k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>8 分钟</span>
+      <span>11 分钟</span>
     </span>
 </div>
 
@@ -348,6 +348,163 @@
 </tr>
 </tbody></table>
 <p>erase删除最后一个键入的字符，werase删除最后一个键入的单词，而kill则删除整行。</p>
+<h1 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h1><table>
+<thead>
+<tr>
+<th>字符</th>
+<th>名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>{}</td>
+<td>花括号</td>
+<td>花括号扩展：生成一种字符模式</td>
+</tr>
+<tr>
+<td>|</td>
+<td>管道</td>
+<td>命令行：创建一个管道线</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>小于</td>
+<td>命令行：重定向输入</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>大于</td>
+<td>命令行：重定向输出</td>
+</tr>
+<tr>
+<td>()</td>
+<td>圆括号</td>
+<td>命令行：在子shell中运行命令</td>
+</tr>
+<tr>
+<td>#</td>
+<td>hash、pound</td>
+<td>命令行：注释的开头，忽略该行的其余部分</td>
+</tr>
+<tr>
+<td>;</td>
+<td>分号</td>
+<td>命令行：用于分隔多条命令</td>
+</tr>
+<tr>
+<td>`</td>
+<td>反引号</td>
+<td>命令行：命令替换</td>
+</tr>
+<tr>
+<td>~</td>
+<td>波浪号</td>
+<td>文件名扩展：插入home目录的名称</td>
+</tr>
+<tr>
+<td>?</td>
+<td>问号</td>
+<td>文件名扩展：匹配任意一个字符</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>方括号</td>
+<td>文件名扩展：与一组字符中的字符匹配</td>
+</tr>
+<tr>
+<td>*</td>
+<td>星号</td>
+<td>文件名扩展：匹配0个或多个字符</td>
+</tr>
+<tr>
+<td>!</td>
+<td>bang</td>
+<td>历史列表：事件标记</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>和号</td>
+<td>作业控制：在后台运行命令</td>
+</tr>
+<tr>
+<td>\</td>
+<td>反斜线</td>
+<td>引用：下一个字符转义</td>
+</tr>
+<tr>
+<td>‘</td>
+<td>引号、单引号</td>
+<td>引用：取消所有的替换</td>
+</tr>
+<tr>
+<td>“</td>
+<td>双引号</td>
+<td>引用：取消大部分替换</td>
+</tr>
+<tr>
+<td>{}</td>
+<td>花括号</td>
+<td>变量：确定变量名称的界限</td>
+</tr>
+<tr>
+<td>$</td>
+<td>美元符号</td>
+<td>变量：用变量的值替换</td>
+</tr>
+<tr>
+<td>&lt;Return&gt;</td>
+<td>新行字符</td>
+<td>空白符：标记一行结束</td>
+</tr>
+<tr>
+<td>&lt;Tab&gt;</td>
+<td>制表符</td>
+<td>空白符：在命令行中分隔单词</td>
+</tr>
+<tr>
+<td>&lt;Space&gt;</td>
+<td>空格符</td>
+<td>空白符：在命令行中分隔单词</td>
+</tr>
+</tbody></table>
+<p>有时候，可能希望按字面上的含义使用元字符，而不使用其特殊的含义。例如，将分号作为分号使用，而不是一个命令分隔符。或者可能希望不按管道使用|（竖线）。在这些情况中，必须告诉shell按字面意义解释字符。这样做时，可以称其为<strong>引用</strong>字符。</p>
+<p>字符的引用方法有三种：使用反斜线、使用一对单引号或者使用一对双引号。</p>
+<p>引用元字符最直接的方法就是在元字符前面放一个反斜线（\）。这就告诉shell忽略反斜线之后的字符的任何特殊含义。例如：</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo It <span class="keyword">is</span> warm <span class="keyword">and</span> sunny\; come <span class="keyword">over</span> <span class="keyword">and</span> visit</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，我们在分号前放了一个反斜线。如果没有这个反斜线，那么shell将把这个分号解释成一个元字符，从而假定了您输入了两条独立的命令：echo和come。</p>
+<p>考虑下述指令：</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">echo</span> <span class="keyword">It</span> is warm (<span class="keyword">and</span> sunny)<span class="comment">; come &amp; visit</span></span><br></pre></td></tr></table></figure>
+
+<p>这条命令不能正确运行，因为命令中有四个元字符。我们当然可以用四个反斜线依次引用每个元字符，但这样得到的命令却不容易阅读，一个更好的方法是使用单引号引用一串字符：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &#x27;It is warm (<span class="name">and</span> sunny)<span class="comment">; come &amp; visit&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，我们将单引号之间的所有内容引用。当然，这包括所有的字符，而不仅仅是元字符，但是它不影响数字字母字符的显示。</p>
+<p>大多数时候，反斜线和单引号引用已足够。但是，在有些情形中，使用双引号引用更加方便。有时候，可能希望在一个引用字符串中使用$字符，用来引用变量的值，例如，下述命令在尖括号中显示用户标识和终端类型：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">echo</span> My userid is &lt;<span class="variable">$USER</span>&gt;; <span class="attribute">my</span> terminal is &lt;<span class="variable">$TERM</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这种形式的命令不能正常工作，因为元字符&lt;、;和&gt;拥有特殊的含义（$字符没有什么问题，我们希望它是元字符）。解决方法就是只引用那些我们希望取字面含义的元字符：</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo My userid <span class="keyword">is</span> <span class="string">\&lt;$USER\&gt;\;</span> my terminal <span class="keyword">is</span> <span class="string">\&lt;$TERM\&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这条命令可行，但是它非常复杂。而如果使用单引号来取代反斜线：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">echo</span> <span class="string">&#x27;My userid is &lt;<span class="variable">$USER</span>&gt;; my terminal is &lt;<span class="variable">$TERM</span>&gt;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>这样比较容易阅读，但它引用了所有的元字符，包括$。这意味着只能看到字面上的$USER和$TERM，而不能看到这两个变量的值。对于这种情况，可以使用双引号，因为这样所有的$元字符将保留它们特殊的含义。例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;My userid is &lt;<span class="variable">$USER</span>&gt;; my terminal is &lt;<span class="variable">$TERM</span>&gt;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>下面是小结：</p>
+<p>使用反引号引用单个字符（称为转义了这个字符）。</p>
+<p>使用单引号引用一串字符。</p>
+<p>使用双引号引用一串字符。但是保留$（美元）、`（反引号）和\（反斜线）的特殊含义。</p>
+<p>从前面的讨论中可以看出，单引号比双引号的功能更为强大。基于这一原因，有时候称单引号为<strong>强引用</strong><code>strong quote</code>，双引号为<strong>弱引用</strong><code>weak quote</code>。实际上，反斜线是所有引用中最强的一个。反斜线可以引用任何东西，因此，如果单引号不起作用，可以试一试反斜线。例如，有一天您可能需要转义一个单引号：</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo Don<span class="string">\&#x27;</span> t <span class="keyword">let</span> gravity get you down</span><br></pre></td></tr></table></figure>
+
+<p>反斜线功能如此强大，所以它甚至可以引用新行字符（花点时间好好想想这一点）。</p>
+<p>假设在某行的末尾键入了\&lt;Return&gt;，这样将生成\字符后面跟新行字符。光标移动到下一行，但是由于新行字符失去了它特殊的含义，所以它并不是一行结束的信号。这意味着不管接下来键入什么字符都是上一行的继续。</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo Tis <span class="keyword">is</span> a very, very long \</span><br><span class="line">line <span class="keyword">that</span> goes <span class="keyword">on</span> <span class="keyword">and</span> <span class="keyword">on</span> <span class="keyword">for</span> a \</span><br><span class="line">very, very long <span class="built_in">time</span>.</span><br></pre></td></tr></table></figure>
+
+
+
 <h1 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h1><h2 id="以超级用户工作：su"><a href="#以超级用户工作：su" class="headerlink" title="以超级用户工作：su"></a>以超级用户工作：su</h2><p>su(substitute userid)命令允许您临时变成另一个用户标识。为此，只需在su命令后输入新的用户标识即可。</p>
 <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">[harley]</span>$ su weedly</span><br><span class="line">Password:</span><br><span class="line"><span class="string">[weedly]</span>$</span><br></pre></td></tr></table></figure>
 
@@ -888,7 +1045,34 @@
 <p>要显示shell选项的当前值，可以使用set -o或set +o命令本身：</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">set</span> -o</span><br><span class="line"><span class="builtin-name">set</span> +o</span><br></pre></td></tr></table></figure>
 
+<h2 id="shell内置命令：type"><a href="#shell内置命令：type" class="headerlink" title="shell内置命令：type"></a>shell内置命令：type</h2><p>一些指令在shell的内部，这意味着shell可以直接解释它们。这些指令是<strong>内部命令</strong>，通常称为<strong>内置命令</strong><code>builtin command</code>。其他所有命令是<strong>外部命令</strong>。</p>
+<p>一种查看某条命令是不是内置指令的快捷方式就是使用type命令。该命令的语法为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span> <span class="built_in">command</span>...</span><br></pre></td></tr></table></figure>
 
+<p>例如：</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span> <span class="built_in">date</span> <span class="built_in">time</span> <span class="built_in">set</span></span><br></pre></td></tr></table></figure>
+
+<p>该命令的准确输出依赖于所使用的shell。例如，下面是在我系统上的输出：</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">date</span> is /usr/bin/<span class="built_in">date</span></span><br><span class="line"><span class="built_in">time</span> is <span class="keyword">a</span> <span class="built_in">shell</span> keyword</span><br><span class="line"><span class="built_in">set</span> is <span class="keyword">a</span> <span class="built_in">shell</span> builtin</span><br></pre></td></tr></table></figure>
+
+<p>一些Unix/Linux系统对于内置命令拥有独立的说明书页。使用apropos命令可以查看系统是不是属于这种情况：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apropos <span class="built_in">builtin</span></span><br></pre></td></tr></table></figure>
+
+<p>Linux还有一个help命令，可以以若干种方式显示builtin说明书页的信息。该命令的语法为：</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">help</span> [-s] [<span class="keyword">command</span>.<span class="string">..</span>]</span><br></pre></td></tr></table></figure>
+
+<p>其中command是命令的名称。</p>
+<p>开始时，可以通过输入help命令本身显示一个所有内置命令的摘要列表。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">help</span></span><br><span class="line"><span class="keyword">help</span> | <span class="keyword">less</span></span><br></pre></td></tr></table></figure>
+
+<p>另外还可以使用help命令显示一条或多条具体命令的信息，例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">help</span> <span class="built_in">pwd</span> <span class="built_in">history</span> <span class="built_in">kill</span> <span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看出，help本事就是一条内置命令。</p>
+<p>最后，如果只希望查看某条命令的语法，可以使用-s（syntax，语法）选项：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">help</span> -s <span class="built_in">help</span></span><br><span class="line"><span class="built_in">help</span> -s <span class="built_in">pwd</span> <span class="built_in">history</span> <span class="built_in">kill</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="历史列表：fc、history"><a href="#历史列表：fc、history" class="headerlink" title="历史列表：fc、history"></a>历史列表：fc、history</h2>
     </div>
 
     
@@ -964,13 +1148,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">441k</span>
+    <span title="站点总字数">443k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:41</span>
+    <span title="站点阅读时长">6:43</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
