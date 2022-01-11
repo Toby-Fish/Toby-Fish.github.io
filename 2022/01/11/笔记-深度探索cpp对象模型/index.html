@@ -24,20 +24,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.0.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
 
-  <meta name="description" content="数据库系统概论（第五版）（王珊 萨师煊）笔记">
+  <meta name="description" content="第一章    关于对象在C语言中，“数据”和“处理数据的操作（函数）”是分开来声明的，也就是说，语言本身并没有支持“数据和函数”之间的关联性。我们把这种程序方法称为程序性的（procedural），由一组“分布在各个以功能为导向的函数中”的算法所驱动，它们处理的是共同的外部数据。 如果我们声明一个struct Point3d，像这样： 123456typedef struct point3d&amp;#1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="笔记-数据库系统概论">
-<meta property="og:url" content="http://example.com/2021/12/29/%E7%AC%94%E8%AE%B0-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/index.html">
+<meta property="og:title" content="笔记-深度探索C++对象模型">
+<meta property="og:url" content="http://example.com/2022/01/11/%E7%AC%94%E8%AE%B0-%E6%B7%B1%E5%BA%A6%E6%8E%A2%E7%B4%A2cpp%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B/index.html">
 <meta property="og:site_name" content="FEZ的博客">
-<meta property="og:description" content="数据库系统概论（第五版）（王珊 萨师煊）笔记">
+<meta property="og:description" content="第一章    关于对象在C语言中，“数据”和“处理数据的操作（函数）”是分开来声明的，也就是说，语言本身并没有支持“数据和函数”之间的关联性。我们把这种程序方法称为程序性的（procedural），由一组“分布在各个以功能为导向的函数中”的算法所驱动，它们处理的是共同的外部数据。 如果我们声明一个struct Point3d，像这样： 123456typedef struct point3d&amp;#1">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-12-29T10:43:51.000Z">
-<meta property="article:modified_time" content="2021-12-29T13:20:25.495Z">
+<meta property="article:published_time" content="2022-01-11T09:51:08.000Z">
+<meta property="article:modified_time" content="2022-01-11T11:02:06.706Z">
 <meta property="article:author" content="FEZ">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2021/12/29/%E7%AC%94%E8%AE%B0-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/">
+<link rel="canonical" href="http://example.com/2022/01/11/%E7%AC%94%E8%AE%B0-%E6%B7%B1%E5%BA%A6%E6%8E%A2%E7%B4%A2cpp%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B/">
 
 
 <script class="page-configurations">
@@ -50,7 +50,7 @@
   };
 </script>
 
-  <title>笔记-数据库系统概论 | FEZ的博客</title>
+  <title>笔记-深度探索C++对象模型 | FEZ的博客</title>
   
 
 
@@ -182,7 +182,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <section class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%BB%AA%E8%AE%BA"><span class="nav-number">1.</span> <span class="nav-text">第一章    绪论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%9B%9B%E4%B8%AA%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.1.</span> <span class="nav-text">数据库的四个基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-number">1.2.</span> <span class="nav-text">数据库系统的特点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%8C%96"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.数据结构化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%95%B0%E6%8D%AE%E7%9A%84%E5%85%B1%E4%BA%AB%E6%80%A7%E9%AB%98%E3%80%81%E5%86%97%E4%BD%99%E5%BA%A6%E4%BD%8E%E4%B8%94%E6%98%93%E6%89%A9%E5%85%85"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.数据的共享性高、冗余度低且易扩充</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%95%B0%E6%8D%AE%E7%8B%AC%E7%AB%8B%E6%80%A7%E9%AB%98"><span class="nav-number">1.2.3.</span> <span class="nav-text">3.数据独立性高</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E6%95%B0%E6%8D%AE%E7%94%B1%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%BB%9F%E4%B8%80%E7%AE%A1%E7%90%86%E5%92%8C%E6%8E%A7%E5%88%B6"><span class="nav-number">1.2.4.</span> <span class="nav-text">4.数据由数据库管理系统统一管理和控制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.3.</span> <span class="nav-text">数据模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%93%E6%9E%84"><span class="nav-number">1.4.</span> <span class="nav-text">数据库系统的结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%89%E7%BA%A7%E6%A8%A1%E5%BC%8F%E7%BB%93%E6%9E%84"><span class="nav-number">1.4.1.</span> <span class="nav-text">数据库系统的三级模式结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">2.</span> <span class="nav-text">第二章    关系数据库</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%85%B3%E4%BA%8E%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.</span> <span class="nav-text">第一章    关于对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E4%B8%8A%E5%B0%81%E8%A3%85%E5%90%8E%E7%9A%84%E5%B8%83%E5%B1%80%E6%88%90%E6%9C%AC"><span class="nav-number">1.1.</span> <span class="nav-text">加上封装后的布局成本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.2.</span> <span class="nav-text">C++对象模型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%AF%AD%E6%84%8F%E5%AD%A6"><span class="nav-number">2.</span> <span class="nav-text">第二章    构造函数语意学</span></a></li></ol></div>
         </section>
         <!--/noindex-->
 
@@ -250,7 +250,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/29/%E7%AC%94%E8%AE%B0-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/11/%E7%AC%94%E8%AE%B0-%E6%B7%B1%E5%BA%A6%E6%8E%A2%E7%B4%A2cpp%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -263,7 +263,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          笔记-数据库系统概论
+          笔记-深度探索C++对象模型
         </h1>
 
         <div class="post-meta-container">
@@ -275,7 +275,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2021-12-29 18:43:51 / 修改时间：21:20:25" itemprop="dateCreated datePublished" datetime="2021-12-29T18:43:51+08:00">2021-12-29</time>
+      <time title="创建时间：2022-01-11 17:51:08 / 修改时间：19:02:06" itemprop="dateCreated datePublished" datetime="2022-01-11T17:51:08+08:00">2022-01-11</time>
     </span>
 
   
@@ -304,52 +304,32 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>数据库系统概论（第五版）（王珊 萨师煊）笔记</p>
-<a id="more"></a>
+        <h1 id="第一章-关于对象"><a href="#第一章-关于对象" class="headerlink" title="第一章    关于对象"></a>第一章    关于对象</h1><p>在C语言中，“数据”和“处理数据的操作（函数）”是分开来声明的，也就是说，语言本身并没有支持“数据和函数”之间的关联性。我们把这种程序方法称为<strong>程序性的</strong>（procedural），由一组“分布在各个以功能为导向的函数中”的算法所驱动，它们处理的是共同的外部数据。</p>
+<p>如果我们声明一个struct Point3d，像这样：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">point3d</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">float</span> x;</span><br><span class="line">	<span class="keyword">float</span> y;</span><br><span class="line">	<span class="keyword">float</span> z;</span><br><span class="line">&#125; Point3d;</span><br></pre></td></tr></table></figure>
 
-<h1 id="第一章-绪论"><a href="#第一章-绪论" class="headerlink" title="第一章    绪论"></a>第一章    绪论</h1><h2 id="数据库的四个基本概念"><a href="#数据库的四个基本概念" class="headerlink" title="数据库的四个基本概念"></a>数据库的四个基本概念</h2><p>数据、数据库、数据库管理系统和数据库系统是与数据库技术密切相关的四个基本概念。</p>
-<p>数据（data）是数据库存储的基本对象。</p>
-<p>数据库（DataBase, DB）是存放数据的仓库。严格地讲，数据库是长期储存在计算机内、有组织的、可共享的大量数据的集合。数据库中的数据按一定的数据模型组织、描述和储存，具有较小的冗余度（redundancy）、较高的数据独立性（data independency）和易扩展性（scalability），并可为各种用户共享。</p>
-<p>数据库管理系统（DataBase Management System, DBMS）是位于用户与操作系统之间的一层数据管理软件。它和操作系统一样，是计算机的基础软件，主要功能包括：</p>
-<p>（1）数据定义功能，提供数据定义语言（Data Definition Language, DDL）</p>
-<p>（2）数据组织、存储与管理</p>
-<p>（3）数据操纵功能，提供数据操纵语言（Data Manipulation Language, DML），用户可以使用它操作数据，实现对数据库的增删查改等。</p>
-<p>（4）数据库的事务管理和运行管理</p>
-<p>（5）数据库的建立和维护功能</p>
-<p>数据库系统（DataBase System, DBS）是由数据库、数据库管理系统（及其应用开发工具）、应用程序和数据库管理员（DataBase Administrator, DBA）组成的存储、管理、处理和维护数据的系统。</p>
-<p>在一般不引起混淆的情况下，人们常常把数据库系统简称为数据库。</p>
-<h2 id="数据库系统的特点"><a href="#数据库系统的特点" class="headerlink" title="数据库系统的特点"></a>数据库系统的特点</h2><h3 id="1-数据结构化"><a href="#1-数据结构化" class="headerlink" title="1.数据结构化"></a>1.数据结构化</h3><p>数据库系统实现整体数据的结构化，这是数据库的主要特征之一，也是数据库系统与文件系统的本质区别。</p>
-<h3 id="2-数据的共享性高、冗余度低且易扩充"><a href="#2-数据的共享性高、冗余度低且易扩充" class="headerlink" title="2.数据的共享性高、冗余度低且易扩充"></a>2.数据的共享性高、冗余度低且易扩充</h3><h3 id="3-数据独立性高"><a href="#3-数据独立性高" class="headerlink" title="3.数据独立性高"></a>3.数据独立性高</h3><p>包括数据的物理独立性和逻辑独立性。</p>
-<p>物理独立性是指用户的应用程序与数据库的物理存储是相互独立的。</p>
-<p>逻辑独立性是指用户的应用程序与数据库的逻辑结构是相互独立的。</p>
-<h3 id="4-数据由数据库管理系统统一管理和控制"><a href="#4-数据由数据库管理系统统一管理和控制" class="headerlink" title="4.数据由数据库管理系统统一管理和控制"></a>4.数据由数据库管理系统统一管理和控制</h3><h2 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h2><p>数据模型（data model）是一种模型，是对现实世界数据特征的抽象。</p>
-<p>根据模型应用目的的不同，可以将模型分为两大类。第一类是概念模型，第二类是逻辑模型和物理模型。</p>
-<p>概念模型用于信息世界的建模。信息世界主要涉及以下一些概念：</p>
-<p>（1）实体（entity）</p>
-<p>客观存在并可以相互区分的事务称为实体。</p>
-<p>（2）属性（attribute）</p>
-<p>实体所具有的某一特性称为属性。</p>
-<p>（3）码（key）</p>
-<p>唯一标识实体的属性集称为码。</p>
-<p>（4）实体型（entity type）</p>
-<p>具有相同属性的实体必然具有共同的特征和性质。用实体名及其属性名集合来抽象和刻画同类实体，称为实体型。例如，学生（学号，姓名，性别，出生年月，所在院系，入学时间）就是一个实体型。</p>
-<p>（5）实体集（entity set）</p>
-<p>同一类型实体的集合称为实体集。例如，全体学生就是一个实体集。</p>
-<p>（6）联系（relationship）</p>
-<p>实体之间的联系通常是指不同实体集之间的联系。实体之间的联系有一对一、一对多和多对多等多种类型。</p>
-<p>概念模型是对信息世界建模，所以概念模型应该能够方便、准确地表示出上述信息世界中的常用概念。概念模型有很多，其中最为常用的是<strong>实体-联系方法</strong>（Entity-Relationship approach），该方法使用E-R图（E-R diagram）来描述现实世界的概念模型，E-R方法也称为E-R模型。</p>
-<p>数据模型的组成要素包含数据结构、数据操作和数据的完整性约束三部分条件。</p>
-<p>数据库领域主要的数据模型有层次模型（hierarchical model），网状模型（network model），关系模型（relational model），面向对象数据模型（object oriented data model），对象关系数据模型（object relational data model）和半结构化数据模型（semistructure data model）。</p>
-<h2 id="数据库系统的结构"><a href="#数据库系统的结构" class="headerlink" title="数据库系统的结构"></a>数据库系统的结构</h2><p>在数据模型中有“型”（type）和“值”（value）的概念。型是指对某一类数据的结构和属性的说明，值是型的一个具体赋值。</p>
-<p>模式（schema）是数据库中全体数据的逻辑结构和特征的描述，它仅仅涉及型的描述，不涉及具体的值。模式的一个具体值称为模式的一个实例（instance）。同一个模式可以有很多实例。</p>
-<p>模式是相对稳定的，而实例是相对变动的。</p>
-<h3 id="数据库系统的三级模式结构"><a href="#数据库系统的三级模式结构" class="headerlink" title="数据库系统的三级模式结构"></a>数据库系统的三级模式结构</h3><p>数据库系统的三级模式结构是指数据库模式是由外模式、模式和内模式三级构成。</p>
-<p>模式（schema）也成为逻辑模式，是数据库中全体数据的逻辑结构和特征的描述，是所有用户的公共数据视图。</p>
-<p>一个数据库只有一个模式。数据库模式以某一种数据模型为基础。数据库管理系统提供模式数据定义语言来严格定义模式。</p>
-<p>外模式（external schema）也称子模式（subschema）或用户模式，它是数据库用户能够看见和使用的局部数据的逻辑结构和特征描述，是数据库用户的数据视图，是与某一应用有关的数据的逻辑表示。</p>
-<p>内模式（internal schema）也称为存储模式（storage schema），一个数据库只有一个内模式，它是数据物理结构和存储方式的描述，是数据在数据库内部的组织方式。</p>
-<p>数据库系统的三级模式是数据的三个抽象级别，它把数据的具体组织留给数据库管理系统管理，使用户能逻辑地、抽象地处理数据，而不必关心数据在计算机中的具体表示方式和存储方式。为了能够在系统中实现这三个抽象层次的联系和转换，数据库管理系统在这三级模式之间提供了两层映像：外模式/模式映像和模式/内模式映像。</p>
-<h1 id="第二章-关系数据库"><a href="#第二章-关系数据库" class="headerlink" title="第二章    关系数据库"></a>第二章    关系数据库</h1>
+<p>欲打印一个Point3d，可能得定义一个像这样的函数：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Point3d_print</span><span class="params">( <span class="keyword">const</span> Point3d *pd )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;(%g, %g, %g)&quot;</span>, pd-&gt;x, pd-&gt;y, pd-&gt;z);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在C++中，Point3d有可能采用独立的“抽象数据类型（abstract data type, ADT）来实现：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point3d</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	Point3d( <span class="keyword">float</span> x = <span class="number">0.0</span>, <span class="keyword">float</span> y = <span class="number">0.0</span>, <span class="keyword">float</span> z = <span class="number">0.0</span>)</span><br><span class="line">		: _x(x), _y(y), _z(z) &#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">x</span> <span class="params">(<span class="keyword">float</span> xval)</span> </span>&#123; _x = xval; &#125;</span><br><span class="line">	<span class="comment">// ...etc...</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="keyword">float</span> _x;</span><br><span class="line">	<span class="keyword">float</span> _y;</span><br><span class="line">	<span class="keyword">float</span> _z;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="加上封装后的布局成本"><a href="#加上封装后的布局成本" class="headerlink" title="加上封装后的布局成本"></a>加上封装后的布局成本</h2><p>我们问：加了封装之后，布局成本增加了多少？答案是class Point3d并没有增加成本。三个data members直接内含在每一个class object之中，就像C struct的情况一样。而member function只会诞生一个函数实例。至于每一个“拥有零个或一个定义”的inline function则会在其每一个使用者（模块）身上产生一个函数实例。Point3d支持封装性质，这一点并未给它带来任何空间或执行器的不良后果。C++在布局以及存取时间上主要的额外负担是由virtual引起的，包括：</p>
+<p><strong>virtual function</strong>机制，用以支持一个有效率的“执行期绑定”（runtime binding）。</p>
+<p><strong>virtual base class</strong>，用以实现“多次出现在继承体系中的base class，有一个单一而被共享的实例”。</p>
+<p>一般而言，并没有什么天生的理由说C++程序一定比其C兄弟庞大或迟缓。</p>
+<h2 id="C-对象模型"><a href="#C-对象模型" class="headerlink" title="C++对象模型"></a>C++对象模型</h2><p>在C++中，有两种class data members: static和nonstatic，以及三种class member functions: static、nonstatic和virtual。</p>
+<p>在C++对象模型中，nonstatic data members被配置于每一个class object之内， static data members则被放在个别的class object之外。Static和nonstatic function members也被放在个别的class object之外，Virtual functions则以两个步骤支持之：</p>
+<p>1.每个class产出一堆指向virtual functions的指针，放在表格之中，这个表格被称为virtual table。</p>
+<p>2.每个class object被安插一个指针，指向相关的virtual table。vptr的setting和resetting都由每一个class的constructer、destructor和copy assigment运算符自动完成。每一个class所关联的type_info object（用以支持runtime type identification, RTTI）也经由virtual table被指出来，通常放在表格的第一个slot。</p>
+<h1 id="第二章-构造函数语意学"><a href="#第二章-构造函数语意学" class="headerlink" title="第二章    构造函数语意学"></a>第二章    构造函数语意学</h1><p>C++ Annotated Reference Manual(ARM)告诉我们：“default constructors……在需要的时候被编译器产生出来”。关键字眼是“在需要的时候”。被谁需要？答案是编译器需要。</p>
+<p>C++ Standard说：对于class X，如果没有任何user-declared constructor，那么会有一个default constructor被隐式声明出来……一个被隐式声明出来的constructor将会是一个trivial constructor……</p>
+<p>有4种情况，会造成“编译器必须为未声明constructor的classes合成一个default constructor”。C++ Standard把那些合成物称为implicit nontrivial default constructors。被合成出来的constructor只能满足编译器（而非程序）的需要。它之所以能够完成任务，是借着“调用member object或base class的default constructor”或是“为每一个object初始化其virtual function机制或virtual base class机制”而完成的。至于没有存在那4种情况而又没有声明任何constructor的classes，我们说它们拥有的是implicit trivial default constructors，它们实际上并不会被合成出来。</p>
+<p>C++新手一般有两个常见的误解：</p>
+<p>1.任何class如果没有定义default constructor，就会被合成出一个来。</p>
+<p>2.编译器合成出来的default constructor会显示设定“class内每一个data member的默认值”。</p>
+<p>如你所见，没有一个是真的！</p>
+
     </div>
 
     
@@ -414,7 +394,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

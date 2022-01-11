@@ -276,7 +276,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-12-29 18:43:30" itemprop="dateModified" datetime="2021-12-29T18:43:30+08:00">2021-12-29</time>
+        <time title="修改时间：2022-01-11 17:54:49" itemprop="dateModified" datetime="2022-01-11T17:54:49+08:00">2022-01-11</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -296,7 +296,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>895</span>
+      <span>972</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -349,7 +349,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/29/%E7%AC%94%E8%AE%B0-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/11/%E7%AC%94%E8%AE%B0-%E6%B7%B1%E5%BA%A6%E6%8E%A2%E7%B4%A2cpp%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -363,7 +363,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/12/29/%E7%AC%94%E8%AE%B0-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/" class="post-title-link" itemprop="url">笔记-数据库系统概论</a>
+            <a href="/2022/01/11/%E7%AC%94%E8%AE%B0-%E6%B7%B1%E5%BA%A6%E6%8E%A2%E7%B4%A2cpp%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B/" class="post-title-link" itemprop="url">笔记-深度探索C++对象模型</a>
         </h2>
 
         <div class="post-meta-container">
@@ -375,7 +375,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2021-12-29 18:43:51 / 修改时间：21:20:25" itemprop="dateCreated datePublished" datetime="2021-12-29T18:43:51+08:00">2021-12-29</time>
+      <time title="创建时间：2022-01-11 17:51:08 / 修改时间：19:02:06" itemprop="dateCreated datePublished" datetime="2022-01-11T17:51:08+08:00">2022-01-11</time>
     </span>
 
   
@@ -404,15 +404,32 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>数据库系统概论（第五版）（王珊 萨师煊）笔记</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/12/29/%E7%AC%94%E8%AE%B0-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <h1 id="第一章-关于对象"><a href="#第一章-关于对象" class="headerlink" title="第一章    关于对象"></a>第一章    关于对象</h1><p>在C语言中，“数据”和“处理数据的操作（函数）”是分开来声明的，也就是说，语言本身并没有支持“数据和函数”之间的关联性。我们把这种程序方法称为<strong>程序性的</strong>（procedural），由一组“分布在各个以功能为导向的函数中”的算法所驱动，它们处理的是共同的外部数据。</p>
+<p>如果我们声明一个struct Point3d，像这样：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">point3d</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">float</span> x;</span><br><span class="line">	<span class="keyword">float</span> y;</span><br><span class="line">	<span class="keyword">float</span> z;</span><br><span class="line">&#125; Point3d;</span><br></pre></td></tr></table></figure>
+
+<p>欲打印一个Point3d，可能得定义一个像这样的函数：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Point3d_print</span><span class="params">( <span class="keyword">const</span> Point3d *pd )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;(%g, %g, %g)&quot;</span>, pd-&gt;x, pd-&gt;y, pd-&gt;z);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在C++中，Point3d有可能采用独立的“抽象数据类型（abstract data type, ADT）来实现：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point3d</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	Point3d( <span class="keyword">float</span> x = <span class="number">0.0</span>, <span class="keyword">float</span> y = <span class="number">0.0</span>, <span class="keyword">float</span> z = <span class="number">0.0</span>)</span><br><span class="line">		: _x(x), _y(y), _z(z) &#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">x</span> <span class="params">(<span class="keyword">float</span> xval)</span> </span>&#123; _x = xval; &#125;</span><br><span class="line">	<span class="comment">// ...etc...</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="keyword">float</span> _x;</span><br><span class="line">	<span class="keyword">float</span> _y;</span><br><span class="line">	<span class="keyword">float</span> _z;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="加上封装后的布局成本"><a href="#加上封装后的布局成本" class="headerlink" title="加上封装后的布局成本"></a>加上封装后的布局成本</h2><p>我们问：加了封装之后，布局成本增加了多少？答案是class Point3d并没有增加成本。三个data members直接内含在每一个class object之中，就像C struct的情况一样。而member function只会诞生一个函数实例。至于每一个“拥有零个或一个定义”的inline function则会在其每一个使用者（模块）身上产生一个函数实例。Point3d支持封装性质，这一点并未给它带来任何空间或执行器的不良后果。C++在布局以及存取时间上主要的额外负担是由virtual引起的，包括：</p>
+<p><strong>virtual function</strong>机制，用以支持一个有效率的“执行期绑定”（runtime binding）。</p>
+<p><strong>virtual base class</strong>，用以实现“多次出现在继承体系中的base class，有一个单一而被共享的实例”。</p>
+<p>一般而言，并没有什么天生的理由说C++程序一定比其C兄弟庞大或迟缓。</p>
+<h2 id="C-对象模型"><a href="#C-对象模型" class="headerlink" title="C++对象模型"></a>C++对象模型</h2><p>在C++中，有两种class data members: static和nonstatic，以及三种class member functions: static、nonstatic和virtual。</p>
+<p>在C++对象模型中，nonstatic data members被配置于每一个class object之内， static data members则被放在个别的class object之外。Static和nonstatic function members也被放在个别的class object之外，Virtual functions则以两个步骤支持之：</p>
+<p>1.每个class产出一堆指向virtual functions的指针，放在表格之中，这个表格被称为virtual table。</p>
+<p>2.每个class object被安插一个指针，指向相关的virtual table。vptr的setting和resetting都由每一个class的constructer、destructor和copy assigment运算符自动完成。每一个class所关联的type_info object（用以支持runtime type identification, RTTI）也经由virtual table被指出来，通常放在表格的第一个slot。</p>
+<h1 id="第二章-构造函数语意学"><a href="#第二章-构造函数语意学" class="headerlink" title="第二章    构造函数语意学"></a>第二章    构造函数语意学</h1><p>C++ Annotated Reference Manual(ARM)告诉我们：“default constructors……在需要的时候被编译器产生出来”。关键字眼是“在需要的时候”。被谁需要？答案是编译器需要。</p>
+<p>C++ Standard说：对于class X，如果没有任何user-declared constructor，那么会有一个default constructor被隐式声明出来……一个被隐式声明出来的constructor将会是一个trivial constructor……</p>
+<p>有4种情况，会造成“编译器必须为未声明constructor的classes合成一个default constructor”。C++ Standard把那些合成物称为implicit nontrivial default constructors。被合成出来的constructor只能满足编译器（而非程序）的需要。它之所以能够完成任务，是借着“调用member object或base class的default constructor”或是“为每一个object初始化其virtual function机制或virtual base class机制”而完成的。至于没有存在那4种情况而又没有声明任何constructor的classes，我们说它们拥有的是implicit trivial default constructors，它们实际上并不会被合成出来。</p>
+<p>C++新手一般有两个常见的误解：</p>
+<p>1.任何class如果没有定义default constructor，就会被合成出一个来。</p>
+<p>2.编译器合成出来的default constructor会显示设定“class内每一个data member的默认值”。</p>
+<p>如你所见，没有一个是真的！</p>
+
       
     </div>
 
@@ -2597,7 +2614,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
