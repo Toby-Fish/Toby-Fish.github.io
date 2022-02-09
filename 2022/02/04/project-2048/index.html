@@ -24,12 +24,12 @@
     var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.0.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
 
-  <meta name="description" content="前言写作目的记录我对2048游戏项目的学习过程。本项目源自github（传送门）。 我的工作阅读项目源码，学习规范编程风格与技巧，梳理代码逻辑，在理解原项目内容后模仿原项目写一个自己的2048游戏。 注意：后续文章里所涉及代码为按我理解修改后的版本，相较于原项目代码，我的版本部分函数、变量名称不同，注释更多，自认为我的版本更适合阅读学习。 项目介绍本项目实现2048小游戏。 游戏介绍玩家每次可以选">
+  <meta name="description" content="2048游戏项目源码阅读、学习、分析、复现">
 <meta property="og:type" content="article">
 <meta property="og:title" content="project-2048">
 <meta property="og:url" content="http://example.com/2022/02/04/project-2048/index.html">
 <meta property="og:site_name" content="FEZ的博客">
-<meta property="og:description" content="前言写作目的记录我对2048游戏项目的学习过程。本项目源自github（传送门）。 我的工作阅读项目源码，学习规范编程风格与技巧，梳理代码逻辑，在理解原项目内容后模仿原项目写一个自己的2048游戏。 注意：后续文章里所涉及代码为按我理解修改后的版本，相较于原项目代码，我的版本部分函数、变量名称不同，注释更多，自认为我的版本更适合阅读学习。 项目介绍本项目实现2048小游戏。 游戏介绍玩家每次可以选">
+<meta property="og:description" content="2048游戏项目源码阅读、学习、分析、复现">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2022/02/04/project-2048/%E6%B8%B8%E6%88%8F%E4%B8%BB%E7%95%8C%E9%9D%A2.png">
 <meta property="og:image" content="http://example.com/2022/02/04/project-2048/repositories/BLOG/source_posts/project-2048/游戏主界面.png">
@@ -38,7 +38,7 @@
 <meta property="og:image" content="http://example.com/2022/02/04/project-2048/%E6%8E%92%E8%A1%8C%E6%A6%9C.png">
 <meta property="og:image" content="http://example.com/2022/02/04/project-2048/repositories/BLOG/source_posts/project-2048/排行榜.png">
 <meta property="article:published_time" content="2022-02-04T11:43:55.000Z">
-<meta property="article:modified_time" content="2022-02-09T16:18:55.341Z">
+<meta property="article:modified_time" content="2022-02-09T16:22:29.949Z">
 <meta property="article:author" content="FEZ">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/2022/02/04/project-2048/%E6%B8%B8%E6%88%8F%E4%B8%BB%E7%95%8C%E9%9D%A2.png">
@@ -288,7 +288,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-02-10 00:18:55" itemprop="dateModified" datetime="2022-02-10T00:18:55+08:00">2022-02-10</time>
+        <time title="修改时间：2022-02-10 00:22:29" itemprop="dateModified" datetime="2022-02-10T00:22:29+08:00">2022-02-10</time>
       </span>
 
   
@@ -317,7 +317,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h2 id="写作目的"><a href="#写作目的" class="headerlink" title="写作目的"></a>写作目的</h2><p>记录我对2048游戏项目的学习过程。本项目源自github（<a target="_blank" rel="noopener" href="https://github.com/plibither8/2048.cpp">传送门</a>）。</p>
+        <p>2048游戏项目源码阅读、学习、分析、复现</p>
+<a id="more"></a>
+
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h2 id="写作目的"><a href="#写作目的" class="headerlink" title="写作目的"></a>写作目的</h2><p>记录我对2048游戏项目的学习过程。本项目源自github（<a target="_blank" rel="noopener" href="https://github.com/plibither8/2048.cpp">传送门</a>）。</p>
 <h2 id="我的工作"><a href="#我的工作" class="headerlink" title="我的工作"></a>我的工作</h2><p>阅读项目源码，学习规范编程风格与技巧，梳理代码逻辑，在理解原项目内容后模仿原项目写一个自己的2048游戏。</p>
 <p><strong>注意</strong>：后续文章里所涉及代码为按我理解修改后的版本，相较于原项目代码，我的版本部分函数、变量名称不同，注释更多，自认为我的版本更适合阅读学习。</p>
 <h2 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h2><p>本项目实现2048小游戏。</p>
@@ -882,7 +885,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">564k</span>
+    <span title="站点总字数">565k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
